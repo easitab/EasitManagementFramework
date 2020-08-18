@@ -1,0 +1,15 @@
+name: PSSA test
+
+on:
+  pull_request:
+    paths:
+    - 'src/priv/*.ps1'
+    - 'src/pub/*.ps1'
+
+jobs:
+  lint:
+    name: Run PSSA
+    runs-on: ubuntu-latest
+    steps:
+    - name: PS-Check
+      uses: SleepySysadmin/github-action-pscheck@v0.4.2
