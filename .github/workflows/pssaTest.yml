@@ -11,8 +11,5 @@ jobs:
     name: Run PSSA
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: lint
-      uses: devblackops/github-action-psscriptanalyzer@master
-      with:
-        repoToken: ${{ secrets.GITHUB_TOKEN }}
+    - name: PS-Check
+      uses: SleepySysadmin/github-action-pscheck@v0.4.2
