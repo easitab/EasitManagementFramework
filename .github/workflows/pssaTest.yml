@@ -1,0 +1,22 @@
+name: PSSA test
+
+on:
+  push:
+    paths:
+    - 'src/priv/*.ps1'
+    - 'src/pub/*.ps1'
+  pull_request:
+    paths:
+    - 'src/priv/*.ps1'
+    - 'src/pub/*.ps1'
+
+jobs:
+  lint:
+    name: Run PSSA
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: lint
+      uses: devblackops/github-action-psscriptanalyzer@master
+      with:
+        repoToken: ${{ secrets.GITHUB_TOKEN }}
