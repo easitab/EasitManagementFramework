@@ -1,5 +1,27 @@
 # Easit Management Framework for Easit BPS and Easit GO
 
+## Framework outline
+
+These are the functions we would like to have ready in v1 of the framework and we aim to release Q4 2020 / Q1 2021. Once we have all the basic functionality on place there will be a preview release leading up to official stable release of v1.
+
+- Disable-EasitEmailTask
+- Disable-EasitImportClientTask
+- Disable-EasitMailbox
+- Disable-EasitScheduledTask
+- Enable-EasitEmailTask
+- Enable-EasitImportClientTask
+- Enable-EasitMailbox
+- Enable-EasitScheduledTask
+- Get-EMFConfig
+- Set-EasitEmailTaskXmx
+- Set-EasitMailboxMaxMessageSize
+- Set-EasitMailboxPassword
+- Set-EMFConfig
+- Start-EasitApplication
+- Stop-EasitApplication
+
+This list should be treated as a wishlist more than anything else and could be changed over the time leading up to release. 
+
 ## Branch model and development process
 
 * Head branches<br/>
