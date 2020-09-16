@@ -2,12 +2,15 @@ function Get-EMFConfig {
     [CmdletBinding()]
     param (
         [Parameter()]
+        [Alias('Home')]
+        [string] $EMFHome = "$Home\EMF",
+        
+        [Parameter()]
+        [Alias('file','filename')]
         [string] $ConfigurationFileName = 'config.xml',
 
-        [Parameter()]
-        [string] $Path = "$Home\EMF\$ConfigurationFileName",
-
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, Position=0)]
+        [Alias('ConfigName')]
         [string] $ConfigurationName
     )
     
@@ -16,20 +19,22 @@ function Get-EMFConfig {
     }
     
     process {
-        Write-Verbose "Retrieving configuration data"
-        try {
-            [xml]$configurationFileData = Get-Content $Path -ErrorAction Stop
-        } catch {
-            Write-Verbose "Unable to retrieve configuration data"
-            Write-Error "$_"
-            return
+        if (Test-Path "$EMFHome\$ConfigurationFileName") {
+            Write-Verbose "Found $EMFHome\$ConfigurationFileName"
+        } else {            
+            throw [System.IO.FileNotFoundException] "$EMFHome\$ConfigurationFileName does not exist"
         }
-        Write-Verbose "Configuration data retrieved"
+        Write-Verbose "Retrieving configurations data"
+        try {
+            $configurationFileData = Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"
+            Write-Verbose "Configurations data retrieved"
+        } catch {
+            throw $_
+        }
         if ($configurationFileData.systems.$ConfigurationName) {
             Write-Verbose "Found configuration named $ConfigurationName"
         } else {
-            Write-Warning "No configuration found named $ConfigurationName"
-            return
+            throw "No configuration found named $ConfigurationName"
         }
         $returnObject = New-Object -TypeName psobject
         $configProperties = $configurationFileData.systems.$ConfigurationName
