@@ -30,16 +30,10 @@ Describe 'Parameters' {
     It 'ConfigurationName should be null' {
         $ConfigurationName | Should -BeNullOrEmpty
     }
-    It 'SystemUUID should be mandatory' {
-        Get-Command "$commandName" | Should -HaveParameter SystemUUID -Mandatory
+    It 'ConfigurationSettings should be mandatory' {
+        Get-Command "$commandName" | Should -HaveParameter ConfigurationSettings -Mandatory
     }
-    It 'SystemUUID should be null' {
-        $SystemUUID | Should -BeNullOrEmpty
-    }
-    It 'ConfigSettings should be mandatory' {
-        Get-Command "$commandName" | Should -HaveParameter ConfigSettings -Mandatory
-    }
-    It 'ConfigSettings should be a hashtable' {
+    It 'ConfigurationSettings should be a hashtable' {
         $ConfigSettings = @{}
         $ConfigSettings | Should -BeOfType [System.Collections.Hashtable]
     }

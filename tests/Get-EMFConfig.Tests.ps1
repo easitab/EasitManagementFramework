@@ -18,12 +18,6 @@ Describe 'Parameters' {
     It 'ConfigurationFileName should have a value' {
         Get-Command "$commandName" | Should -HaveParameter ConfigurationFileName -DefaultValue 'config.xml'
     }
-    It 'Path should not be mandatory' {
-        Get-Command "$commandName" | Should -HaveParameter Path -Not -Mandatory
-    }
-    It 'Path should have a value' {
-        Get-Command "$commandName" | Should -HaveParameter Path -DefaultValue '$Home\EMF\$ConfigurationFileName'
-    }
     It 'ConfigurationName should be mandatory' {
         Get-Command "$commandName" | Should -HaveParameter ConfigurationName -Mandatory
     }
