@@ -1,0 +1,30 @@
+version: 0.0.{build}
+pull_requests:
+  do_not_increment_build_number: true
+branches:
+  only:
+  - /release*/
+skip_non_tags: true
+skip_branch_with_pr: true
+environment:
+  galleryPublishingKey: oy2nr4vfh6226b65kqnalxskj7ytvojezligonoowbj6p4
+  moduleName: $env:moduleName
+  companyName: $env:companyName
+  resourceRoot: $env:resourceRoot
+  helpInfoUri: $env:helpInfoUri
+  moduleAuthor: $env:moduleAuthor
+build_script:
+- ps: "$env:resourceRoot\\build\\build.ps1"
+test_script:
+- ps: >-
+    Install-Module Pester -Force -Scope CurrentUser
+
+    Invoke-Pester -EnableExit
+deploy: off
+on_success:
+- ps: $newManifestTest = Test-ModuleManifest -Path "$env:resourceRoot\$env:moduleName\$env:moduleName.psd1"
+on_finish:
+- ps: >-
+    if ($newManifestTest) {
+        Publish-Module -Path "$env:resourceRoot\$env:moduleName\" -NuGetApiKey "$env:galleryPublishingKey"
+    }
