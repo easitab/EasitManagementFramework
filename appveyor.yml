@@ -7,7 +7,7 @@ branches:
 skip_non_tags: true
 skip_branch_with_pr: true
 environment:
-  galleryPublishingKey: oy2nr4vfh6226b65kqnalxskj7ytvojezligonoowbj6p4
+  galleryPublishingKey: "$env:galleryPublishingKey"
   moduleName: $env:moduleName
   companyName: $env:companyName
   resourceRoot: $env:resourceRoot
