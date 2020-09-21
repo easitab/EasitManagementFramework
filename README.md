@@ -12,11 +12,12 @@ These are the functions we would like to have ready in v1 of the framework and w
 - Enable-EasitImportClientTask
 - Enable-EasitMailbox
 - Enable-EasitScheduledTask
-- Get-EMFConfig
+- Get-EMFConfig :heavy_check_mark:
 - Set-EasitEmailTaskXmx
 - Set-EasitMailboxMaxMessageSize
 - Set-EasitMailboxPassword
-- Set-EMFConfig
+- Set-EMFConfig :heavy_check_mark:
+- New-EMFConfig :heavy_check_mark:
 - Start-EasitApplication
 - Stop-EasitApplication
 
