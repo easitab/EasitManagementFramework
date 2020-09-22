@@ -9,7 +9,7 @@ $allscripts = @()
 $allscripts += $privScripts
 $allscripts += $pubScripts
 $tempModuleFileName = 'MyModule'
-$tempModuleRoot = "$projectRoo/$tempModuleFileName"
+$tempModuleRoot = "$projectRoot/$tempModuleFileName"
 $tempModulePath = "$tempModuleRoot/${tempModuleFileName}.psm1"
 Write-Output "New module start"
 New-Module -Name "$tempModuleFileName" -ScriptBlock {
