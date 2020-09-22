@@ -1,6 +1,6 @@
 try {
-        Install-Module -Name platyPS -Scope CurrentUser -ErrorAction Stop
-        Import-Module platyPS -ErrorAction Stop
+        Install-Module -Name platyPS -Scope CurrentUser -Force -ErrorAction Stop
+        Import-Module platyPS -Force -ErrorAction Stop
 } catch {
         Write-Error $_ 
 }
