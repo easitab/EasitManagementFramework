@@ -32,7 +32,7 @@ version-resolver:
       - 'patch'
   default: patch
 template: |
-  ## Release Notes
+  ## Version $RESOLVED_VERSION
 
   $CHANGES
 
