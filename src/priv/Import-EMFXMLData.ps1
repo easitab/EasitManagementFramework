@@ -34,4 +34,3 @@ function Import-EMFXMLData {
         Write-Verbose "$($MyInvocation.MyCommand) completed"
     }
 }
-Export-ModuleMember -Function Import-EMFXMLData

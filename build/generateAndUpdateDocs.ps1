@@ -28,6 +28,7 @@ foreach ($script in $allscripts) {
         if (Test-Path -Path "$docsRoot/${commandName}.md") {
             Write-Output "Found $docsRoot/${commandName}.md"
             try {
+                Import-Module "$($script.FullName)" -Scope Global -Force -ErrorAction Stop
                 Update-MarkdownHelp -Path "$docsRoot/${commandName}.md" -OutputFolder "$docsRoot" -ErrorAction Stop
             } catch {
                 Write-Error $_
@@ -36,18 +37,18 @@ foreach ($script in $allscripts) {
         } else {
             Write-Output "Unable to find $docsRoot/${commandName}.md"
             try {
-                New-MarkdownHelp -Command $commandName -OutputFolder "$docsRoot" -ErrorAction Stop
+                Import-Module "$($script.FullName)" -Scope Global -Force -ErrorAction Stop
+                New-MarkdownHelp -Command $commandName -OutputFolder "$docsRoot" -AlphabeticParamsOrder -ErrorAction Stop
             } catch {
                 Write-Error $_
                 break
             }
         }
         Write-Output "MarkdownHelp done"
-        if (Test-Path -Path "$docsRoot/${commandName}.md") {
-            Write-Output "Found $docsRoot/${commandName}.md"
-            New-ExternalHelp -Path "$docsRoot" -OutputPath "$docsRoot\en-US\" -ErrorAction Stop
-        } else {
-            Write-Output "Unable to find $docsRoot/${commandName}.md"
-        }
-        Write-Output "New-ExternalHelp done!"
 }
+try {
+    New-ExternalHelp -Path "$docsRoot" -OutputPath "$docsRoot\en-US\" -ErrorAction Stop
+} catch {
+    Write-Error $_
+}
+Write-Output "New-ExternalHelp done!"
