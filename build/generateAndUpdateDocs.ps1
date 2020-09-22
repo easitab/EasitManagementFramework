@@ -17,7 +17,7 @@ $allscripts += $pubScripts
 $tempModuleFileName = 'MyModule'
 $tempModulePath = "$projectRoot/${tempModuleFileName}.psm1"
 try {
-    New-Item -Path $projectRoot -ItemType File -Name $tempModuleFileName -ErrorAction Stop
+    New-Item -Path $projectRoot -ItemType File -Name "${tempModuleFileName}.psm1" -ErrorAction Stop
 } catch {
     Write-Error $_
     break
@@ -26,11 +26,21 @@ foreach ($script in $allscripts) {
         $exportFunction = "Export-ModuleMember -Function $($script.BaseName)"
         $scriptContent = Get-Content -Path "$($script.FullName)" -Raw
         if (Test-Path -Path $tempModulePath) {    
-            Add-Content -Path $tempModulePath -Value $scriptContent        
-            Add-Content -Path $tempModulePath -Value $exportFunction
+            try {
+                Add-Content -Path $tempModulePath -Value $scriptContent -ErrorAction Stop
+            } catch {
+                Write-Error $_
+                break
+            }
+            try {
+                Add-Content -Path $tempModulePath -Value $exportFunction -ErrorAction Stop
+            } catch {
+                Write-Error $_
+                break
+            }
         }
-        Write-Output "Temp module file done"
 }
+Write-Output "Temp module file done"
 try {
     Import-Module -Name "$projectRoot" -Force -Verbose
 } catch {
