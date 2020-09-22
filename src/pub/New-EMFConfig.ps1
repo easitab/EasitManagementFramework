@@ -30,6 +30,7 @@ function New-EMFConfig {
     }
     
     process {
+    Write-Verbose "Process block start"
         $emfConfigFilePath = "$EMFHome\$ConfigurationFileName"
         if (Test-Path "$emfConfigFilePath") {
             Write-Verbose -Message "$emfConfigFilePath already exists."
