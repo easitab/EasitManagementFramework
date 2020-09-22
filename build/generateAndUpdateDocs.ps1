@@ -1,3 +1,9 @@
+try {
+        Install-Module -Name platyPS -Scope CurrentUser -ErrorAction Stop
+        Import-Module platyPS -ErrorAction Stop
+} catch {
+        Write-Error $_ 
+}
 $projectRoot = Split-Path -Path $PSScriptRoot -Parent
 Write-Output "Project root: $projectRoot"
 Set-Location -Path $projectRoot
@@ -11,21 +17,21 @@ foreach ($script in $privScripts + $pubScripts) {
         . $script.FullName
         if (Test-Path -Path "$docsRoot\${commandName}.md") {
             try {
-                Update-MarkdownHelp -Path "$($script.FullName)" -OutputFolder "$docsRoot"
+                Update-MarkdownHelp -Path "$($script.FullName)" -OutputFolder "$docsRoot" -ErrorAction Stop
             } catch {
-                Write-Output $_
+                Write-Error $_
                 break
             }
         } else {
             try {
-                New-MarkdownHelp -Command "$commandName" -OutputFolder "$docsRoot"
+                New-MarkdownHelp -Command "$commandName" -OutputFolder "$docsRoot" -ErrorAction Stop
             } catch {
-                Write-Output $_
+                Write-Error $_
                 break
             }
         }
         if (Test-Path -Path "$docsRoot\${commandName}.md") {
-            New-ExternalHelp -Path "$docsRoot" -OutputPath "$docsRoot\en-US\"
+            New-ExternalHelp -Path "$docsRoot" -OutputPath "$docsRoot\en-US\" -ErrorAction Stop
         } else {
             Write-Output "Unable to find $docsRoot\${commandName}.md"
         }
