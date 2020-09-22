@@ -9,7 +9,8 @@ $allscripts = @()
 $allscripts += $privScripts
 $allscripts += $pubScripts
 $tempModuleFileName = 'MyModule'
-$tempModulePath = "$projectRoot/${tempModuleFileName}.psm1"
+$tempModuleRoot = "$projectRoo/$tempModuleFileName"
+$tempModulePath = "$tempModuleRoot/${tempModuleFileName}.psm1"
 Write-Output "New module start"
 New-Module -Name "$tempModuleFileName" -ScriptBlock {
     $projectRoot = Split-Path -Path $PSScriptRoot -Parent
@@ -21,9 +22,10 @@ New-Module -Name "$tempModuleFileName" -ScriptBlock {
     $allscripts += $privScripts
     $allscripts += $pubScripts
     $tempModuleFileName = 'MyModule'
-    $tempModulePath = "$projectRoot/${tempModuleFileName}.psm1"
+    $tempModuleRoot = "$projectRoo/$tempModuleFileName"
+    $tempModulePath = "$tempModuleRoot/${tempModuleFileName}.psm1"
     if (!(Test-Path -Path $tempModulePath)) {
-        $tempModuleFile = New-Item -Path "$projectRoot" -Name "${tempModuleFileName}.psm1" -ItemType "file"
+        $tempModuleFile = New-Item -Path "$tempModuleRoot" -Name "${tempModuleFileName}.psm1" -ItemType "file"
         Write-Output "Created $newModuleFile"
     }
     foreach ($script in $allscripts) {
@@ -47,11 +49,11 @@ New-Module -Name "$tempModuleFileName" -ScriptBlock {
 }
 Write-Output "New module end"
 $manifest = @{
-    Path              = "$projectRoot/${tempModuleFileName}.psd1" 
-    RootModule        = "$projectRoot/$tempModuleFileName.psm1" 
+    Path              = "$tempModuleRoot/${tempModuleFileName}.psd1" 
+    RootModule        = "$tempModuleRoot/$tempModuleFileName.psm1" 
     CompanyName       = "Easit AB"
     Author            = "Anders Thyrsson"
-    ModuleVersion     = "1.0"
+    ModuleVersion     = "0.0.1"
     HelpInfoUri       = "https://github.com/easitab/EasitManagementFramework/tree/development/docs"
     LicenseUri        = "https://github.com/easitab/EasitManagementFramework/blob/development/LICENSE"
     ProjectUri        = "https://github.com/easitab/EasitManagementFramework"
@@ -70,7 +72,7 @@ try {
     break
 }
 try {
-    Import-Module -Name "$projectRoot" -Force -Verbose -ErrorAction Stop
+    Import-Module -Name "$projectRoot\MyModule" -Force -Verbose -ErrorAction Stop
 } catch {
     Write-Error $_
     break
