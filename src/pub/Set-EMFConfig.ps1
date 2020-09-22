@@ -46,6 +46,7 @@ function Set-EMFConfig {
     }
     
     process {
+    Write-Verbose "Process block start"
         if (Test-Path "$EMFHome\$ConfigurationFileName") {
             Write-Verbose "Located $EMFHome\$ConfigurationFileName"
             try {
