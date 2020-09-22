@@ -19,7 +19,8 @@ foreach ($script in $allscripts) {
         $commandName = $script.BaseName
         Write-Output "Script path: $($script.FullName)"
         try {
-            Import-Module "$($script.FullName)" -Force -Verbose -ErrorAction Stop
+            $scriptContent = Get-Content "$($script.FullName)" -Raw
+            "$scriptContent"
         } catch {
             Write-Error $_
             break
