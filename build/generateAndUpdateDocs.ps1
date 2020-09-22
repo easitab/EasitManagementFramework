@@ -5,7 +5,7 @@ Write-Output "Working in $projectRoot"
 $privScripts = Get-ChildItem -Path "$projectRoot\src\priv" -Filter "*.ps1" -Recurse
 $pubScripts = Get-ChildItem -Path "$projectRoot\src\pub" -Filter "*.ps1" -Recurse
 $docsRoot = "$projectRoot\docs"
-break
+
 foreach ($script in $privScripts + $pubScripts) {
         $commandName = $script.BaseName
         . $script.FullName
