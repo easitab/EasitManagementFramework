@@ -17,6 +17,7 @@ function Test-EMFXMLData {
     }
     
     process {
+        Write-Verbose "Process block start"
         if (Test-Path $Path) {
             Write-Verbose "Found $Path"
         } else {
