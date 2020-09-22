@@ -1,5 +1,5 @@
-name-template: 'v$RESOLVED_VERSION 🌈'
-tag-template: 'v$RESOLVED_VERSION'
+name-template: 'Version $NEXT_MAJOR_VERSION'
+tag-template: '$RESOLVED_VERSION'
 include-labels:
   - 'feature'
   - 'enhancement'
@@ -32,8 +32,6 @@ version-resolver:
       - 'patch'
   default: patch
 template: |
-  ## Version $RESOLVED_VERSION
-
   $CHANGES
 
   $CONTRIBUTORS
