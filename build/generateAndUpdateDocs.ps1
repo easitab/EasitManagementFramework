@@ -1,5 +1,5 @@
 try {
-        Install-Module -Name platyPS -Scope AllUsers -Force -ErrorAction Stop
+        Install-Module -Name platyPS -Scope CurrentUser -Force -ErrorAction Stop
         Import-Module platyPS -Scope Global -Force -ErrorAction Stop
 } catch {
         Write-Error $_ 
@@ -19,7 +19,7 @@ foreach ($script in $allscripts) {
         $commandName = $script.BaseName
         Write-Output "Script path: $($script.FullName)"
         try {
-            Import-Module "$($script.FullName)" -Scope Global
+            Import-Module "$($script.FullName)" -Scope Global -Force -ErrorAction Stop
         } catch {
             Write-Error $_
             break
@@ -28,7 +28,7 @@ foreach ($script in $allscripts) {
         if (Test-Path -Path "$docsRoot/${commandName}.md") {
             Write-Output "Found $docsRoot/${commandName}.md"
             try {
-                Update-MarkdownHelp -Path "$($script.FullName)" -OutputFolder "$docsRoot" -ErrorAction Stop
+                Update-MarkdownHelp -Path "$docsRoot/${commandName}.md" -OutputFolder "$docsRoot" -ErrorAction Stop
             } catch {
                 Write-Error $_
                 break
