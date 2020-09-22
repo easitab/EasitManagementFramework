@@ -4,7 +4,9 @@ categories:
   - title: 'Features'
     label: 'feature'
   - title: 'Enhancement'
-    label: 'enhancement'
+    labels: 
+      - 'enhancement'
+      - 'test'
   - title: 'Bug Fixes'
     labels:
       - 'fix'
