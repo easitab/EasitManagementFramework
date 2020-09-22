@@ -31,13 +31,13 @@ New-Module -Name "$tempModuleFileName" -ScriptBlock {
         $scriptContent = Get-Content -Path "$($script.FullName)" -Raw
         if (Test-Path -Path $tempModulePath) {    
             try {
-                Add-Content -Path $tempModulePath -Value $scriptContent -ErrorAction Stop
+                Add-Content -Path $tempModuleFile -Value $scriptContent -ErrorAction Stop
             } catch {
                 Write-Error $_
                 break
             }
             try {
-                Add-Content -Path $tempModulePath -Value $exportFunction -ErrorAction Stop
+                Add-Content -Path $tempModuleFile -Value $exportFunction -ErrorAction Stop
             } catch {
                 Write-Error $_
                 break
@@ -51,7 +51,7 @@ $manifest = @{
     RootModule        = "$projectRoot/$tempModuleFileName.psm1" 
     CompanyName       = "Easit AB"
     Author            = "Anders Thyrsson"
-    ModuleVersion     = "1.0.0"
+    ModuleVersion     = "1.0"
     HelpInfoUri       = "https://github.com/easitab/EasitManagementFramework/tree/development/docs"
     LicenseUri        = "https://github.com/easitab/EasitManagementFramework/blob/development/LICENSE"
     ProjectUri        = "https://github.com/easitab/EasitManagementFramework"
@@ -102,4 +102,4 @@ try {
     break
 }
 Write-Output "New-ExternalHelp done!"
-Remove-Item $tempModulePath -Force -ErrorAction SilentlyContinue
+Remove-Item $tempModuleFile -Force -ErrorAction SilentlyContinue
