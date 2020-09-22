@@ -19,6 +19,7 @@ function Get-EMFConfig {
     }
     
     process {
+        Write-Verbose "Process block start"
         if (Test-Path "$EMFHome\$ConfigurationFileName") {
             Write-Verbose "Found $EMFHome\$ConfigurationFileName"
         } else {            
