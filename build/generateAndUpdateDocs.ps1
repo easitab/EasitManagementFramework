@@ -54,7 +54,7 @@ New-Module -Name "$tempModuleFileName" -ScriptBlock {
 Write-Output "New module end"
 $manifest = @{
     Path              = "$tempModuleRoot/${tempModuleFileName}.psd1" 
-    RootModule        = "$tempModuleRoot/$tempModuleFileName.psm1" 
+    RootModule        = "$tempModuleRoot/${tempModuleFileName}.psm1" 
     CompanyName       = "Easit AB"
     Author            = "Anders Thyrsson"
     ModuleVersion     = "0.0.1"
@@ -108,4 +108,18 @@ try {
     break
 }
 Write-Output "New-ExternalHelp done!"
-Remove-Item $tempModuleFile -Force -ErrorAction SilentlyContinue
+try {
+    Remove-Item "$tempModuleRoot/${tempModuleFileName}.psd1" -Force
+} catch {
+    Write-Error $_
+}
+try {
+    Remove-Item "$tempModuleRoot/${tempModuleFileName}.psm1" -Force
+} catch {
+    Write-Error $_
+}
+try {
+    Remove-Item "$tempModuleRoot" -Force
+} catch {
+    Write-Error $_
+}
