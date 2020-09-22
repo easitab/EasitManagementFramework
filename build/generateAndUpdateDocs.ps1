@@ -1,5 +1,5 @@
 try {
-        Install-Module -Name platyPS -Scope CurrentUser -Force -ErrorAction Stop
+        Install-Module -Name platyPS -Scope Global -Force -ErrorAction Stop
         Import-Module platyPS -Force -ErrorAction Stop
 } catch {
         Write-Error $_ 
@@ -25,8 +25,8 @@ foreach ($script in $allscripts) {
             break
         }
         Write-Output "Imported $commandName"
-        if (Test-Path -Path "$docsRoot\${commandName}.md") {
-            Write-Output "Found $docsRoot\${commandName}.md"
+        if (Test-Path -Path "$docsRoot/${commandName}.md") {
+            Write-Output "Found $docsRoot/${commandName}.md"
             try {
                 Update-MarkdownHelp -Path "$($script.FullName)" -OutputFolder "$docsRoot" -ErrorAction Stop
             } catch {
@@ -34,20 +34,20 @@ foreach ($script in $allscripts) {
                 break
             }
         } else {
-            Write-Output "Unable to find $docsRoot\${commandName}.md"
+            Write-Output "Unable to find $docsRoot/${commandName}.md"
             try {
-                New-MarkdownHelp -Command "$commandName" -OutputFolder "$docsRoot" -ErrorAction Stop
+                New-MarkdownHelp -Command $commandName -OutputFolder "$docsRoot" -ErrorAction Stop
             } catch {
                 Write-Error $_
                 break
             }
         }
         Write-Output "MarkdownHelp done"
-        if (Test-Path -Path "$docsRoot\${commandName}.md") {
-            Write-Output "Found $docsRoot\${commandName}.md"
+        if (Test-Path -Path "$docsRoot/${commandName}.md") {
+            Write-Output "Found $docsRoot/${commandName}.md"
             New-ExternalHelp -Path "$docsRoot" -OutputPath "$docsRoot\en-US\" -ErrorAction Stop
         } else {
-            Write-Output "Unable to find $docsRoot\${commandName}.md"
+            Write-Output "Unable to find $docsRoot/${commandName}.md"
         }
         Write-Output "New-ExternalHelp done!"
 }

@@ -9,7 +9,7 @@ on:
 jobs:
   lint:
     name: Run PSSA
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     - name: PS-Check
       uses: SleepySysadmin/github-action-pscheck@v0.4.2

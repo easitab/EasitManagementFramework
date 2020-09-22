@@ -27,10 +27,11 @@ function Import-EMFXMLData {
         }
         
         return $xml
-        Write-Verbose "Process block end"
+        Write-Verbose "Process block end!"
     }
     
     end {
         Write-Verbose "$($MyInvocation.MyCommand) completed"
     }
 }
+Export-ModuleMember -Function Import-EMFXMLData
