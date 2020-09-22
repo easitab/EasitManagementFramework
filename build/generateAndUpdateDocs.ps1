@@ -52,15 +52,16 @@ New-Module -Name "$tempModuleFileName" -ScriptBlock {
     }
 }
 Write-Output "New module end"
+$projectUriRoot = 'https://github.com/easitab/EasitManagementFramework'
 $manifest = @{
     Path              = "$tempModuleRoot/${tempModuleFileName}.psd1" 
     RootModule        = "$tempModuleRoot/${tempModuleFileName}.psm1" 
     CompanyName       = "Easit AB"
     Author            = "Anders Thyrsson"
     ModuleVersion     = "0.0.1"
-    HelpInfoUri       = "https://github.com/easitab/EasitManagementFramework/tree/development/docs"
-    LicenseUri        = "https://github.com/easitab/EasitManagementFramework/blob/development/LICENSE"
-    ProjectUri        = "https://github.com/easitab/EasitManagementFramework"
+    HelpInfoUri       = "$projectUriRoot/tree/development/docs"
+    LicenseUri        = "$projectUriRoot/blob/development/LICENSE"
+    ProjectUri        = "$projectUriRoot"
     Description       = 'Management Framework for Easit BPS and Easit GO'
     PowerShellVersion = '5.1'
     Copyright         = "(c) 2020 Easit AB. All rights reserved."
@@ -86,7 +87,7 @@ foreach ($script in $allscripts) {
     if (Test-Path -Path "$docsRoot/${commandName}.md") {
         Write-Output "Found $docsRoot/${commandName}.md"
         try {
-            Update-MarkdownHelp -Path "$docsRoot/${commandName}.md" -OutputFolder "$docsRoot" -ErrorAction Stop
+            Update-MarkdownHelp -Path "$docsRoot/${commandName}.md" -OutputFolder "$docsRoot" -AlphabeticParamsOrder -ErrorAction Stop
         } catch {
             Write-Error $_
             break
@@ -94,7 +95,7 @@ foreach ($script in $allscripts) {
     } else {
         Write-Output "Unable to find $docsRoot/${commandName}.md"
         try {
-            New-MarkdownHelp -Command $commandName -OutputFolder "$docsRoot" -AlphabeticParamsOrder -ErrorAction Stop
+            New-MarkdownHelp -Command $commandName -OutputFolder "$docsRoot" -AlphabeticParamsOrder -OnlineVersionUrl "https://github.com/easitab/EasitManagementFramework/blob/development/docs/${commandName}.md" -ErrorAction Stop
         } catch {
             Write-Error $_
             break
