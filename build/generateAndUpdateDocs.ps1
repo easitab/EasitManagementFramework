@@ -11,7 +11,7 @@ $allscripts += $pubScripts
 $tempModuleFileName = 'MyModule'
 $tempModulePath = "$projectRoot/${tempModuleFileName}.psm1"
 
-New-Module -Name "$env:moduleName" -ScriptBlock {
+New-Module -Name "$tempModuleFileName" -ScriptBlock {
     $projectRoot = Split-Path -Path $PSScriptRoot -Parent
     Write-Output "Project root: $projectRoot"
     Set-Location -Path $projectRoot
@@ -51,15 +51,15 @@ New-Module -Name "$env:moduleName" -ScriptBlock {
 $manifest = @{
     Path              = "$projectRoot\${tempModuleFileName}.psd1" 
     RootModule        = "$tempModuleFileName.psm1" 
-    CompanyName       = "$env:companyName"
-    Author            = "$env:moduleAuthor"
+    CompanyName       = "Easit AB"
+    Author            = "Anders Thyrsson"
     ModuleVersion     = "$env:APPVEYOR_BUILD_VERSION"
     HelpInfoUri       = "$env:projectUri/tree/development/docs"
     LicenseUri        = "$env:projectUri/blob/development/LICENSE"
     ProjectUri        = "$env:projectUri"
     Description       = 'Management Framework for Easit BPS and Easit GO'
     PowerShellVersion = '5.1'
-    Copyright         = "(c) 2020 $env:companyName. All rights reserved."
+    Copyright         = "(c) 2020 Easit AB. All rights reserved."
 }
 New-ModuleManifest @manifest | Out-Null
 
