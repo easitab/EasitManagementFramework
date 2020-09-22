@@ -113,6 +113,7 @@ function Set-EMFConfig {
             Write-Verbose "Something went wrong while updating configuration file ($ConfigurationFileName), block $ConfigurationName"
             throw $_
         }
+        Write-Verbose "Process block end"
     }
     
     end {

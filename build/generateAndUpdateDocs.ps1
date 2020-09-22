@@ -17,7 +17,8 @@ $allscripts += $pubScripts
 
 foreach ($script in $allscripts) {
         $commandName = $script.BaseName
-        . "$($script.FullName)"
+        Write-Output "Script path: $($script.FullName)"
+        Import-Module "$($script.FullName)"
         Write-Output "Imported $commandName"
         if (Test-Path -Path "$docsRoot\${commandName}.md") {
             Write-Output "Found $docsRoot\${commandName}.md"
