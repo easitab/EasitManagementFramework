@@ -1,6 +1,6 @@
 try {
-        Install-Module -Name platyPS -Scope Global -Force -ErrorAction Stop
-        Import-Module platyPS -Force -ErrorAction Stop
+        Install-Module -Name platyPS -Scope AllUsers -Force -ErrorAction Stop
+        Import-Module platyPS -Scope Global -Force -ErrorAction Stop
 } catch {
         Write-Error $_ 
 }
@@ -19,7 +19,7 @@ foreach ($script in $allscripts) {
         $commandName = $script.BaseName
         Write-Output "Script path: $($script.FullName)"
         try {
-            . "$($script.FullName)"
+            Import-Module "$($script.FullName)" -Scope Global
         } catch {
             Write-Error $_
             break
