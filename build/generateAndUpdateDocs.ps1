@@ -1,7 +1,7 @@
 $projectRoot = Split-Path -Path $PSScriptRoot -Parent
 Write-Output "Project root: $projectRoot"
 Set-Location -Path $projectRoot
-Write-Output "Working in $projectRoot"
+Write-Output "Working in $pwd"
 $privScripts = Get-ChildItem -Path "$projectRoot\src\priv" -Filter "*.ps1" -Recurse
 $pubScripts = Get-ChildItem -Path "$projectRoot\src\pub" -Filter "*.ps1" -Recurse
 $docsRoot = "$projectRoot/docs"
@@ -10,12 +10,10 @@ $allscripts += $privScripts
 $allscripts += $pubScripts
 $tempModuleFileName = 'MyModule'
 $tempModulePath = "$projectRoot/${tempModuleFileName}.psm1"
-
+Write-Output "New module start"
 New-Module -Name "$tempModuleFileName" -ScriptBlock {
     $projectRoot = Split-Path -Path $PSScriptRoot -Parent
-    Write-Output "Project root: $projectRoot"
     Set-Location -Path $projectRoot
-    Write-Output "Working in $projectRoot"
     $privScripts = Get-ChildItem -Path "$projectRoot\src\priv" -Filter "*.ps1" -Recurse
     $pubScripts = Get-ChildItem -Path "$projectRoot\src\pub" -Filter "*.ps1" -Recurse
     $docsRoot = "$projectRoot/docs"
@@ -47,10 +45,10 @@ New-Module -Name "$tempModuleFileName" -ScriptBlock {
         }
     }
 }
-
+Write-Output "New module end"
 $manifest = @{
-    Path              = "$projectRoot\${tempModuleFileName}.psd1" 
-    RootModule        = "$tempModuleFileName.psm1" 
+    Path              = "$projectRoot/${tempModuleFileName}.psd1" 
+    RootModule        = "$projectRoot/$tempModuleFileName.psm1" 
     CompanyName       = "Easit AB"
     Author            = "Anders Thyrsson"
     ModuleVersion     = "1.0.0"
@@ -61,16 +59,18 @@ $manifest = @{
     PowerShellVersion = '5.1'
     Copyright         = "(c) 2020 Easit AB. All rights reserved."
 }
-New-ModuleManifest @manifest | Out-Null
+New-ModuleManifest @manifest
+Write-Output "New module manifest start"
 
 try {
-        Install-Module -Name platyPS -Scope CurrentUser -Force -ErrorAction Stop
-        Import-Module platyPS -Force -ErrorAction Stop
+    Install-Module -Name platyPS -Scope CurrentUser -Force -ErrorAction Stop
+    Import-Module platyPS -Force -ErrorAction Stop
 } catch {
-        Write-Error $_ 
+    Write-Error $_
+    break
 }
 try {
-    Import-Module -Name "$projectRoot" -Force -Verbose
+    Import-Module -Name "$projectRoot" -Force -Verbose -ErrorAction Stop
 } catch {
     Write-Error $_
     break
@@ -102,4 +102,4 @@ try {
     break
 }
 Write-Output "New-ExternalHelp done!"
-Remove-Item $tempModulePath -Force
+Remove-Item $tempModulePath -Force -ErrorAction SilentlyContinue
