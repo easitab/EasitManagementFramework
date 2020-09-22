@@ -23,5 +23,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run script
-        run: .\build\generateDocs.ps1
-        shell: pwsh
+        run: pwsh .\build\generateDocs.ps1
