@@ -59,6 +59,7 @@ function Test-EMFXMLData {
             $schemaReader.Close()
             throw $_
         }
+        Write-Verbose "Process block end"
     }
     
     end {
