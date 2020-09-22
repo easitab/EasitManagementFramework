@@ -27,7 +27,7 @@ function Get-EMFConfig {
         Write-Verbose "Retrieving configurations data"
         try {
             $configurationFileData = Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"
-            Write-Verbose "Configurations data retrieved"
+            Write-Verbose "Configuration data retrieved"
         } catch {
             throw $_
         }
