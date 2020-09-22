@@ -27,6 +27,7 @@ function Import-EMFXMLData {
         }
         
         return $xml
+        Write-Verbose "Process block end"
     }
     
     end {
