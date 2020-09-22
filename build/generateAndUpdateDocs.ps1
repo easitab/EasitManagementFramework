@@ -25,6 +25,10 @@ New-Module -Name "$tempModuleFileName" -ScriptBlock {
     $tempModuleRoot = "$projectRoo/$tempModuleFileName"
     $tempModulePath = "$tempModuleRoot/${tempModuleFileName}.psm1"
     if (!(Test-Path -Path $tempModulePath)) {
+        New-Item -Path "$projectRoot" -Name "$tempModuleFileName" -ItemType "directory" | Out-Null
+        Write-Output "Created $tempModulePath"
+    }
+    if (!(Test-Path -Path $tempModulePath)) {
         $tempModuleFile = New-Item -Path "$tempModuleRoot" -Name "${tempModuleFileName}.psm1" -ItemType "file"
         Write-Output "Created $newModuleFile"
     }
