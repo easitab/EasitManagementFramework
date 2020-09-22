@@ -3,12 +3,7 @@ name: Release Notes
 on:
   push:
     branches: 'development'
-    tags: 
-      - 'feature'
-      - 'enhancement'
-      - 'fix'
-      - 'bugfix'
-      - 'bug'
+
 jobs:
   update_release_draft:
     name: update_release_draft
