@@ -15,7 +15,9 @@ $docsRoot = "$projectRoot\docs"
 foreach ($script in $privScripts + $pubScripts) {
         $commandName = $script.BaseName
         . $script.FullName
+        Write-Output "Imported $commandName"
         if (Test-Path -Path "$docsRoot\${commandName}.md") {
+            Write-Output "Found $docsRoot\${commandName}.md"
             try {
                 Update-MarkdownHelp -Path "$($script.FullName)" -OutputFolder "$docsRoot" -ErrorAction Stop
             } catch {
@@ -23,6 +25,7 @@ foreach ($script in $privScripts + $pubScripts) {
                 break
             }
         } else {
+            Write-Output "Unable to find $docsRoot\${commandName}.md"
             try {
                 New-MarkdownHelp -Command "$commandName" -OutputFolder "$docsRoot" -ErrorAction Stop
             } catch {
@@ -30,9 +33,12 @@ foreach ($script in $privScripts + $pubScripts) {
                 break
             }
         }
+        Write-Output "MarkdownHelp done"
         if (Test-Path -Path "$docsRoot\${commandName}.md") {
+            Write-Output "Found $docsRoot\${commandName}.md"
             New-ExternalHelp -Path "$docsRoot" -OutputPath "$docsRoot\en-US\" -ErrorAction Stop
         } else {
             Write-Output "Unable to find $docsRoot\${commandName}.md"
         }
+        Write-Output "New-ExternalHelp done!"
 }
