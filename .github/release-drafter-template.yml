@@ -1,10 +1,8 @@
 categories:
   - title: 'Features'
-    labels:
-      - 'feature'
+    label: 'feature'
   - title: 'Enhancement'
-    labels:
-      - 'enhancement'
+    label: 'enhancement'
   - title: 'Bug Fixes'
     labels:
       - 'fix'
