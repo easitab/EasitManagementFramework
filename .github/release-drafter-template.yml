@@ -1,5 +1,12 @@
 name-template: 'v$RESOLVED_VERSION 🌈'
 tag-template: 'v$RESOLVED_VERSION'
+include-labels:
+  - 'feature'
+  - 'enhancement'
+  - 'test'
+  - 'fix'
+  - 'bugfix'
+  - 'bug'
 categories:
   - title: 'Features'
     label: 'feature'
