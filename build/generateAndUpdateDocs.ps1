@@ -11,8 +11,11 @@ Write-Output "Working in $projectRoot"
 $privScripts = Get-ChildItem -Path "$projectRoot\src\priv" -Filter "*.ps1" -Recurse
 $pubScripts = Get-ChildItem -Path "$projectRoot\src\pub" -Filter "*.ps1" -Recurse
 $docsRoot = "$projectRoot\docs"
+$allscripts = @()
+$allscripts += $privScripts
+$allscripts += $pubScripts
 
-foreach ($script in $privScripts + $pubScripts) {
+foreach ($script in $allscripts) {
         $commandName = $script.BaseName
         . $script.FullName
         Write-Output "Imported $commandName"
