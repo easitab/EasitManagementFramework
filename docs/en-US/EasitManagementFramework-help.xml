@@ -418,11 +418,11 @@
       <command:verb>Set</command:verb>
       <command:noun>EasitEmailRequestMailboxSetting</command:noun>
       <maml:description>
-        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+        <maml:para>Used to update / change settings for a "mailbox" used by EmailRequest.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>With this cmdlet you can update one setting for an "mailbox" in the configuration file for EmailRequest.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -430,55 +430,55 @@
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>EmfHome</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill EmfHome Description }}</maml:para>
+            <maml:para>Path to root directory for EasitManagementFramework.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>$Home\EMF</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>EmfConfigurationFileName</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill EmfConfigurationFileName Description }}</maml:para>
+            <maml:para>Name of EasitManagementFramework configuration file to use.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>config.xml</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>EmfConfigurationName</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill EmfConfigurationName Description }}</maml:para>
+            <maml:para>Name of configuration to use in EasitManagementFramework configuration file.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>Prod</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
           <maml:name>EmailRequestConfigurationFilename</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill EmailRequestConfigurationFilename Description }}</maml:para>
+            <maml:para>Name of configuration file for EmailReques to update.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>config.xml</dev:defaultValue>
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="Mailbox">
           <maml:name>MailboxName</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill MailboxName Description }}</maml:para>
+            <maml:para>Name of mailbox to update setting for. Same as displayName in EmailRequest configuration file.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -490,7 +490,7 @@
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="Name">
           <maml:name>SettingName</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill SettingName Description }}</maml:para>
+            <maml:para>Name of parameter to update in EmailRequest configuration file.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -502,7 +502,7 @@
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="Value">
           <maml:name>SettingValue</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill SettingValue Description }}</maml:para>
+            <maml:para>New value you would like to give to a parameter in EmailRequest configuration file.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -517,55 +517,55 @@
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
         <maml:name>EmailRequestConfigurationFilename</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill EmailRequestConfigurationFilename Description }}</maml:para>
+          <maml:para>Name of configuration file for EmailReques to update.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>config.xml</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>EmfConfigurationFileName</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill EmfConfigurationFileName Description }}</maml:para>
+          <maml:para>Name of EasitManagementFramework configuration file to use.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>config.xml</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>EmfConfigurationName</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill EmfConfigurationName Description }}</maml:para>
+          <maml:para>Name of configuration to use in EasitManagementFramework configuration file.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>Prod</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>EmfHome</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill EmfHome Description }}</maml:para>
+          <maml:para>Path to root directory for EasitManagementFramework.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>$Home\EMF</dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="Mailbox">
         <maml:name>MailboxName</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill MailboxName Description }}</maml:para>
+          <maml:para>Name of mailbox to update setting for. Same as displayName in EmailRequest configuration file.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -577,7 +577,7 @@
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="Name">
         <maml:name>SettingName</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill SettingName Description }}</maml:para>
+          <maml:para>Name of parameter to update in EmailRequest configuration file.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -589,7 +589,7 @@
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="Value">
         <maml:name>SettingValue</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill SettingValue Description }}</maml:para>
+          <maml:para>New value you would like to give to a parameter in EmailRequest configuration file.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -627,9 +627,23 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+        <dev:code>PS C:\&gt; Set-EasitEmailRequestMailboxSetting -MailboxName 'POP3Test' -SettingName 'disabled' -SettingValue 'false'</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>This example shows you how to enables a mailbox with the displayName POP3Test .</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Set-EasitEmailRequestMailboxSetting -MailboxName 'POP3Test' -SettingName 'maxMessageSize' -SettingValue '12582912'</dev:code>
+        <dev:remarks>
+          <maml:para>In this example the setting maxMessageSize for POP3Test is set to 12582912 . The value for maxMessageSize should be provided in bytes in the case of POP3 and kilobytes in the case of IMAP4.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Set-EasitEmailRequestMailboxSetting -MailboxName 'POP3Test' -SettingName 'maxMessagesToRetrieve' -SettingValue '20'</dev:code>
+        <dev:remarks>
+          <maml:para>In this example the setting maxMessagesToRetrieve for POP3Test is set to 20 . This allows you to set how many unread mail EmailRequest should try to import from the mailbox.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
