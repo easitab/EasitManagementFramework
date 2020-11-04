@@ -102,8 +102,10 @@ foreach ($script in $allscripts) {
         }
     }
 }
+Write-Verbose "Done updating MarkdownHelp"
+Write-Verbose "Generating new external help"
 try {
-    New-ExternalHelp -Path "$docsRoot" -OutputPath "$docsRoot\en-US\" -ErrorAction Stop
+    New-ExternalHelp -Path "$docsRoot" -OutputPath "$docsRoot\en-US" -Force -ErrorAction Stop
 } catch {
     Write-Error $_
     break
