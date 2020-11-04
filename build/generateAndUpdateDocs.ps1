@@ -87,7 +87,7 @@ foreach ($script in $allscripts) {
     if (Test-Path -Path "$docsRoot/${commandName}.md") {
         Write-Output "Found $docsRoot/${commandName}.md"
         try {
-            Update-MarkdownHelp -Path "$docsRoot/${commandName}.md" -OutputFolder "$docsRoot" -AlphabeticParamsOrder -ErrorAction Stop
+            Update-MarkdownHelp -Path "$docsRoot/${commandName}.md" -AlphabeticParamsOrder -ErrorAction Stop
         } catch {
             Write-Error $_
             break
