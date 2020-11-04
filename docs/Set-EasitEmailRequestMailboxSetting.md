@@ -56,7 +56,7 @@ Aliases:
 
 Required: False
 Position: 3
-Default value: None
+Default value: config.xml
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -71,7 +71,7 @@ Aliases:
 
 Required: False
 Position: 1
-Default value: None
+Default value: config.xml
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -86,7 +86,7 @@ Aliases:
 
 Required: False
 Position: 2
-Default value: None
+Default value: Prod
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -101,7 +101,7 @@ Aliases:
 
 Required: False
 Position: 0
-Default value: None
+Default value: $Home\EMF
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
