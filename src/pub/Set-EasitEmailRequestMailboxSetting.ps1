@@ -30,6 +30,7 @@ function Set-EasitEmailRequestMailboxSetting {
         Write-Verbose "$($MyInvocation.MyCommand) initialized"
         try {
             $emfConfig = Get-EMFConfig -Home $EmfHome -ConfigurationFileName $EmfConfigurationFileName -ConfigurationName $EmfConfigurationName
+            Write-Verbose "Found EMF Config"
         } catch {
             throw $_
         }
@@ -38,6 +39,7 @@ function Set-EasitEmailRequestMailboxSetting {
     process {
         try {
             $erXmlConfigFile = Get-ChildItem -Path "$($emfConfig.EmailRequestRoot)" -Include "$EmailRequestConfigurationFilename" -Recurse -Force
+            Write-Verbose "Found ER config"
         } catch {
             throw $_
         }
