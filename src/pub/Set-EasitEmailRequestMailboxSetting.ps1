@@ -30,7 +30,7 @@ function Set-EasitEmailRequestMailboxSetting {
         Write-Verbose "$($MyInvocation.MyCommand) initialized"
         try {
             $emfConfig = Get-EMFConfig -Home $EmfHome -ConfigurationFileName $EmfConfigurationFileName -ConfigurationName $EmfConfigurationName
-            Write-Verbose "Found EMF Config, yay"
+            Write-Verbose "Found EMF Config"
         } catch {
             throw $_
         }

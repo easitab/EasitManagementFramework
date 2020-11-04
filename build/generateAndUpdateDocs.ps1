@@ -8,7 +8,7 @@ $docsRoot = "$projectRoot/docs"
 $allscripts = @()
 $allscripts += $privScripts
 $allscripts += $pubScripts
-$tempModuleFileName = 'MyModule'
+$tempModuleFileName = 'EasitManagementFramework'
 $tempModuleRoot = "$projectRoot/$tempModuleFileName"
 $tempModulePath = "$tempModuleRoot/${tempModuleFileName}.psm1"
 Write-Output "New module start"
