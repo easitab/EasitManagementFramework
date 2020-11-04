@@ -6,16 +6,13 @@ These are the functions we would like to have ready in v1 of the framework and w
 
 - Disable-EasitEmailTask
 - Disable-EasitImportClientTask
-- Disable-EasitMailbox
 - Disable-EasitScheduledTask
 - Enable-EasitEmailTask
 - Enable-EasitImportClientTask
-- Enable-EasitMailbox
 - Enable-EasitScheduledTask
 - Get-EMFConfig :heavy_check_mark:
 - Set-EasitEmailTaskXmx
-- Set-EasitMailboxMaxMessageSize
-- Set-EasitMailboxPassword
+- Set-EasitEmailRequestMailboxSetting :heavy_check_mark:
 - Set-EMFConfig :heavy_check_mark:
 - New-EMFConfig :heavy_check_mark:
 - Start-EasitApplication
