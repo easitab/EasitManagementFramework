@@ -2,7 +2,10 @@ function Import-EMFXMLData {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
-        [string] $Path
+        [string] $Path,
+
+        [Parameter()]
+        [switch] $Validate
     )
     
     begin {
@@ -18,13 +21,17 @@ function Import-EMFXMLData {
         } catch {
             throw $_
         }
-
-        try {
-            Test-EMFXMLData -Path $Path
-            Write-Verbose 'XML validated successfully'
-        } catch {
-            throw $_
+        if ($Validate) {
+            try {
+                Test-EMFXMLData -Path $Path
+                Write-Verbose 'XML validated successfully'
+            } catch {
+                throw $_
+            }
+        } else {
+            Write-Verbose "Skipping validation"
         }
+        
         
         return $xml
         Write-Verbose "Process block end"
