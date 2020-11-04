@@ -1,6 +1,6 @@
 ---
-external help file: MyModule-help.xml
-Module Name: MyModule
+external help file: EasitManagementFramework-help.xml
+Module Name: EasitManagementFramework
 online version: https://github.com/easitab/EasitManagementFramework/blob/development/docs/Set-EasitEmailRequestMailboxSetting.md
 schema: 2.0.0
 ---

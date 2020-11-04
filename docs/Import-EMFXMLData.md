@@ -1,6 +1,6 @@
 ---
-external help file: MyModule-help.xml
-Module Name: MyModule
+external help file: EasitManagementFramework-help.xml
+Module Name: EasitManagementFramework
 online version:
 schema: 2.0.0
 ---
