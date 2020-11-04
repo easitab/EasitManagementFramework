@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-EasitEmailRequestMailboxSetting
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Used to update / change settings for a "mailbox" used by EmailRequest.
 
 ## SYNTAX
 
@@ -19,21 +19,35 @@ Set-EasitEmailRequestMailboxSetting [[-EmfHome] <String>] [[-EmfConfigurationFil
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+With this cmdlet you can update one setting for an "mailbox" in the configuration file for EmailRequest.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-EasitEmailRequestMailboxSetting -MailboxName 'POP3Test' -SettingName 'disabled' -SettingValue 'false'
 ```
 
-{{ Add example description here }}
+This example shows you how to enables a mailbox with the displayName *POP3Test*.
+
+### Example 2
+```powershell
+PS C:\> Set-EasitEmailRequestMailboxSetting -MailboxName 'POP3Test' -SettingName 'maxMessageSize' -SettingValue '12582912'
+```
+
+In this example the setting *maxMessageSize* for *POP3Test* is set to *12582912*. The value for *maxMessageSize* should be provided in bytes in the case of POP3 and kilobytes in the case of IMAP4.
+
+### Example 3
+```powershell
+PS C:\> Set-EasitEmailRequestMailboxSetting -MailboxName 'POP3Test' -SettingName 'maxMessagesToRetrieve' -SettingValue '20'
+```
+
+In this example the setting *maxMessagesToRetrieve* for *POP3Test* is set to *20*. This allows you to set how many unread mail EmailRequest should try to import from the mailbox.
 
 ## PARAMETERS
 
 ### -EmailRequestConfigurationFilename
-{{ Fill EmailRequestConfigurationFilename Description }}
+Name of configuration file for EmailReques to update.
 
 ```yaml
 Type: String
@@ -48,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -EmfConfigurationFileName
-{{ Fill EmfConfigurationFileName Description }}
+Name of EasitManagementFramework configuration file to use.
 
 ```yaml
 Type: String
@@ -63,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -EmfConfigurationName
-{{ Fill EmfConfigurationName Description }}
+Name of configuration to use in EasitManagementFramework configuration file.
 
 ```yaml
 Type: String
@@ -78,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -EmfHome
-{{ Fill EmfHome Description }}
+Path to root directory for EasitManagementFramework.
 
 ```yaml
 Type: String
@@ -93,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -MailboxName
-{{ Fill MailboxName Description }}
+Name of mailbox to update setting for. Same as displayName in EmailRequest configuration file.
 
 ```yaml
 Type: String
@@ -108,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -SettingName
-{{ Fill SettingName Description }}
+Name of parameter to update in EmailRequest configuration file.
 
 ```yaml
 Type: String
@@ -123,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -SettingValue
-{{ Fill SettingValue Description }}
+New value you would like to give to a parameter in EmailRequest configuration file.
 
 ```yaml
 Type: String
