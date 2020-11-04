@@ -21,7 +21,7 @@ New-Module -Name "$tempModuleFileName" -ScriptBlock {
     $allscripts = @()
     $allscripts += $privScripts
     $allscripts += $pubScripts
-    $tempModuleFileName = 'MyModule'
+    $tempModuleFileName = 'EasitManagementFramework'
     $tempModuleRoot = "$projectRoot/$tempModuleFileName"
     $tempModulePath = "$tempModuleRoot/${tempModuleFileName}.psm1"
     if (!(Test-Path -Path $tempModulePath)) {
@@ -77,7 +77,7 @@ try {
     break
 }
 try {
-    Import-Module -Name "$projectRoot\MyModule" -Force -Verbose -ErrorAction Stop
+    Import-Module -Name "$projectRoot\EasitManagementFramework" -Force -Verbose -ErrorAction Stop
 } catch {
     Write-Error $_
     break

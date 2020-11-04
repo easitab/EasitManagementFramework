@@ -39,7 +39,7 @@ function Set-EasitEmailRequestMailboxSetting {
     process {
         try {
             $erXmlConfigFile = Get-ChildItem -Path "$($emfConfig.EmailRequestRoot)" -Include "$EmailRequestConfigurationFilename" -Recurse -Force
-            Write-Verbose "Found ER config"
+            Write-Verbose "Found ER config."
         } catch {
             throw $_
         }
