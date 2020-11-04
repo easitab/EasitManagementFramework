@@ -8,7 +8,7 @@ $docsRoot = "$projectRoot/docs"
 $allscripts = @()
 $allscripts += $privScripts
 $allscripts += $pubScripts
-$tempModuleFileName = 'MyModule'
+$tempModuleFileName = 'EasitManagementFramework'
 $tempModuleRoot = "$projectRoot/$tempModuleFileName"
 $tempModulePath = "$tempModuleRoot/${tempModuleFileName}.psm1"
 Write-Output "New module start"
@@ -21,7 +21,7 @@ New-Module -Name "$tempModuleFileName" -ScriptBlock {
     $allscripts = @()
     $allscripts += $privScripts
     $allscripts += $pubScripts
-    $tempModuleFileName = 'MyModule'
+    $tempModuleFileName = 'EasitManagementFramework'
     $tempModuleRoot = "$projectRoot/$tempModuleFileName"
     $tempModulePath = "$tempModuleRoot/${tempModuleFileName}.psm1"
     if (!(Test-Path -Path $tempModulePath)) {
@@ -77,7 +77,7 @@ try {
     break
 }
 try {
-    Import-Module -Name "$projectRoot\MyModule" -Force -Verbose -ErrorAction Stop
+    Import-Module -Name "$projectRoot\EasitManagementFramework" -Force -Verbose -ErrorAction Stop
 } catch {
     Write-Error $_
     break
@@ -87,7 +87,7 @@ foreach ($script in $allscripts) {
     if (Test-Path -Path "$docsRoot/${commandName}.md") {
         Write-Output "Found $docsRoot/${commandName}.md"
         try {
-            Update-MarkdownHelp -Path "$docsRoot/${commandName}.md" -OutputFolder "$docsRoot" -AlphabeticParamsOrder -ErrorAction Stop
+            Update-MarkdownHelp -Path "$docsRoot/${commandName}.md" -AlphabeticParamsOrder -ErrorAction Stop
         } catch {
             Write-Error $_
             break
@@ -102,8 +102,10 @@ foreach ($script in $allscripts) {
         }
     }
 }
+Write-Verbose "Done updating MarkdownHelp"
+Write-Verbose "Generating new external help"
 try {
-    New-ExternalHelp -Path "$docsRoot" -OutputPath "$docsRoot\en-US\" -ErrorAction Stop
+    New-ExternalHelp -Path "$docsRoot" -OutputPath "$docsRoot\en-US" -Force -ErrorAction Stop
 } catch {
     Write-Error $_
     break
