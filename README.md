@@ -4,14 +4,15 @@
 
 These are the functions we would like to have ready in v1 of the framework and we aim to release Q4 2020 / Q1 2021. Once we have all the basic functionality on place there will be a preview release leading up to official stable release of v1.
 
-- Disable-EasitEmailTask
+- Disable-EasitEmailRequestTask
 - Disable-EasitImportClientTask
 - Disable-EasitScheduledTask
-- Enable-EasitEmailTask
+- Enable-EasitEmailRequestTask
 - Enable-EasitImportClientTask
 - Enable-EasitScheduledTask
 - Get-EMFConfig :heavy_check_mark:
-- Set-EasitEmailTaskXmx
+- Get-EasitEmailRequestMailboxSetting
+- Get-EasitScheduledTask :heavy_check_mark:
 - Set-EasitEmailRequestMailboxSetting :heavy_check_mark:
 - Set-EMFConfig :heavy_check_mark:
 - New-EMFConfig :heavy_check_mark:
