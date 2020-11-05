@@ -1,5 +1,8 @@
 # Easit Management Framework for Easit BPS and Easit GO
 
+## Project status
+![Generate and update help](https://github.com/easitab/EasitManagementFramework/workflows/Generate%20and%20update%20help/badge.svg)
+
 ## Framework outline
 
 These are the functions we would like to have ready in v1 of the framework and we aim to release Q4 2020 / Q1 2021. Once we have all the basic functionality on place there will be a preview release leading up to official stable release of v1.
