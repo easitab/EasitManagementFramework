@@ -11,7 +11,7 @@ These are the functions we would like to have ready in v1 of the framework and w
 - Enable-EasitImportClientTask
 - Enable-EasitScheduledTask
 - Get-EMFConfig :heavy_check_mark:
-- Get-EasitEmailRequestMailbox
+- Get-EasitEmailRequestMailbox :heavy_check_mark:
 - Get-EasitScheduledTask :heavy_check_mark:
 - Set-EasitEmailRequestMailboxSetting :heavy_check_mark:
 - Set-EMFConfig :heavy_check_mark:
