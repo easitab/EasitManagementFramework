@@ -1,74 +1,15 @@
+# Runtime variables
 $projectRoot = Split-Path -Path $PSScriptRoot -Parent
-Write-Output "Project root: $projectRoot"
+$sourceRoot = "$projectRoot\source"
+$tempModuleFileName = 'EasitManagementFramework'
+# Runtime variables
 Set-Location -Path $projectRoot
-Write-Output "Working in $pwd"
-$privScripts = Get-ChildItem -Path "$projectRoot\src\priv" -Filter "*.ps1" -Recurse
-$pubScripts = Get-ChildItem -Path "$projectRoot\src\pub" -Filter "*.ps1" -Recurse
+$privScripts = Get-ChildItem -Path "$sourceRoot\private" -Filter "*.ps1" -Recurse
+$pubScripts = Get-ChildItem -Path "$sourceRoot\public" -Filter "*.ps1" -Recurse
 $docsRoot = "$projectRoot/docs"
 $allscripts = @()
 $allscripts += $privScripts
 $allscripts += $pubScripts
-$tempModuleFileName = 'EasitManagementFramework'
-$tempModuleRoot = "$projectRoot/$tempModuleFileName"
-$tempModulePath = "$tempModuleRoot/${tempModuleFileName}.psm1"
-Write-Output "New module start"
-New-Module -Name "$tempModuleFileName" -ScriptBlock {
-    $projectRoot = Split-Path -Path $PSScriptRoot -Parent
-    Set-Location -Path $projectRoot
-    $privScripts = Get-ChildItem -Path "$projectRoot\src\priv" -Filter "*.ps1" -Recurse
-    $pubScripts = Get-ChildItem -Path "$projectRoot\src\pub" -Filter "*.ps1" -Recurse
-    $docsRoot = "$projectRoot/docs"
-    $allscripts = @()
-    $allscripts += $privScripts
-    $allscripts += $pubScripts
-    $tempModuleFileName = 'EasitManagementFramework'
-    $tempModuleRoot = "$projectRoot/$tempModuleFileName"
-    $tempModulePath = "$tempModuleRoot/${tempModuleFileName}.psm1"
-    if (!(Test-Path -Path $tempModulePath)) {
-        New-Item -Path "$projectRoot" -Name "$tempModuleFileName" -ItemType "directory" | Out-Null
-        Write-Output "Created $tempModulePath"
-    }
-    if (!(Test-Path -Path $tempModulePath)) {
-        $tempModuleFile = New-Item -Path "$tempModuleRoot" -Name "${tempModuleFileName}.psm1" -ItemType "file"
-        Write-Output "Created $newModuleFile"
-    }
-    foreach ($script in $allscripts) {
-        $exportFunction = "Export-ModuleMember -Function $($script.BaseName)"
-        $scriptContent = Get-Content -Path "$($script.FullName)" -Raw
-        if (Test-Path -Path $tempModulePath) {    
-            try {
-                Add-Content -Path $tempModuleFile -Value $scriptContent -ErrorAction Stop
-            } catch {
-                Write-Error $_
-                break
-            }
-            try {
-                Add-Content -Path $tempModuleFile -Value $exportFunction -ErrorAction Stop
-            } catch {
-                Write-Error $_
-                break
-            }
-        }
-    }
-}
-Write-Output "New module end"
-$projectUriRoot = 'https://github.com/easitab/EasitManagementFramework'
-$manifest = @{
-    Path              = "$tempModuleRoot/${tempModuleFileName}.psd1" 
-    RootModule        = "$tempModuleRoot/${tempModuleFileName}.psm1" 
-    CompanyName       = "Easit AB"
-    Author            = "Anders Thyrsson"
-    ModuleVersion     = "0.0.1"
-    HelpInfoUri       = "$projectUriRoot/tree/development/docs"
-    LicenseUri        = "$projectUriRoot/blob/development/LICENSE"
-    ProjectUri        = "$projectUriRoot"
-    Description       = 'Management Framework for Easit BPS and Easit GO'
-    PowerShellVersion = '5.1'
-    Copyright         = "(c) 2020 Easit AB. All rights reserved."
-}
-New-ModuleManifest @manifest
-Write-Output "New module manifest start"
-
 try {
     Install-Module -Name platyPS -Scope CurrentUser -Force -ErrorAction Stop
     Import-Module platyPS -Force -ErrorAction Stop
@@ -77,7 +18,7 @@ try {
     break
 }
 try {
-    Import-Module -Name "$projectRoot\EasitManagementFramework" -Force -Verbose -ErrorAction Stop
+    Import-Module -Name "$projectRoot\${tempModuleFileName}" -Force -Verbose -ErrorAction Stop
 } catch {
     Write-Error $_
     break
@@ -111,18 +52,3 @@ try {
     break
 }
 Write-Output "New-ExternalHelp done!"
-try {
-    Remove-Item "$tempModuleRoot/${tempModuleFileName}.psd1" -Force
-} catch {
-    Write-Error $_
-}
-try {
-    Remove-Item "$tempModuleRoot/${tempModuleFileName}.psm1" -Force
-} catch {
-    Write-Error $_
-}
-try {
-    Remove-Item "$tempModuleRoot" -Force
-} catch {
-    Write-Error $_
-}
