@@ -14,12 +14,12 @@ Enable scheduled "Easit task" in Windows Task Scheduler
 
 ### InputObject
 ```
-Enable-EasitScheduledTask [-InputObject <CimInstance>] [-AsJob] [<CommonParameters>]
+Enable-EasitScheduledTask [-InputObject <CimInstance[]>] [-AsJob] [<CommonParameters>]
 ```
 
 ### TaskName
 ```
-Enable-EasitScheduledTask [-TaskName <String>] [-AsJob] [<CommonParameters>]
+Enable-EasitScheduledTask [-TaskName <String[]>] [-AsJob] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 Specifies the input object that is used in a pipeline command.
 
 ```yaml
-Type: CimInstance
+Type: CimInstance[]
 Parameter Sets: InputObject
 Aliases:
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 Specifies the name of a scheduled task.
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: TaskName
 Aliases:
 
