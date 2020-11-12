@@ -1,28 +1,18 @@
 # Runtime variables
 $projectRoot = Split-Path -Path $PSScriptRoot -Parent
-$sourceRoot = "$projectRoot\source"
+$sourceRoot = Join-Path -Path "$projectRoot" -ChildPath 'source'
 $tempModuleFileName = 'EasitManagementFramework'
-$tempModuleRoot = "$projectRoot/$tempModuleFileName"
-$tempModulePath = "$tempModuleRoot/${tempModuleFileName}.psm1"
+$tempModuleRoot = Join-Path -Path "$projectRoot" -ChildPath "$tempModuleFileName"
+$tempModulePath = Join-Path -Path "$tempModuleRoot" -ChildPath "${tempModuleFileName}.psm1"
 # Runtime variables
 Set-Location -Path $projectRoot
-$privScripts = Get-ChildItem -Path "$sourceRoot\private" -Filter "*.ps1" -Recurse
-$pubScripts = Get-ChildItem -Path "$sourceRoot\public" -Filter "*.ps1" -Recurse
-$allscripts = @()
-$allscripts += $privScripts
-$allscripts += $pubScripts
 Write-Output "New module start"
 New-Module -Name "$tempModuleFileName" -ScriptBlock {
     $projectRoot = Split-Path -Path $PSScriptRoot -Parent
-    Set-Location -Path $projectRoot
-    $privScripts = Get-ChildItem -Path "$sourceRoot\private\" -Filter "*.ps1" -Recurse
-    $pubScripts = Get-ChildItem -Path "$sourceRoot\public\" -Filter "*.ps1" -Recurse
-    $allscripts = @()
-    $allscripts += $privScripts
-    $allscripts += $pubScripts
+    $sourceRoot = Join-Path -Path "$projectRoot" -ChildPath 'source'
     $tempModuleFileName = 'EasitManagementFramework'
-    $tempModuleRoot = "$projectRoot/$tempModuleFileName"
-    $tempModulePath = "$tempModuleRoot/${tempModuleFileName}.psm1"
+    $tempModuleRoot = Join-Path -Path "$projectRoot" -ChildPath "$tempModuleFileName"
+    $tempModulePath = Join-Path -Path "$tempModuleRoot" -ChildPath "${tempModuleFileName}.psm1"
     if (!(Test-Path -Path $tempModuleRoot)) {
         New-Item -Path "$projectRoot" -Name "$tempModuleFileName" -ItemType "directory" | Out-Null
         Write-Output "Created $tempModuleRoot"
