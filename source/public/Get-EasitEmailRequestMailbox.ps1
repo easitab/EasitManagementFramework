@@ -29,7 +29,7 @@ function Get-EasitEmailRequestMailbox {
     }
     
     process {
-        # Hmmm, this is not to effective. Same code as in Set-EasitEmailRequestMailboxSetting, will fix in version 2!!
+        # Hmmm, this is not to effective. Same code as in Set-EasitEmailRequestMailboxSetting, will fix in version 2!
         try {
             $erXmlConfigFile = Get-ChildItem -Path "$($emfConfig.EmailRequestRoot)" -Include "$EmailRequestConfigurationFilename" -Recurse -Force
             Write-Verbose "Found ER config."
