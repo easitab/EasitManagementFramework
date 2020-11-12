@@ -21,8 +21,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Build temp module
+        run: ./build/tempbuild_github.ps1
+        shell: pwsh
+      
       # Runs a single command using the runners shell
-      - name: Run script
+      - name: Generate and update docs
         run: ./build/generateAndUpdateDocs.ps1
         shell: pwsh
       
