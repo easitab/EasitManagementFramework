@@ -11,6 +11,7 @@ New-Module -Name "$tempModuleFileName" -ScriptBlock {
     $projectRoot = Split-Path -Path $PSScriptRoot -Parent
     $sourceRoot = Join-Path -Path "$projectRoot" -ChildPath 'source'
     $tempModuleFileName = 'EasitManagementFramework'
+    $allScripts = Get-ChildItem -Path "$sourceRoot" -Filter "*.ps1" -Recurse
     $tempModuleRoot = Join-Path -Path "$projectRoot" -ChildPath "$tempModuleFileName"
     $tempModulePath = Join-Path -Path "$tempModuleRoot" -ChildPath "${tempModuleFileName}.psm1"
     if (!(Test-Path -Path $tempModuleRoot)) {
@@ -21,7 +22,7 @@ New-Module -Name "$tempModuleFileName" -ScriptBlock {
         $tempModuleFile = New-Item -Path "$tempModuleRoot" -Name "${tempModuleFileName}.psm1" -ItemType "file"
         Write-Output "Created $newModuleFile"
     }
-    foreach ($script in $allscripts) {
+    foreach ($script in $allScripts) {
         $exportFunction = "Export-ModuleMember -Function $($script.BaseName)"
         $scriptContent = Get-Content -Path "$($script.FullName)" -Raw
         if (Test-Path -Path $tempModulePath) {    

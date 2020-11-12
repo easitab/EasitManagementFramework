@@ -1,15 +1,13 @@
 # Runtime variables
 $projectRoot = Split-Path -Path $PSScriptRoot -Parent
-$sourceRoot = "$projectRoot\source"
+$sourceRoot = Join-Path -Path "$projectRoot" -ChildPath 'source'
 $tempModuleFileName = 'EasitManagementFramework'
-# Runtime variables
+$docsRoot = Join-Path -Path "$projectRoot" -ChildPath 'docs'
+$tempModuleRoot = Join-Path -Path "$projectRoot" -ChildPath "$tempModuleFileName"
 Set-Location -Path $projectRoot
-$privScripts = Get-ChildItem -Path "$sourceRoot\private" -Filter "*.ps1" -Recurse
-$pubScripts = Get-ChildItem -Path "$sourceRoot\public" -Filter "*.ps1" -Recurse
-$docsRoot = "$projectRoot/docs"
-$allscripts = @()
-$allscripts += $privScripts
-$allscripts += $pubScripts
+# Runtime variables
+
+$allScripts = Get-ChildItem -Path "$sourceRoot" -Filter "*.ps1" -Recurse
 try {
     Install-Module -Name platyPS -Scope CurrentUser -Force -ErrorAction Stop
     Import-Module platyPS -Force -ErrorAction Stop
@@ -18,12 +16,12 @@ try {
     break
 }
 try {
-    Import-Module -Name "$projectRoot\${tempModuleFileName}" -Force -Verbose -ErrorAction Stop
+    Import-Module -Name "$tempModuleRoot" -Force -Verbose -ErrorAction Stop
 } catch {
     Write-Error $_
     break
 }
-foreach ($script in $allscripts) {
+foreach ($script in $allScripts) {
     $commandName = $script.BaseName
     if (Test-Path -Path "$docsRoot/${commandName}.md") {
         Write-Output "Found $docsRoot/${commandName}.md"
