@@ -7,8 +7,8 @@ name: Generate and update help
 on:
   push:
     paths:
-    - 'src/priv/*.ps1'
-    - 'src/pub/*.ps1'
+    - "${{ secrets.SOURCEROOT }}/private/*.ps1"
+    - "${{ secrets.SOURCEROOT }}/public/*.ps1"
 
 jobs:
   # This workflow contains a single job called "build"
@@ -28,6 +28,6 @@ jobs:
       
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Apply automatic changes
+          commit_message: Generate and update help
           commit_user_name: My GitHub Actions Bot
           file_pattern: docs

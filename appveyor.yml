@@ -6,13 +6,6 @@ branches:
   - /releases\/*/
 skip_non_tags: true
 skip_branch_with_pr: true
-environment:
-  galleryPublishingKey: "$env:galleryPublishingKey"
-  moduleName: $env:moduleName
-  companyName: $env:companyName
-  resourceRoot: $env:resourceRoot
-  helpInfoUri: $env:helpInfoUri
-  moduleAuthor: $env:moduleAuthor
 build_script:
 - ps: "$env:resourceRoot\\build\\build.ps1"
 test_script:
@@ -22,9 +15,9 @@ test_script:
     Invoke-Pester -EnableExit
 deploy: off
 on_success:
-- ps: $newManifestTest = Test-ModuleManifest -Path "$env:resourceRoot\$env:moduleName\$env:moduleName.psd1"
+- ps: $newManifestTest = Test-ModuleManifest -Path "$env:sourceRoot\$env:moduleName.psd1"
 on_finish:
 - ps: >-
     if ($newManifestTest) {
-        Publish-Module -Path "$env:resourceRoot\$env:moduleName\" -NuGetApiKey "$env:galleryPublishingKey"
+        Publish-Module -Path "$env:sourceRoot\" -NuGetApiKey "$env:galleryPublishingKey"
     }
