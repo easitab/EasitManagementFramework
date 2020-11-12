@@ -15,8 +15,8 @@ Write-Output "New module start"
 New-Module -Name "$tempModuleFileName" -ScriptBlock {
     $projectRoot = Split-Path -Path $PSScriptRoot -Parent
     Set-Location -Path $projectRoot
-    $privScripts = Get-ChildItem -Path "$sourceRoot\private" -Filter "*.ps1" -Recurse
-    $pubScripts = Get-ChildItem -Path "$sourceRoot\public" -Filter "*.ps1" -Recurse
+    $privScripts = Get-ChildItem -Path "$sourceRoot\private\" -Filter "*.ps1" -Recurse
+    $pubScripts = Get-ChildItem -Path "$sourceRoot\public\" -Filter "*.ps1" -Recurse
     $allscripts = @()
     $allscripts += $privScripts
     $allscripts += $pubScripts
