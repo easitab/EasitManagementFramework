@@ -3,8 +3,8 @@ name: PSSA test
 on:
   pull_request:
     paths:
-    - "${{ secrets.SOURCEROOT }}/private/*.ps1"
-    - "${{ secrets.SOURCEROOT }}/public/*.ps1"
+    - 'source/**'
+    - 'source/**'
 
 jobs:
   lint:

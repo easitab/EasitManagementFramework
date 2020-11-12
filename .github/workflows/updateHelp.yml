@@ -7,8 +7,8 @@ name: Generate and update help
 on:
   push:
     paths:
-    - "${{ secrets.SOURCEROOT }}/private/*.ps1"
-    - "${{ secrets.SOURCEROOT }}/public/*.ps1"
+    - 'source/**'
+    - 'source/**'
 
 jobs:
   # This workflow contains a single job called "build"
