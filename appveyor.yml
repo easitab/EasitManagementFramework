@@ -7,7 +7,7 @@ branches:
 skip_non_tags: true
 skip_branch_with_pr: true
 build_script:
-- ps: "$env:resourceRoot\\build\\build.ps1"
+- ps: "$env:resourceRoot\\build\\build_appveyor.ps1"
 test_script:
 - ps: >-
     Install-Module Pester -Force -Scope CurrentUser
@@ -19,5 +19,5 @@ on_success:
 on_finish:
 - ps: >-
     if ($newManifestTest) {
-        Publish-Module -Path "$env:sourceRoot\" -NuGetApiKey "$env:galleryPublishingKey"
+        #Publish-Module -Path "$env:sourceRoot" -NuGetApiKey "$env:galleryPublishingKey"
     }

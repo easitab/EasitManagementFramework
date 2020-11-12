@@ -15,12 +15,10 @@ New-Module -Name "$env:moduleName" -ScriptBlock {
         }
     }
     foreach ($publicScript in $pubScripts) {
-        $exportFunction = "Export-ModuleMember -Function $($publicScript.BaseName)"
-        $scriptName = "$($publicScript.Name)"
-        "$($publicScript.FullName)"
         $scriptContent = Get-Content -Path "$($publicScript.FullName)" -Raw
-        if (Test-Path -Path $modulePath) {            
-            Add-Content -Path $modulePath -Value $exportFunction
+        if (Test-Path -Path $modulePath) {   
+            Add-Content -Path $modulePath -Value $scriptContent                     
+            Add-Content -Path $modulePath -Value "Export-ModuleMember -Function $($publicScript.BaseName)"
         } else {
             Write-Host "Unable to find modulePath at $modulePath" -ForegroundColor Red
         }
