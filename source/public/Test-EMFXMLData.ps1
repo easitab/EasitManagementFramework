@@ -6,10 +6,10 @@ function Test-EMFXMLData {
         [string] $EMFHome = "$Home\EMF",
 
         [Parameter()]
-        [string] $Path = "$EMFHome\config.xml",
+        [string] $Path = "$EMFHome\emfConfig.xml",
 
         [Parameter()]
-        [string] $SchemaFile = "$EMFHome\schema.xsd"
+        [string] $SchemaFile = "$EMFHome\emfConfig.xsd"
     )
     
     begin {

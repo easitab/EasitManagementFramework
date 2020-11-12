@@ -8,7 +8,7 @@ function Set-EMFConfig {
 
         [Parameter()]
         [Alias('file','filename')]
-        [string] $ConfigurationFileName = 'config.xml',
+        [string] $ConfigurationFileName = 'emfConfig.xml',
 
         [Parameter(Mandatory,Position=0)]
         [Alias('ConfigName')]

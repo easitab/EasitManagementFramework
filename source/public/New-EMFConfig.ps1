@@ -7,7 +7,7 @@ function New-EMFConfig {
         
         [Parameter()]
         [Alias('file','filename')]
-        [string] $ConfigurationFileName = 'config.xml',
+        [string] $ConfigurationFileName = 'emfConfig.xml',
         
         [Parameter(Mandatory)]
         [ValidateSet("Prod","Test","Dev","IntegrationProd","IntegrationTest","IntegrationDev")]
@@ -22,7 +22,7 @@ function New-EMFConfig {
         [switch ] $Validate,
 
         [Parameter()]
-        [string] $SchemaFile = "$EMFHome\schema.xsd"
+        [string] $SchemaFile = "$EMFHome\emfConfig.xsd"
     )
     
     begin {

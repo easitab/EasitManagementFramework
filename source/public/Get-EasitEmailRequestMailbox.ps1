@@ -5,7 +5,7 @@ function Get-EasitEmailRequestMailbox {
         [string] $EmfHome = "$Home\EMF",
         
         [Parameter()]
-        [string] $EmfConfigurationFileName = 'config.xml',
+        [string] $EmfConfigurationFileName = 'emfConfig.xml',
 
         [Parameter()]
         [string] $EmfConfigurationName = 'Prod',
