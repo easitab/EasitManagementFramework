@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name:
+external help file: EasitManagementFramework-help.xml
+Module Name: EasitManagementFramework
 online version: https://github.com/easitab/EasitManagementFramework/blob/development/docs/Stop-EasitGOApplication.md
 schema: 2.0.0
 ---
