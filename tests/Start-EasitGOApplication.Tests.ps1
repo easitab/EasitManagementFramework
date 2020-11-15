@@ -10,7 +10,7 @@ Describe 'Parameters' {
         if (Test-Path $codeFile) {
             . $codeFile
         } else {
-            Write-Host "Unable to locate code file to test against!" -ForegroundColor Red
+            Write-Host "Unable to locate code file to test against!!" -ForegroundColor Red
         }
         
     }
