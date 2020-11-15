@@ -1,11 +1,11 @@
 Describe 'Parameters' {
     BeforeAll {
         $codeFile = $PSCommandPath.Replace('.Tests.ps1','.ps1')
-        if (Test-Path $codeFile.Replace('tests\','src\priv\')) {
-            $codeFilePath = $codeFile.Replace('tests\','src\priv\')
+        if (Test-Path $codeFile.Replace('tests\','source\private\')) {
+            $codeFilePath = $codeFile.Replace('tests\','source\private\')
             . $codeFilePath
-        } elseif (Test-Path $codeFile.Replace('tests\','src\pub\')) {
-            $codeFilePath = $codeFile.Replace('tests\','src\pub\')
+        } elseif (Test-Path $codeFile.Replace('tests\','source\public\')) {
+            $codeFilePath = $codeFile.Replace('tests\','source\public\')
             . $codeFilePath
         } else {
             Write-Host "Unable to locate code file to test against!" -ForegroundColor Red
