@@ -9,7 +9,7 @@ These are the functions we would like to have ready in v1 of the framework and w
 
 - Disable-EasitEmailRequestTask
 - Disable-EasitImportClientTask
-- Disable-EasitScheduledTask
+- Disable-EasitScheduledTask :heavy_check_mark:
 - Enable-EasitEmailRequestTask
 - Enable-EasitImportClientTask
 - Enable-EasitScheduledTask :heavy_check_mark:
