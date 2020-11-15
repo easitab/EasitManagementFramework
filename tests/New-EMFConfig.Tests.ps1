@@ -22,7 +22,7 @@ Describe 'Parameters' {
         Get-Command "$commandName" | Should -HaveParameter ConfigurationFileName -Not -Mandatory
     }
     It 'ConfigurationFileName should have a value' {
-        Get-Command "$commandName" | Should -HaveParameter ConfigurationFileName -DefaultValue 'config.xml'
+        Get-Command "$commandName" | Should -HaveParameter ConfigurationFileName -DefaultValue 'emfConfig.xml'
     }
     It 'ConfigurationName should be mandatory' {
         Get-Command "$commandName" | Should -HaveParameter ConfigurationName -Mandatory
