@@ -20,7 +20,7 @@ These are the functions we would like to have ready in v1 of the framework and w
 - Set-EMFConfig :heavy_check_mark:
 - New-EMFConfig :heavy_check_mark:
 - Start-EasitApplication
-- Stop-EasitApplication
+- Stop-EasitGOApplication :heavy_check_mark:
 
 This list should be treated as a wishlist more than anything else and could be changed over the time leading up to release. 
 
