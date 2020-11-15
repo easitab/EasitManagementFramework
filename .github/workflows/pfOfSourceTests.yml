@@ -1,4 +1,4 @@
-name: PSSA - Pester
+name: Test source with PSSA and Pester
 
 on:
   pull_request:
