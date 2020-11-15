@@ -1,4 +1,4 @@
-name: Test Pull Request
+name: PSSA - Pester
 
 on:
   pull_request:
@@ -17,6 +17,8 @@ jobs:
       with:
         repoToken: ${{ secrets.GITHUB_TOKEN }}
         failOnErrors: true
+        failOnWarnings: false
+        failOnInfos: false
 
   test:
     name: Pester tests
