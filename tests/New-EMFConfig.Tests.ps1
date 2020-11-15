@@ -1,16 +1,17 @@
 Describe 'Parameters' {
     BeforeAll {
-        $codeFile = $PSCommandPath.Replace('.Tests.ps1','.ps1')
-        if (Test-Path $codeFile.Replace('tests\','source\private\')) {
-            $codeFilePath = $codeFile.Replace('tests\','source\private\')
-            . $codeFilePath
-        } elseif (Test-Path $codeFile.Replace('tests\','source\public\')) {
-            $codeFilePath = $codeFile.Replace('tests\','source\public\')
-            . $codeFilePath
+        $testFilePath = $PSCommandPath.Replace('.Tests.ps1','.ps1')
+        $codeFileName = Split-Path -Path $testFilePath -Leaf
+        $commandName = ((Split-Path -Leaf $PSCommandPath) -replace '.ps1','') -replace '.Tests', ''
+        $testRoot = Split-Path -Path $PSCommandPath -Parent
+        $projectRoot = Split-Path -Path $testRoot -Parent
+        $sourceRoot = Join-Path -Path "$projectRoot" -ChildPath "source"
+        $codeFile = Get-ChildItem -Path "$sourceRoot" -Include "$codeFileName" -Recurse
+        if (Test-Path $codeFile) {
+            . $codeFile
         } else {
             Write-Host "Unable to locate code file to test against!" -ForegroundColor Red
         }
-        $commandName = ((Split-Path -Leaf $PSCommandPath) -replace '.ps1','') -replace '.Tests', ''
     }
     It 'EMFHome should not be mandatory' {
         Get-Command "$commandName" | Should -HaveParameter EMFHome -Not -Mandatory

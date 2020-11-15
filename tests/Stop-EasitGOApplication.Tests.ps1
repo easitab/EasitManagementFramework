@@ -12,17 +12,24 @@ Describe 'Parameters' {
         } else {
             Write-Host "Unable to locate code file to test against!" -ForegroundColor Red
         }
+        
     }
     It 'ConfigurationFileName should not be mandatory' {
-        Get-Command "$commandName" | Should -HaveParameter ConfigurationFileName -Not -Mandatory
+        Get-Command "$commandName" | Should -HaveParameter EmfHome -Not -Mandatory
+    }
+    It 'ConfigurationFileName should not be mandatory' {
+        Get-Command "$commandName" | Should -HaveParameter EmfHome -DefaultValue '$Home\EMF'
     }
     It 'ConfigurationFileName should have a value' {
-        Get-Command "$commandName" | Should -HaveParameter ConfigurationFileName -DefaultValue 'emfConfig.xml'
+        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationFileName -Not -Mandatory
     }
-    It 'ConfigurationName should be mandatory' {
-        Get-Command "$commandName" | Should -HaveParameter ConfigurationName -Mandatory
+    It 'ConfigurationFileName should have a value' {
+        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationFileName -DefaultValue 'emfConfig.xml'
     }
-    It 'ConfigurationName should be null' {
-        $ConfigurationName | Should -BeNullOrEmpty
+    It 'ConfigurationFileName should have a value' {
+        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationName -Not -Mandatory
+    }
+    It 'ConfigurationFileName should have a value' {
+        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationName -DefaultValue 'Prod'
     }
 }
