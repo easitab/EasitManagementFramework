@@ -10,13 +10,15 @@ param (
 $moduleArgs = "$SourceRoot", "$ModuleName"
 New-Module -Name "$ModuleName" -ScriptBlock {
     param([string[]]$moduleParams)
-    $SourceRoot = $moduleParams[0]
-    $ModuleName = $moduleParams[1]
-    $modulePath = "$SourceRoot\$ModuleName.psm1"
-    $privScripts = Get-ChildItem -Path "$SourceRoot\private" -Filter "*.ps1" -Recurse
-    $pubScripts = Get-ChildItem -Path "$SourceRoot\public" -Filter "*.ps1" -Recurse
+    $moduleSourceRoot = $moduleParams[0]
+    Write-Output "$moduleSourceRoot"
+    $moduleModuleName = $moduleParams[1]
+    Write-Output "$moduleModuleName"
+    $modulePath = "$moduleSourceRoot\$moduleModuleName.psm1"
+    $privScripts = Get-ChildItem -Path "$moduleSourceRoot\private" -Filter "*.ps1" -Recurse
+    $pubScripts = Get-ChildItem -Path "$moduleSourceRoot\public" -Filter "*.ps1" -Recurse
     if (!(Test-Path -Path $modulePath)) {
-        New-Item -Path "$SourceRoot" -Name "$ModuleName.psm1" -ItemType "file"
+        New-Item -Path "$moduleSourceRoot" -Name "$moduleModuleName.psm1" -ItemType "file"
     }
     foreach ($privateScript in $privScripts) {
         $scriptContent = Get-Content -Path "$($privateScript.FullName)" -Raw
