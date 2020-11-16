@@ -7,7 +7,11 @@ param (
     $HelpInfoUri,
     $LicenseUri
 )
+$moduleArgs = "$SourceRoot", "$ModuleName"
 New-Module -Name "$ModuleName" -ScriptBlock {
+    param([string[]]$moduleParams)
+    $SourceRoot = $moduleParams[0]
+    $ModuleName = $moduleParams[1]
     $modulePath = "$SourceRoot\$ModuleName.psm1"
     $privScripts = Get-ChildItem -Path "$SourceRoot\private" -Filter "*.ps1" -Recurse
     $pubScripts = Get-ChildItem -Path "$SourceRoot\public" -Filter "*.ps1" -Recurse
@@ -31,7 +35,7 @@ New-Module -Name "$ModuleName" -ScriptBlock {
             Write-Output "Unable to find modulePath at $modulePath" -ForegroundColor Red
         }
     }
-}
+} -ArgumentList $moduleArgs
 Get-ChildItem -Path "$SourceRoot"
 $manifest = @{
     Path              = "$SourceRoot\$ModuleName.psd1" 
