@@ -4,14 +4,14 @@ New-Module -Name "$env:moduleName" -ScriptBlock {
     $pubScripts = Get-ChildItem -Path "$env:sourceRoot\public" -Filter "*.ps1" -Recurse
     if (!(Test-Path -Path $modulePath)) {
         $newModuleFile = New-Item -Path "$env:sourceRoot" -Name "$env:moduleName.psm1" -ItemType "file"
-        Write-Host "Created $newModuleFile"
+        Write-Output "Created $newModuleFile"
     }
     foreach ($privateScript in $privScripts) {
         $scriptContent = Get-Content -Path "$($privateScript.FullName)" -Raw
         if (Test-Path -Path $modulePath) {
             Add-Content -Path $modulePath -Value $scriptContent
         } else {
-            Write-Host "Unable to find modulePath at $modulePath" -ForegroundColor Red
+            Write-Output "Unable to find modulePath at $modulePath" -ForegroundColor Red
         }
     }
     foreach ($publicScript in $pubScripts) {
@@ -20,7 +20,7 @@ New-Module -Name "$env:moduleName" -ScriptBlock {
             Add-Content -Path $modulePath -Value $scriptContent                     
             Add-Content -Path $modulePath -Value "Export-ModuleMember -Function $($publicScript.BaseName)"
         } else {
-            Write-Host "Unable to find modulePath at $modulePath" -ForegroundColor Red
+            Write-Output "Unable to find modulePath at $modulePath" -ForegroundColor Red
         }
     }
 }
@@ -38,4 +38,4 @@ $manifest = @{
     PowerShellVersion = '5.1'
     Copyright         = "(c) 2020 $env:companyName. All rights reserved."
 }
-New-ModuleManifest @manifest | Out-Null
+New-ModuleManifest @manifest
