@@ -7,7 +7,7 @@
 
 ## Framework outline
 
-These are the functions we would like to have ready in v1 of the framework and we aim to release Q4 2020 / Q1 2021. Once we have all the basic functionality on place there will be a preview release leading up to official stable release of v1.
+These are the functions we currently have ready in public preview of the framework.
 
 - Disable-EasitScheduledTask :heavy_check_mark:
 - Enable-EasitScheduledTask :heavy_check_mark:
@@ -20,15 +20,22 @@ These are the functions we would like to have ready in v1 of the framework and w
 - Start-EasitApplication :heavy_check_mark:
 - Stop-EasitGOApplication :heavy_check_mark:
 
-This list should be treated as a wishlist more than anything else and could be changed over the time leading up to release. 
+## Roadmap
 
+![roadmap](https://github.com/easitab/EasitManagementFramework/blob/development/roadmap.png)
+
+Leading up to release of version 1.0.0 Q2 2021 we will add functionality based on our customers requests and needs.
+Bugfixes and general improvments will be done aswell and therefore you should not use this in production as breaking changes may be introduced leading up to release of version 1.0.0.
+
+## Support and questions
+Please create an issue if you have any questions (*help wanted*), bugs (*bug*), improvments (*enhancement*) and / or feature request (*feature*). Add the corresponding label to the issue to help us triage and prioritize your issue correct.
 ## Branch model and development process
 
 * Head branches<br/>
 The repository has two branches with unlimited life: master and development. Master corresponds to the latest officially delivered version. Development is our development branch where we develop new functionality and continuously develop Easit Management Framework.
 
 * Release branches<br/>
-Before a new release is delivered, we freeze the code and only allow bug fixes. This is done in a release segment (release / VERSION) that is based on development. Meanwhile, the development of new functions can continue towards development. When the release is ready for delivery it will be merged to 'latestRelease' with a release tag. The final release from this tag is then built. After release, the release branch will also be added to development.
+Before a new release is delivered, we freeze the code and only allow bug fixes. This is done in a release segment (release/VERSION) that is based on development. Meanwhile, the development of new functions can continue towards development. When the release is ready for delivery it will be merged to 'latestRelease' with a release tag. The final release from this tag is then built. After release, the release branch will also be added to development.
 
 * Feature branches<br/>
 Development is done in feature branches (feature/X). Feature branches are short-lived as they are usually merged into development when the feature is complete. In conjunction with the fact that they will be merged for development and erased, we will make a rebase so that a fixed forward merge becomes possible. Note that it is perfectly normal to revive the same feature branch for the next sprint if it has been decided that the work will continue.<br/>
@@ -36,5 +43,5 @@ In gitflow, feature branches are typically found only in the developer's own rep
 Compare with a chef who invents a new recipe: when to write down the recipe in a cookbook, it is probably not with exactly the steps she performed when the recipe was invented, but with steps that are logical and do not take unnecessary detours.
 
 * Hotfix branch<br/>
-When we need to make corrections in one or more releases, we create a hotfix branch per release to be corrected (hotfix / VERSION).
+When we need to make corrections in one or more releases, we create a hotfix branch per release to be corrected (hotfix/VERSION).
 We then create a bug fix branch (bugg/ID) from each hotfix branch and merge it via an pull request.
