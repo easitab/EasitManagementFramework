@@ -9,11 +9,7 @@
 
 These are the functions we would like to have ready in v1 of the framework and we aim to release Q4 2020 / Q1 2021. Once we have all the basic functionality on place there will be a preview release leading up to official stable release of v1.
 
-- Disable-EasitEmailRequestTask
-- Disable-EasitImportClientTask
 - Disable-EasitScheduledTask :heavy_check_mark:
-- Enable-EasitEmailRequestTask
-- Enable-EasitImportClientTask
 - Enable-EasitScheduledTask :heavy_check_mark:
 - Get-EMFConfig :heavy_check_mark:
 - Get-EasitEmailRequestMailbox :heavy_check_mark:
