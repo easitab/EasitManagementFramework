@@ -17,7 +17,7 @@ These are the functions we currently have ready in public preview of the framewo
 - Set-EasitEmailRequestMailboxSetting :heavy_check_mark:
 - Set-EMFConfig :heavy_check_mark:
 - New-EMFConfig :heavy_check_mark:
-- Start-EasitApplication :heavy_check_mark:
+- Start-EasitGOApplication :heavy_check_mark:
 - Stop-EasitGOApplication :heavy_check_mark:
 
 ## Roadmap
