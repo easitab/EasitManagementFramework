@@ -40,7 +40,6 @@ foreach ($script in $allScripts) {
             break
         }
     }
-    New-MarkdownHelp -Command $commandName -OutputFolder "$docsRoot" -AlphabeticParamsOrder -OnlineVersionUrl "https://github.com/easitab/EasitManagementFramework/blob/development/docs/${commandName}.md" -ErrorAction Stop
 }
 Write-Verbose "Done updating MarkdownHelp"
 Write-Verbose "Generating new external help"
