@@ -10,10 +10,11 @@ param (
 $moduleArgs = "$SourceRoot", "$ModuleName"
 New-Module -Name "$ModuleName" -ScriptBlock {
     param([string[]]$moduleParams)
+    Write-Host "$moduleParams"
     $moduleSourceRoot = $moduleParams[0]
-    Write-Output "$moduleSourceRoot"
+    Write-Host "$moduleSourceRoot"
     $moduleModuleName = $moduleParams[1]
-    Write-Output "$moduleModuleName"
+    Write-Host "$moduleModuleName"
     $modulePath = "$moduleSourceRoot\$moduleModuleName.psm1"
     $privScripts = Get-ChildItem -Path "$moduleSourceRoot\private" -Filter "*.ps1" -Recurse
     $pubScripts = Get-ChildItem -Path "$moduleSourceRoot\public" -Filter "*.ps1" -Recurse
