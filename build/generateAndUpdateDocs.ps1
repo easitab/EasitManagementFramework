@@ -3,6 +3,7 @@ $projectRoot = Split-Path -Path $PSScriptRoot -Parent
 $sourceRoot = Join-Path -Path "$projectRoot" -ChildPath 'source'
 $tempModuleFileName = 'EasitManagementFramework'
 $docsRoot = Join-Path -Path "$projectRoot" -ChildPath 'docs'
+$docsVersionRoot = Join-Path -Path "$docsRoot" -ChildPath 'v1'
 $tempModuleRoot = Join-Path -Path "$projectRoot" -ChildPath "$tempModuleFileName"
 Set-Location -Path $projectRoot
 # Runtime variables
@@ -23,18 +24,18 @@ try {
 }
 foreach ($script in $allScripts) {
     $commandName = $script.BaseName
-    if (Test-Path -Path "$docsRoot/${commandName}.md") {
-        Write-Output "Found $docsRoot/${commandName}.md"
+    if (Test-Path -Path "$docsVersionRoot/${commandName}.md") {
+        Write-Output "Found $docsVersionRoot/${commandName}.md"
         try {
-            Update-MarkdownHelp -Path "$docsRoot/${commandName}.md" -AlphabeticParamsOrder -ErrorAction Stop
+            Update-MarkdownHelp -Path "$docsVersionRoot/${commandName}.md" -AlphabeticParamsOrder -ErrorAction Stop
         } catch {
             Write-Error $_
             break
         }
     } else {
-        Write-Output "Unable to find $docsRoot/${commandName}.md"
+        Write-Output "Unable to find $docsVersionRoot/${commandName}.md"
         try {
-            New-MarkdownHelp -Command $commandName -OutputFolder "$docsRoot" -AlphabeticParamsOrder -OnlineVersionUrl "https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/${commandName}.md" -ErrorAction Stop
+            New-MarkdownHelp -Command $commandName -OutputFolder "$docsVersionRoot" -AlphabeticParamsOrder -OnlineVersionUrl "https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/${commandName}.md" -ErrorAction Stop
         } catch {
             Write-Error $_
             break
@@ -44,7 +45,7 @@ foreach ($script in $allScripts) {
 Write-Verbose "Done updating MarkdownHelp"
 Write-Verbose "Generating new external help"
 try {
-    New-ExternalHelp -Path "$docsRoot" -OutputPath "$docsRoot\en-US" -Force -ErrorAction Stop
+    New-ExternalHelp -Path "$docsRoot" -OutputPath "$docsVersionRoot/en-US" -Force -ErrorAction Stop
 } catch {
     Write-Error $_
     break
