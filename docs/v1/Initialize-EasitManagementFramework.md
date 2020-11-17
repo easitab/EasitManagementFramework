@@ -1,7 +1,7 @@
 ---
 external help file: EasitManagementFramework-help.xml
 Module Name: EasitManagementFramework
-online version: https://github.com/easitab/EasitManagementFramework/blob/development/docs/Initialize-EasitManagementFramework.md
+online version: https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Initialize-EasitManagementFramework.md
 schema: 2.0.0
 ---
 
