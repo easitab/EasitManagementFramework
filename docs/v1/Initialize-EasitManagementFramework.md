@@ -1,4 +1,3 @@
-<<<<<<< HEAD:docs/v1/Initialize-EasitManagementFramework.md
 ---
 external help file: EasitManagementFramework-help.xml
 Module Name: EasitManagementFramework
