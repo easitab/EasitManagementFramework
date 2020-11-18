@@ -1,11 +1,11 @@
 ---
 external help file: EasitManagementFramework-help.xml
 Module Name: EasitManagementFramework
-online version: https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Get-EMFConfig.md
+online version: https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Initialize-EasitManagementFramework.md
 schema: 2.0.0
 ---
 
-# Get-EMFConfig
+# Initialize-EasitManagementFramework
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -13,8 +13,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-EMFConfig [-EMFHome <String>] [-ConfigurationFileName <String>] [-ConfigurationName] <String>
- [<CommonParameters>]
+Initialize-EasitManagementFramework [[-EMFHome] <String>] [[-ConfigURL] <String>] [[-SchemaURL] <String>]
+ [[-ConfigName] <String>] [[-SchemaName] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,31 +31,31 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -ConfigurationFileName
-{{ Fill ConfigurationFileName Description }}
+### -ConfigName
+{{ Fill ConfigName Description }}
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: file, filename
+Aliases:
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConfigurationName
-{{ Fill ConfigurationName Description }}
+### -ConfigURL
+{{ Fill ConfigURL Description }}
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: ConfigName
+Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -70,7 +70,37 @@ Parameter Sets: (All)
 Aliases: Home
 
 Required: False
-Position: Named
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SchemaName
+{{ Fill SchemaName Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SchemaURL
+{{ Fill SchemaURL Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
