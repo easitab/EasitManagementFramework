@@ -6,7 +6,7 @@ New-Module -Name "$env:moduleName" -ScriptBlock {
     $privScripts = Get-ChildItem -Path "$env:sourceRoot\private" -Filter "*.ps1" -Recurse
     $pubScripts = Get-ChildItem -Path "$env:sourceRoot\public" -Filter "*.ps1" -Recurse
     if (!(Test-Path -Path $modulePath)) {
-        $newModuleDir = New-Item -Path "$env:resourceRoot" -Name "module" -ItemType 'directory' -Force
+        $newModuleDir = New-Item -Path "$env:resourceRoot" -Name "$env:moduleName" -ItemType 'directory' -Force
         $newModuleFile = New-Item -Path "$env:moduleRoot" -Name "$env:moduleName.psm1" -ItemType "file"
     }
     foreach ($privateScript in $privScripts) {
