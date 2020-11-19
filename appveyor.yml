@@ -14,7 +14,10 @@ test_script:
 
     Invoke-Pester -EnableExit
 on_success:
-- ps: $newManifestTest = Test-ModuleManifest -Path "$env:sourceRoot\$env:moduleName.psd1"
+- ps: >-
+    $manifestFile = Join-Path -Path "$env:moduleRoot" -ChildPath "${env:moduleName}.psd1"
+
+    $newManifestTest = Test-ModuleManifest -Path "$manifestFile"
 on_finish:
 - ps: >-
     if ($newManifestTest) {
