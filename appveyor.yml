@@ -18,5 +18,5 @@ on_success:
 on_finish:
 - ps: >-
     if ($newManifestTest) {
-            #Publish-Module -Path "$env:sourceRoot" -NuGetApiKey "$env:galleryPublishingKey"
+            Publish-Module -Path "$env:sourceRoot" -NuGetApiKey "$env:galleryPublishingKey"
         }
