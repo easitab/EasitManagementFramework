@@ -27,6 +27,10 @@ These are the functions we currently have ready in public preview of the framewo
 Leading up to release of version 1.0.0 Q2 2021 we will add functionality based on our customers requests and needs.
 Bugfixes and general improvments will be done aswell and therefore you should not use this in production as breaking changes may be introduced leading up to release of version 1.0.0.
 
+## How to
+
+* [How to install](https://github.com/easitab/EasitManagementFramework/blob/development/docs/HOW-TO-Install.md)<br>
+* [How to report an issue or bug](https://github.com/easitab/EasitManagementFramework/blob/development/docs/HOW-TO-ReportAnIssueOrBug.md)<br>
 ## Support and questions
 Please create an issue if you have any questions (*help wanted*), bugs (*bug*), improvments (*enhancement*) and / or feature request (*feature*). Add the corresponding label to the issue to help us triage and prioritize your issue correct.
 ## Branch model and development process
