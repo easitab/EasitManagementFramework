@@ -45,7 +45,7 @@ foreach ($script in $allScripts) {
 Write-Verbose "Done updating MarkdownHelp"
 Write-Verbose "Generating new external help"
 try {
-    New-ExternalHelp -Path "$docsRoot" -OutputPath "$docsVersionRoot/en-US" -Force -ErrorAction Stop
+    New-ExternalHelp -Path "$docsVersionRoot" -OutputPath "$docsVersionRoot/en-US" -Force -ErrorAction Stop
 } catch {
     Write-Error $_
     break
