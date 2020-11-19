@@ -2,11 +2,12 @@
 # Actual code that will be executed lives in appveyor.yml
 
 New-Module -Name "$env:moduleName" -ScriptBlock {
-    $modulePath = "$env:sourceRoot\$env:moduleName.psm1"
+    $modulePath = "$env:moduleRoot\$env:moduleName.psm1"
     $privScripts = Get-ChildItem -Path "$env:sourceRoot\private" -Filter "*.ps1" -Recurse
     $pubScripts = Get-ChildItem -Path "$env:sourceRoot\public" -Filter "*.ps1" -Recurse
     if (!(Test-Path -Path $modulePath)) {
-        New-Item -Path "$env:sourceRoot" -Name "$env:moduleName.psm1" -ItemType "file"
+        $newModuleDir = New-Item -Path "$env:resourceRoot" -Name "module" -ItemType 'directory' -Force
+        $newModuleFile = New-Item -Path "$env:moduleRoot" -Name "$env:moduleName.psm1" -ItemType "file"
     }
     foreach ($privateScript in $privScripts) {
         $scriptContent = Get-Content -Path "$($privateScript.FullName)" -Raw
@@ -26,9 +27,8 @@ New-Module -Name "$env:moduleName" -ScriptBlock {
         }
     }
 }
-Get-ChildItem -Path "$env:sourceRoot"
 $manifest = @{
-    Path              = "$env:sourceRoot\$env:moduleName.psd1" 
+    Path              = "$env:moduleRoot\$env:moduleName.psd1" 
     RootModule        = "$env:moduleName.psm1" 
     CompanyName       = "$env:companyName"
     Author            = "$env:moduleAuthor"
@@ -41,3 +41,4 @@ $manifest = @{
     Copyright         = "(c) 2020 $env:companyName. All rights reserved."
 }
 New-ModuleManifest @manifest
+Get-ChildItem -Path "$env:moduleRoot"
