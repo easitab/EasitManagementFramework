@@ -16,6 +16,17 @@ Set to either Process (Affects only the current PowerShell session) or CurrentUs
 
 Connect to the server where Easit GO / BPS is installed. How you connect to the server is up to you, WinRM, RDP, SSH, as long as you can run PowerShell as an Administrator you are good to go!
 
+#### Example 1
+```powershell
+PS C:\> $Server01 = New-PSSession -ComputerName Server01
+PS C:\> Enter-PSSession -Session $Server01
+```
+
+#### Example 2
+```powershell
+PS C:\> Enter-PSSession -ComputerName Server01
+```
+
 ### Step 2
 
 ```powershell
