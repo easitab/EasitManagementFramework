@@ -28,4 +28,5 @@ jobs:
         with:
           commit_message: Nighty build
           commit_user_name: GitHub Actions
+          push_options: '--force'
           file_pattern: module/nightlyBuild
