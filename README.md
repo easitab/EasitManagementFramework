@@ -35,6 +35,7 @@ Bugfixes and general improvments will be done aswell and therefore you should no
 * [How to report an issue or bug](https://github.com/easitab/EasitManagementFramework/blob/development/docs/HOW-TO-ReportAnIssueOrBug.md)<br>
 ## Support and questions
 Please create an issue if you have any questions (*help wanted*), bugs (*bug*), improvments (*enhancement*) and / or feature request (*feature*). Add the corresponding label to the issue to help us triage and prioritize your issue correct.
+Nej, man MÅSTE inte skriva på engelska när man rapporterar en bugg, har en fråga eller önskar en förbättring.
 ## Branch model and development process
 
 * Head branches<br/>

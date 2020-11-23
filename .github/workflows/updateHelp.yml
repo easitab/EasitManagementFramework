@@ -34,3 +34,4 @@ jobs:
           commit_message: Generate and update help
           commit_user_name: My GitHub Actions Bot
           file_pattern: docs
+          push_options: '--force'
