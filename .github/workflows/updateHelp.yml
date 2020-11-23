@@ -8,7 +8,6 @@ on:
   push:
     paths:
     - 'source/**'
-    - 'source/**'
 
 jobs:
   # This workflow contains a single job called "build"

@@ -23,7 +23,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Canary build
-        run: ./build/nightlybuild.ps1
+        run: ./build/canaryBuild.ps1
         shell: pwsh
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
