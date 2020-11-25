@@ -8,6 +8,7 @@ schema: 2.0.0
 # Get-EasitScheduledTask
 
 ## SYNOPSIS
+
 Get scheduled Easit tasks.
 
 ## SYNTAX
@@ -17,11 +18,13 @@ Get-EasitScheduledTask [-EmailRequest] [-ImportClient] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-EasitScheduledTask** cmdlet gets scheduled tasks from Windows Task Scheduler. You can get all Easit tasks or use the *EmailRequest* or *ImportClient* parameter to specify the task.
+
+The *Get-EasitScheduledTask* cmdlet gets scheduled tasks from Windows Task Scheduler. You can get all Easit tasks or use the *EmailRequest* or *ImportClient* parameter to specify the task.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
 PS C:\> Get-EasitScheduledTask
 ```
@@ -29,6 +32,7 @@ PS C:\> Get-EasitScheduledTask
 This example gets all scheduled tasks with the string *easit* in its name.
 
 ### Example 2
+
 ```powershell
 PS C:\> Get-EasitScheduledTask -EmailRequest
 ```
@@ -36,6 +40,7 @@ PS C:\> Get-EasitScheduledTask -EmailRequest
 This example gets all scheduled tasks with the string *easit* and *mail* in its name.
 
 ### Example 3
+
 ```powershell
 PS C:\> Get-EasitScheduledTask -EmailRequest -ImportClient
 ```
@@ -46,6 +51,7 @@ This example with provide the same result as running the cmdlet twice, once for 
 ## PARAMETERS
 
 ### -EmailRequest
+
 Switch to specify if only to get tasks containing *mail* in its name.
 
 ```yaml
@@ -61,6 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImportClient
+
 Switch to specify if only to get tasks containing *import* in its name.
 
 ```yaml
@@ -76,6 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -85,6 +93,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.Object
+
 ## NOTES
 
 ## RELATED LINKS

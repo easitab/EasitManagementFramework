@@ -8,6 +8,7 @@ schema: 2.0.0
 # Set-EasitEmailRequestMailboxSetting
 
 ## SYNOPSIS
+
 Used to update / change settings for a "mailbox" used by EmailRequest.
 
 ## SYNTAX
@@ -19,11 +20,13 @@ Set-EasitEmailRequestMailboxSetting [[-EmfHome] <String>] [[-EmfConfigurationFil
 ```
 
 ## DESCRIPTION
+
 With this cmdlet you can update one setting for an "mailbox" in the configuration file for EmailRequest.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
 PS C:\> Set-EasitEmailRequestMailboxSetting -MailboxName 'POP3Test' -SettingName 'disabled' -SettingValue 'false'
 ```
@@ -31,6 +34,7 @@ PS C:\> Set-EasitEmailRequestMailboxSetting -MailboxName 'POP3Test' -SettingName
 This example shows you how to enables a mailbox with the displayName *POP3Test*.
 
 ### Example 2
+
 ```powershell
 PS C:\> Set-EasitEmailRequestMailboxSetting -MailboxName 'POP3Test' -SettingName 'maxMessageSize' -SettingValue '12582912'
 ```
@@ -38,6 +42,7 @@ PS C:\> Set-EasitEmailRequestMailboxSetting -MailboxName 'POP3Test' -SettingName
 In this example the setting *maxMessageSize* for *POP3Test* is set to *12582912*. The value for *maxMessageSize* should be provided in bytes in the case of POP3 and kilobytes in the case of IMAP4.
 
 ### Example 3
+
 ```powershell
 PS C:\> Set-EasitEmailRequestMailboxSetting -MailboxName 'POP3Test' -SettingName 'maxMessagesToRetrieve' -SettingValue '20'
 ```
@@ -47,6 +52,7 @@ In this example the setting *maxMessagesToRetrieve* for *POP3Test* is set to *20
 ## PARAMETERS
 
 ### -EmailRequestConfigurationFilename
+
 Name of configuration file for EmailReques to update.
 
 ```yaml
@@ -62,6 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -EmfConfigurationFileName
+
 Name of EasitManagementFramework configuration file to use.
 
 ```yaml
@@ -77,6 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -EmfConfigurationName
+
 Name of configuration to use in EasitManagementFramework configuration file.
 
 ```yaml
@@ -92,6 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -EmfHome
+
 Path to root directory for EasitManagementFramework.
 
 ```yaml
@@ -107,6 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -MailboxName
+
 Name of mailbox to update setting for. Same as displayName in EmailRequest configuration file.
 
 ```yaml
@@ -122,6 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -SettingName
+
 Name of parameter to update in EmailRequest configuration file.
 
 ```yaml
@@ -137,6 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -SettingValue
+
 New value you would like to give to a parameter in EmailRequest configuration file.
 
 ```yaml
@@ -152,14 +164,17 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
+
 ## OUTPUTS
 
 ### System.Object
+
 ## NOTES
 
 ## RELATED LINKS

@@ -8,7 +8,8 @@ schema: 2.0.0
 # Get-EMFConfig
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Gets the configuration for one system.
 
 ## SYNTAX
 
@@ -18,21 +19,34 @@ Get-EMFConfig [-EMFHome <String>] [-ConfigurationFileName <String>] [-Configurat
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+Gets the configuration for one system from the configuration file. You need to specify what system you would like to get the configuration for.
+The *Get-EMFConfig* cmdlet does not support array input.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-EMFConfig -ConfigurationName Test
 ```
 
-{{ Add example description here }}
+Get the configuration for a system called Test.
+
+### Example 2
+
+```powershell
+PS C:\> $systems = 'Test', 'Dev'
+PS C:\> $systems | ForEach-Object {Get-EMFConfig -ConfigurationName $PSItem }
+```
+
+Get the configuration for each system in the array systems.
 
 ## PARAMETERS
 
 ### -ConfigurationFileName
-{{ Fill ConfigurationFileName Description }}
+
+Name of the configuration file to use.
 
 ```yaml
 Type: String
@@ -41,13 +55,14 @@ Aliases: file, filename
 
 Required: False
 Position: Named
-Default value: None
+Default value: emfConfig.xml
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ConfigurationName
-{{ Fill ConfigurationName Description }}
+
+Name of configuration to use in the configuration file.
 
 ```yaml
 Type: String
@@ -62,7 +77,8 @@ Accept wildcard characters: False
 ```
 
 ### -EMFHome
-{{ Fill EMFHome Description }}
+
+Path to root directory for EasitManagementFramework.
 
 ```yaml
 Type: String
@@ -71,20 +87,23 @@ Aliases: Home
 
 Required: False
 Position: Named
-Default value: None
+Default value: $Home\EMF
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
+
 ## OUTPUTS
 
 ### System.Object
+
 ## NOTES
 
 ## RELATED LINKS

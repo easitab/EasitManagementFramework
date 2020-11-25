@@ -8,7 +8,8 @@ schema: 2.0.0
 # Initialize-EasitManagementFramework
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Initialize EasitManagementFramework with template files.
 
 ## SYNTAX
 
@@ -18,21 +19,24 @@ Initialize-EasitManagementFramework [[-EMFHome] <String>] [[-ConfigURL] <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+The *Initialize-EasitManagementFramework* cmdlet helps you get started with using the framework. It will download template configuration file and schema file from the github project for you to *C:\Users\currentuser\EMF*.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Initialize-EasitManagementFramework
 ```
 
-{{ Add example description here }}
+Download template files from the github project.
 
 ## PARAMETERS
 
 ### -ConfigName
-{{ Fill ConfigName Description }}
+
+File name of downloaded configuration file.
 
 ```yaml
 Type: String
@@ -41,13 +45,14 @@ Aliases:
 
 Required: False
 Position: 3
-Default value: None
+Default value: emfConfig.xml
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ConfigURL
-{{ Fill ConfigURL Description }}
+
+URL to download configuration file from.
 
 ```yaml
 Type: String
@@ -56,13 +61,14 @@ Aliases:
 
 Required: False
 Position: 1
-Default value: None
+Default value: https://raw.githubusercontent.com/easitab/EasitManagementFramework/development/configurations/emfConfig.xml
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -EMFHome
-{{ Fill EMFHome Description }}
+
+Root folder of EMF. This is where the cmdlet will download files to.
 
 ```yaml
 Type: String
@@ -71,13 +77,14 @@ Aliases: Home
 
 Required: False
 Position: 0
-Default value: None
+Default value: $Home\EMF
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SchemaName
-{{ Fill SchemaName Description }}
+
+File name of downloaded schema file.
 
 ```yaml
 Type: String
@@ -92,7 +99,8 @@ Accept wildcard characters: False
 ```
 
 ### -SchemaURL
-{{ Fill SchemaURL Description }}
+
+URL to download schema file from.
 
 ```yaml
 Type: String
@@ -101,20 +109,23 @@ Aliases:
 
 Required: False
 Position: 2
-Default value: None
+Default value: https://raw.githubusercontent.com/easitab/EasitManagementFramework/development/schemas/emfConfig.xsd
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
+
 ## OUTPUTS
 
 ### System.Object
+
 ## NOTES
 
 ## RELATED LINKS
