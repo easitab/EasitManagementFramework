@@ -22,18 +22,18 @@ New-EMFConfig [[-EMFHome] <String>] [[-ConfigurationFileName] <String>] [-Config
 
 The *New-EMFConfig* cmdlet lets you create a new configuration within an already existing configuration file. If an configuration file does not already exist, one will be created by the cmdlet. If the configuration name is already used in the configuration file you will get a warning and the cmdlet stops.
 
-```
-<systems>
-  <Prod>
-    <SystemRoot>D:\Easit\Systems\Prod</SystemRoot>
-    <ServiceName>EasitProd</ServiceName>
-    <EasitRoot>D:\Easit</EasitRoot>
-    <BackupRoot>D:\Easit\_Backup\Prod</BackupRoot>
-    <TomcatRoot>D:\Easit\Tomcat\Prod</TomcatRoot>
-    <EmailRequestRoot>D:\Easit\EmailRequest</EmailRequestRoot>
-    <ImportClientRoot>D:\Easit\ImportClient</ImportClientRoot>
-  </Prod>
-<systems>
+```xml
+&lt;systems&gt;
+  &lt;Prod&gt;
+    &lt;SystemRoot&gt;D:\Easit\Systems\Prod&lt;/SystemRoot&gt;
+    &lt;ServiceName&gt;EasitProd&lt;/ServiceName&gt;
+    &lt;EasitRoot&gt;D:\Easit&lt;/EasitRoot&gt;
+    &lt;BackupRoot&gt;D:\Easit\_Backup\Prod&lt;/BackupRoot&gt;
+    &lt;TomcatRoot&gt;D:\Easit\Tomcat\Prod&lt;/TomcatRoot&gt;
+    &lt;EmailRequestRoot&gt;D:\Easit\EmailRequest&lt;/EmailRequestRoot&gt;
+    &lt;ImportClientRoot&gt;D:\Easit\ImportClient&lt;/ImportClientRoot&gt;
+  &lt;/Prod&gt;
+&lt;systems&gt;
 ```
 
 ## EXAMPLES
@@ -49,12 +49,12 @@ In this example we first create a hastable with all the properties and its value
 This will create a configuration named Test with two (*SystemRoot* and *ServiceName*) properties.
 
 ```xml
-<systems>
-  <Test>
-    <SystemRoot>D:\Easit\Systems\Prod</SystemRoot>
-    <ServiceName>EasitProd</ServiceName>
-  </Test>
-<systems>
+&lt;systems&gt;
+  &lt;Test&gt;
+    &lt;SystemRoot&gt;D:\Easit\Systems\Prod&lt;/SystemRoot&gt;
+    &lt;ServiceName&gt;EasitProd&lt;/ServiceName&gt;
+  &lt;/Test&gt;
+&lt;systems&gt;
 ```
 
 ## PARAMETERS
