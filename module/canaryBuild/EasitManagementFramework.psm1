@@ -313,7 +313,7 @@ function Initialize-EasitManagementFramework {
     process {
         if (!(Test-Path -Path $EMFHome)) {
             try {
-                New-Item -Path "$Home" -Name 'EMF' -ItemType Directory
+                $null = New-Item -Path "$Home" -Name 'EMF' -ItemType Directory
                 Write-Verbose -Message "Created directory EMF in $Home"
             } catch {
                 throw $_
@@ -899,7 +899,7 @@ function Import-EMFXMLData {
     }
     
     process {
-        Write-Verbose "Process block start."
+        Write-Verbose "Process block start"
         $xml = New-Object System.Xml.XmlDocument
         try {
             $xml.Load($Path)
