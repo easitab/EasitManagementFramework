@@ -5,7 +5,7 @@
 
 ![Generate and update help](https://github.com/easitab/EasitManagementFramework/workflows/Generate%20and%20update%20help/badge.svg) [![Build status](https://ci.appveyor.com/api/projects/status/jvecjyuro985bgu6?svg=true)](https://ci.appveyor.com/project/easitab/easitmanagementframework)
 
-![Nightly build](https://github.com/easitab/EasitManagementFramework/workflows/Nightly%20build/badge.svg)
+![Canary build](https://github.com/easitab/EasitManagementFramework/workflows/Canary%20build/badge.svg)
 
 ## Framework outline
 
