@@ -21,7 +21,7 @@ function Initialize-EasitManagementFramework {
     process {
         if (!(Test-Path -Path $EMFHome)) {
             try {
-                New-Item -Path "$Home" -Name 'EMF' -ItemType Directory
+                $null = New-Item -Path "$Home" -Name 'EMF' -ItemType Directory
                 Write-Verbose -Message "Created directory EMF in $Home"
             } catch {
                 throw $_
