@@ -8,7 +8,8 @@ schema: 2.0.0
 # New-EMFConfig
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Create a new configuration for EMF.
 
 ## SYNTAX
 
@@ -18,21 +19,49 @@ New-EMFConfig [[-EMFHome] <String>] [[-ConfigurationFileName] <String>] [-Config
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+The *New-EMFConfig* cmdlet lets you create a new configuration within an already existing configuration file. If an configuration file does not already exist, one will be created by the cmdlet. If the configuration name is already used in the configuration file you will get a warning and the cmdlet stops.
+
+```xml
+<systems>
+  <Prod>
+    <SystemRoot>D:\Easit\Systems\Prod</SystemRoot>
+    <ServiceName>EasitProd</ServiceName>
+    <EasitRoot>D:\Easit</EasitRoot>
+    <BackupRoot>D:\Easit\_Backup\Prod</BackupRoot>
+    <TomcatRoot>D:\Easit\Tomcat\Prod</TomcatRoot>
+    <EmailRequestRoot>D:\Easit\EmailRequest</EmailRequestRoot>
+    <ImportClientRoot>D:\Easit\ImportClient</ImportClientRoot>
+  </Prod>
+<systems>
+```
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $hashtable = @{SystemRoot = D:\Easit\Systems\Test;ServiceName = EasitTest}
+PS C:\> New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastable
 ```
 
-{{ Add example description here }}
+In this example we first create a hastable with all the properties and its values for the configuration (*ConfigurationName*) we would like to add. We name the configuration with the parameter *ConfigurationName* and pass the hashtable in with the parameter *ConfigurationSettings*.
+This will create a configuration named Test with two (*SystemRoot* and *ServiceName*) properties.
+
+```xml
+<systems>
+  <Test>
+    <SystemRoot>D:\Easit\Systems\Prod</SystemRoot>
+    <ServiceName>EasitProd</ServiceName>
+  </Test>
+<systems>
+```
 
 ## PARAMETERS
 
 ### -ConfigurationFileName
-{{ Fill ConfigurationFileName Description }}
+
+Name of the configuration file to use.
 
 ```yaml
 Type: String
@@ -47,7 +76,8 @@ Accept wildcard characters: False
 ```
 
 ### -ConfigurationName
-{{ Fill ConfigurationName Description }}
+
+Name of configuration to use in the configuration file.
 
 ```yaml
 Type: String
@@ -63,7 +93,8 @@ Accept wildcard characters: False
 ```
 
 ### -ConfigurationSettings
-{{ Fill ConfigurationSettings Description }}
+
+Hashtable with properties and its values that the configuration should have.
 
 ```yaml
 Type: Hashtable
@@ -78,7 +109,8 @@ Accept wildcard characters: False
 ```
 
 ### -EMFHome
-{{ Fill EMFHome Description }}
+
+Path to root directory for EasitManagementFramework.
 
 ```yaml
 Type: String
@@ -87,13 +119,14 @@ Aliases: Home
 
 Required: False
 Position: 0
-Default value: None
+Default value: $Home\EMF
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SchemaFile
-{{ Fill SchemaFile Description }}
+
+Full path, including file and extension, to use when validating configuration file.
 
 ```yaml
 Type: String
@@ -102,13 +135,14 @@ Aliases:
 
 Required: False
 Position: 4
-Default value: None
+Default value: $EMFHome\emfConfig.xsd
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Validate
-{{ Fill Validate Description }}
+
+Switch to use if you would like to validate configuration file.
 
 ```yaml
 Type: SwitchParameter
@@ -123,14 +157,17 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
+
 ## OUTPUTS
 
 ### System.Object
+
 ## NOTES
 
 ## RELATED LINKS

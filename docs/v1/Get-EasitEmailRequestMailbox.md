@@ -8,6 +8,7 @@ schema: 2.0.0
 # Get-EasitEmailRequestMailbox
 
 ## SYNOPSIS
+
 Gets the configuration settings for one or all mailboxes configured for EmailRequest.
 
 ## SYNTAX
@@ -19,6 +20,7 @@ Get-EasitEmailRequestMailbox [[-EmfHome] <String>] [[-EmfConfigurationFileName] 
 ```
 
 ## DESCRIPTION
+
 The *Get-EasitEmailRequestMailbox* cmdlet gets all settings for one or all mailboxed configured for EmailRequest. The cmdlet does not return the password for any mailbox for security reasons.
 
 In order to find the correct configuration file for EmailRequest the cmdlet uses recursive search.
@@ -26,6 +28,7 @@ In order to find the correct configuration file for EmailRequest the cmdlet uses
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
 PS C:\> Get-EasitEmailRequestMailbox
 ```
@@ -33,6 +36,7 @@ PS C:\> Get-EasitEmailRequestMailbox
 In this example we will get all mailboxes configured for EmailRequest.
 
 ### Example 2
+
 ```powershell
 PS C:\> Get-EasitEmailRequestMailbox -MailboxName POP3Test
 ```
@@ -40,6 +44,7 @@ PS C:\> Get-EasitEmailRequestMailbox -MailboxName POP3Test
 In this example we will get all settings for a mailbox with *POP3Test* as its displayName.
 
 ### Example 3
+
 ```powershell
 PS C:\> Get-EasitEmailRequestMailbox -MailboxName POP3Test -EmfConfigurationName Test
 ```
@@ -47,6 +52,7 @@ PS C:\> Get-EasitEmailRequestMailbox -MailboxName POP3Test -EmfConfigurationName
 In this example we will get all settings for a mailbox with *POP3Test* as its displayName in config.xml in the folder provided in EmailRequestRoot for EMF-configuration Test.
 
 ### Example 4
+
 ```powershell
 PS C:\> Get-EasitEmailRequestMailbox -MailboxName POP3Test -EmailRequestConfigurationFilename config_test.xml
 ```
@@ -56,6 +62,7 @@ In this example we will get all settings for a mailbox with *POP3Test* as its di
 ## PARAMETERS
 
 ### -EmailRequestConfigurationFilename
+
 Name of configuration file to find mailboxes in.
 
 ```yaml
@@ -71,6 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -EmfConfigurationFileName
+
 Name of EasitManagementFramework configuration file to use.
 
 ```yaml
@@ -86,6 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -EmfConfigurationName
+
 Name of configuration to use in EasitManagementFramework configuration file.
 
 ```yaml
@@ -101,6 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -EmfHome
+
 Path to root directory for EasitManagementFramework.
 
 ```yaml
@@ -116,6 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -MailboxName
+
 Name of mailbox to update setting for. Same as displayName in EmailRequest configuration file.
 
 ```yaml
@@ -131,6 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -140,6 +152,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.Object
+
 ## NOTES
 
 ## RELATED LINKS
