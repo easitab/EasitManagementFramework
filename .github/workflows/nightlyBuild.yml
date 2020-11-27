@@ -20,7 +20,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-        with: ${{ secrets.GITAUTOCOMMITPAT }}
+        with:
+          token: ${{ secrets.GITAUTOCOMMITPAT }}
 
       # Runs a single command using the runners shell
       - name: Canary build
@@ -31,4 +32,4 @@ jobs:
           commit_message: Canary build
           commit_user_name: GitHub Actions
           file_pattern: module/canaryBuild
-          push_options: --force
+          push_options: '--force'
