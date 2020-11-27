@@ -19,6 +19,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with: ${{ secrets.GITAUTOCOMMITPAT }}
 
       - name: Build temp module
         run: ./build/tempbuild_github.ps1
@@ -34,4 +35,4 @@ jobs:
           commit_message: Generate and update help
           commit_user_name: My GitHub Actions Bot
           file_pattern: docs
-          push_options: '--force'
+          push_options: --force
