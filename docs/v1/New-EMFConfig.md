@@ -22,20 +22,6 @@ New-EMFConfig [[-EMFHome] <String>] [[-ConfigurationFileName] <String>] [-Config
 
 The *New-EMFConfig* cmdlet lets you create a new configuration within an already existing configuration file. If an configuration file does not already exist, one will be created by the cmdlet. If the configuration name is already used in the configuration file you will get a warning and the cmdlet stops.
 
-```xml
-&lt;systems&gt;
-  &lt;Prod&gt;
-    &lt;SystemRoot&gt;D:\Easit\Systems\Prod&lt;/SystemRoot&gt;
-    &lt;ServiceName&gt;EasitProd&lt;/ServiceName&gt;
-    &lt;EasitRoot&gt;D:\Easit&lt;/EasitRoot&gt;
-    &lt;BackupRoot&gt;D:\Easit\_Backup\Prod&lt;/BackupRoot&gt;
-    &lt;TomcatRoot&gt;D:\Easit\Tomcat\Prod&lt;/TomcatRoot&gt;
-    &lt;EmailRequestRoot&gt;D:\Easit\EmailRequest&lt;/EmailRequestRoot&gt;
-    &lt;ImportClientRoot&gt;D:\Easit\ImportClient&lt;/ImportClientRoot&gt;
-  &lt;/Prod&gt;
-&lt;systems&gt;
-```
-
 ## EXAMPLES
 
 ### Example 1
@@ -47,15 +33,6 @@ PS C:\> New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastable
 
 In this example we first create a hastable with all the properties and its values for the configuration (*ConfigurationName*) we would like to add. We name the configuration with the parameter *ConfigurationName* and pass the hashtable in with the parameter *ConfigurationSettings*.
 This will create a configuration named Test with two (*SystemRoot* and *ServiceName*) properties.
-
-```xml
-&lt;systems&gt;
-  &lt;Test&gt;
-    &lt;SystemRoot&gt;D:\Easit\Systems\Prod&lt;/SystemRoot&gt;
-    &lt;ServiceName&gt;EasitProd&lt;/ServiceName&gt;
-  &lt;/Test&gt;
-&lt;systems&gt;
-```
 
 ## PARAMETERS
 
