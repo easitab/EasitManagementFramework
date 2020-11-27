@@ -13,7 +13,7 @@ function Import-EMFXMLData {
     }
     
     process {
-        Write-Verbose "Process block start."
+        Write-Verbose "Process block start"
         $xml = New-Object System.Xml.XmlDocument
         try {
             $xml.Load($Path)

@@ -24,9 +24,9 @@ The configuration file contains values for one or more systems. Each system has 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <systems>
-  <Prod>
-    <SystemRoot>D:\Easit\Systems\Prod</SystemRoot>
-    <ServiceName>EasitProd</ServiceName>
+  <Prod> <!-- Configuration name -->
+    <SystemRoot>D:\Easit\Systems\Prod</SystemRoot> <!-- SystemRoot = Configuration property -->
+    <ServiceName>EasitProd</ServiceName> <!-- EasitProd = Configuration property value -->
     <EasitRoot>D:\Easit</EasitRoot>
     <BackupRoot>D:\Easit\_Backup\Prod</BackupRoot>
     <TomcatRoot>D:\Easit\Tomcat\Prod</TomcatRoot>
