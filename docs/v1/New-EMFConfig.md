@@ -22,7 +22,7 @@ New-EMFConfig [[-EMFHome] <String>] [[-ConfigurationFileName] <String>] [-Config
 
 The *New-EMFConfig* cmdlet lets you create a new configuration within an already existing configuration file. If an configuration file does not already exist, one will be created by the cmdlet. If the configuration name is already used in the configuration file you will get a warning and the cmdlet stops.
 
-```xml
+```
 <systems>
   <Prod>
     <SystemRoot>D:\Easit\Systems\Prod</SystemRoot>
