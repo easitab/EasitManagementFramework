@@ -19,7 +19,7 @@ New-Module -Name "$moduleName" -ScriptBlock {
     $moduleName = Split-Path -Path $projectRoot -Leaf
     $sourceRoot = Join-Path -Path "$projectRoot" -ChildPath 'source'
     $moduleRoot = Join-Path -Path "$projectRoot" -ChildPath "module"
-    $canaryModuleRoot = Join-Path -Path "$moduleRoot" -ChildPath "nightlyBuild"
+    $canaryModuleRoot = Join-Path -Path "$moduleRoot" -ChildPath "canaryBuild"
     $modulePath = Join-Path -Path "$canaryModuleRoot" -ChildPath "${moduleName}.psm1"
     $allScripts = Get-ChildItem -Path "$sourceRoot" -Filter "*.ps1" -Recurse
     if (!(Test-Path -Path $modulePath)) {
