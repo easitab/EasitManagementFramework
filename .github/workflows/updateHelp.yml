@@ -19,7 +19,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-        with: ${{ secrets.GITAUTOCOMMITPAT }}
+        with:
+          token: ${{ secrets.GITAUTOCOMMITPAT }}
 
       - name: Build temp module
         run: ./build/tempbuild_github.ps1
