@@ -14,13 +14,11 @@ Dsiable scheduled "Easit task" in Windows Task Scheduler
 ## SYNTAX
 
 ### InputObject
-
 ```
 Disable-EasitScheduledTask [-InputObject <CimInstance[]>] [-AsJob] [<CommonParameters>]
 ```
 
 ### TaskName
-
 ```
 Disable-EasitScheduledTask [-TaskName <String[]>] [-AsJob] [<CommonParameters>]
 ```
@@ -125,7 +123,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

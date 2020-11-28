@@ -26,7 +26,7 @@ The *Test-EMFXMLData* cmdlet lets to test or verify that a configuration file is
 ### Example 1
 
 ```powershell
-PS C:\> Test-EMFXMLData 
+PS C:\> Test-EMFXMLData
 ```
 
 By just running *Test-EMFXMLData* a validation of *$EMFHome\emfConfig.xml* will be done with the schema provided in *$EMFHome\emfConfig.xsd*.
@@ -34,7 +34,7 @@ By just running *Test-EMFXMLData* a validation of *$EMFHome\emfConfig.xml* will 
 ### Example 2
 
 ```powershell
-PS C:\> Test-EMFXMLData -EMFHome 'D:\EMF' 
+PS C:\> Test-EMFXMLData -EMFHome 'D:\EMF'
 ```
 
 If your EMFHome location is another than $Home\EMF you can use this example instead of example 1.
@@ -42,7 +42,7 @@ If your EMFHome location is another than $Home\EMF you can use this example inst
 ### Example 3
 
 ```powershell
-PS C:\> Test-EMFXMLData -Path 'D:\EMF\MyOwnEmfConfig.xml' 
+PS C:\> Test-EMFXMLData -Path 'D:\EMF\MyOwnEmfConfig.xml'
 ```
 
 In this example we explicit tell the cmdlet to validate a configuration file in a custom location.
@@ -98,7 +98,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
