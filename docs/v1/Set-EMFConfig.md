@@ -14,7 +14,6 @@ Update or set property for existing configuration.
 ## SYNTAX
 
 ### Manual
-
 ```
 Set-EMFConfig [-EMFHome <String>] [-ConfigurationFileName <String>] [-ConfigurationName] <String>
  -EasitRoot <String> [-SystemRoot <String>] [-ServiceName <String>] [-TomcatRoot <String>]
@@ -22,7 +21,6 @@ Set-EMFConfig [-EMFHome <String>] [-ConfigurationFileName <String>] [-Configurat
 ```
 
 ### Array
-
 ```
 Set-EMFConfig [-EMFHome <String>] [-ConfigurationFileName <String>] [-ConfigurationName] <String>
  -PropertySetting <String[]> [<CommonParameters>]
@@ -238,7 +236,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

@@ -172,7 +172,7 @@ PS C:\&gt; Disable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/Disable-EasitScheduledTask.md</maml:uri>
+        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Disable-EasitScheduledTask.md</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -348,7 +348,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/Enable-EasitScheduledTask.md</maml:uri>
+        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Enable-EasitScheduledTask.md</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -550,7 +550,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/Get-EasitEmailRequestMailbox.md</maml:uri>
+        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Get-EasitEmailRequestMailbox.md</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -670,7 +670,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/Get-EasitScheduledTask.md</maml:uri>
+        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Get-EasitScheduledTask.md</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -680,11 +680,11 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:verb>Get</command:verb>
       <command:noun>EMFConfig</command:noun>
       <maml:description>
-        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+        <maml:para>Gets the configuration for one system.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>Gets the configuration for one system from the configuration file. You need to specify what system you would like to get the configuration for. The Get-EMFConfig cmdlet does not support array input.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -692,7 +692,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="ConfigName">
           <maml:name>ConfigurationName</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill ConfigurationName Description }}</maml:para>
+            <maml:para>Name of configuration to use in the configuration file.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -704,26 +704,26 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="file, filename">
           <maml:name>ConfigurationFileName</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill ConfigurationFileName Description }}</maml:para>
+            <maml:para>Name of the configuration file to use.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>emfConfig.xml</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Home">
           <maml:name>EMFHome</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill EMFHome Description }}</maml:para>
+            <maml:para>Path to root directory for EasitManagementFramework.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>$Home\EMF</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -731,19 +731,19 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="file, filename">
         <maml:name>ConfigurationFileName</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill ConfigurationFileName Description }}</maml:para>
+          <maml:para>Name of the configuration file to use.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>emfConfig.xml</dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="ConfigName">
         <maml:name>ConfigurationName</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill ConfigurationName Description }}</maml:para>
+          <maml:para>Name of configuration to use in the configuration file.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -755,14 +755,14 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Home">
         <maml:name>EMFHome</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill EMFHome Description }}</maml:para>
+          <maml:para>Path to root directory for EasitManagementFramework.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>$Home\EMF</dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -793,16 +793,24 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+        <dev:code>PS C:\&gt; Get-EMFConfig -ConfigurationName Test</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>Get the configuration for a system called Test.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; $systems = 'Test', 'Dev'
+PS C:\&gt; $systems | ForEach-Object {Get-EMFConfig -ConfigurationName $PSItem }</dev:code>
+        <dev:remarks>
+          <maml:para>Get the configuration for each system in the array systems.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/Get-EMFConfig.md</maml:uri>
+        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Get-EMFConfig.md</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -812,11 +820,11 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:verb>Import</command:verb>
       <command:noun>EMFXMLData</command:noun>
       <maml:description>
-        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+        <maml:para>Private cmdlet, not used by user directly.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>Import XML file and return an XML object.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -824,7 +832,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>Path</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill Path Description }}</maml:para>
+            <maml:para>Path to XML-file to import and return.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -836,7 +844,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Validate</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill Validate Description }}</maml:para>
+            <maml:para>Switch to use if validation should be performed against schema file. If the parameter is stated the Import-EMFXMLData will invoke this command: Test-EMFXMLData -Path $Path</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -850,7 +858,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>Path</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill Path Description }}</maml:para>
+          <maml:para>Path to XML-file to import and return.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -862,7 +870,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Validate</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill Validate Description }}</maml:para>
+          <maml:para>Switch to use if validation should be performed against schema file. If the parameter is stated the Import-EMFXMLData will invoke this command: Test-EMFXMLData -Path $Path</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -900,13 +908,20 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+        <dev:code>PS C:\&gt; $EMFHome = "$Home\EMF"
+PS C:\&gt; $ConfigurationFileName = 'emfConfig.xml'
+PS C:\&gt; Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para></maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
-    <command:relatedLinks />
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Import-EMFXMLData.md</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -981,7 +996,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>emfConfig.xsd</dev:defaultValue>
+          <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -1032,7 +1047,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>emfConfig.xsd</dev:defaultValue>
+        <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>SchemaURL</maml:name>
@@ -1080,18 +1095,11 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
           <maml:para>Download template files from the github project.</maml:para>
         </dev:remarks>
       </command:example>
-      <command:example>
-        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Initialize-EasitManagementFramework -EMFHome 'D:\customPath\to\EMF'</dev:code>
-        <dev:remarks>
-          <maml:para>Download template files from the github project to a custom folder.</maml:para>
-        </dev:remarks>
-      </command:example>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/Initialize-EasitManagementFramework.md</maml:uri>
+        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Initialize-EasitManagementFramework.md</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -1101,11 +1109,11 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:verb>New</command:verb>
       <command:noun>EMFConfig</command:noun>
       <maml:description>
-        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+        <maml:para>Create a new configuration for EMF.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>The New-EMFConfig cmdlet lets you create a new configuration within an already existing configuration file. If an configuration file does not already exist, one will be created by the cmdlet. If the configuration name is already used in the configuration file you will get a warning and the cmdlet stops.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1113,19 +1121,19 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="Home">
           <maml:name>EMFHome</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill EMFHome Description }}</maml:para>
+            <maml:para>Path to root directory for EasitManagementFramework.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>$Home\EMF</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="file, filename">
           <maml:name>ConfigurationFileName</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill ConfigurationFileName Description }}</maml:para>
+            <maml:para>Name of the configuration file to use.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -1137,7 +1145,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="ConfigName">
           <maml:name>ConfigurationName</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill ConfigurationName Description }}</maml:para>
+            <maml:para>Name of configuration to use in the configuration file.</maml:para>
           </maml:Description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">Prod</command:parameterValue>
@@ -1157,7 +1165,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="ConfigSettings">
           <maml:name>ConfigurationSettings</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill ConfigurationSettings Description }}</maml:para>
+            <maml:para>Hashtable with properties and its values that the configuration should have.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -1169,19 +1177,19 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
           <maml:name>SchemaFile</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill SchemaFile Description }}</maml:para>
+            <maml:para>Full path, including file and extension, to use when validating configuration file.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>$EMFHome\emfConfig.xsd</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Validate</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill Validate Description }}</maml:para>
+            <maml:para>Switch to use if you would like to validate configuration file.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -1195,7 +1203,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="file, filename">
         <maml:name>ConfigurationFileName</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill ConfigurationFileName Description }}</maml:para>
+          <maml:para>Name of the configuration file to use.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1207,7 +1215,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="ConfigName">
         <maml:name>ConfigurationName</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill ConfigurationName Description }}</maml:para>
+          <maml:para>Name of configuration to use in the configuration file.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1219,7 +1227,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="ConfigSettings">
         <maml:name>ConfigurationSettings</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill ConfigurationSettings Description }}</maml:para>
+          <maml:para>Hashtable with properties and its values that the configuration should have.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
@@ -1231,31 +1239,31 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="Home">
         <maml:name>EMFHome</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill EMFHome Description }}</maml:para>
+          <maml:para>Path to root directory for EasitManagementFramework.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>$Home\EMF</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
         <maml:name>SchemaFile</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill SchemaFile Description }}</maml:para>
+          <maml:para>Full path, including file and extension, to use when validating configuration file.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>$EMFHome\emfConfig.xsd</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Validate</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill Validate Description }}</maml:para>
+          <maml:para>Switch to use if you would like to validate configuration file.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -1293,13 +1301,19 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+        <dev:code>PS C:\&gt; $hashtable = @{SystemRoot = D:\Easit\Systems\Test;ServiceName = EasitTest}
+PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastable</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>In this example we first create a hastable with all the properties and its values for the configuration ( ConfigurationName ) we would like to add. We name the configuration with the parameter ConfigurationName and pass the hashtable in with the parameter ConfigurationSettings . This will create a configuration named Test with two ( SystemRoot and ServiceName ) properties.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
-    <command:relatedLinks />
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/New-EMFConfig.md</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1539,7 +1553,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/Set-EasitEmailRequestMailboxSetting.md</maml:uri>
+        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Set-EasitEmailRequestMailboxSetting.md</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -1549,11 +1563,11 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:verb>Set</command:verb>
       <command:noun>EMFConfig</command:noun>
       <maml:description>
-        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+        <maml:para>Update or set property for existing configuration.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>The Set-EMFConfig cmdlet lets you set the value for one or more properties in a existing configuration and add one or more properties for a existing configuration. If you pass in an array of properties and one of those properties does not exist the cmdlet will add it for you. If the configuration doesn't exist you will get an error.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1561,7 +1575,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="ConfigName">
           <maml:name>ConfigurationName</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill ConfigurationName Description }}</maml:para>
+            <maml:para>Name of configuration to use in the configuration file.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -1573,31 +1587,31 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>BackupRoot</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill BackupRoot Description }}</maml:para>
+            <maml:para>Path to directory to use for backups of EmailRequest and Tomcat settings</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>$EasitRoot\_Backup\$ConfigurationName</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="file, filename">
           <maml:name>ConfigurationFileName</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill ConfigurationFileName Description }}</maml:para>
+            <maml:para>Name of the configuration file to use.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>emfConfig.xml</dev:defaultValue>
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>EasitRoot</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill EasitRoot Description }}</maml:para>
+            <maml:para>Path to Easit directory which usually contains EmailRequest, ImportClient, Tomcat, Java and so on.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -1609,74 +1623,74 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ER, EmailRequest, erRoot">
           <maml:name>EmailRequestRoot</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill EmailRequestRoot Description }}</maml:para>
+            <maml:para>Path to root directory for EmailRequest.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>$EasitRoot\EmailRequest</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Home">
           <maml:name>EMFHome</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill EMFHome Description }}</maml:para>
+            <maml:para>Path to root directory for EasitManagementFramework.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>$Home\EMF</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IC, ImportClient, icRoot">
           <maml:name>ImportClientRoot</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill ImportClientRoot Description }}</maml:para>
+            <maml:para>Path to root directory for ImportClient.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>$EasitRoot\ImportClient</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ServiceName</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill ServiceName Description }}</maml:para>
+            <maml:para>DisplayName of the Windows service installed by Apache Tomcat that starts and stops Easit BPS / GO.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>Easit$ConfigurationName</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>SystemRoot</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill SystemRoot Description }}</maml:para>
+            <maml:para>Path to the systems configuration directory.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>$EasitRoot\Systems\$ConfigurationName</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>TomcatRoot</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill TomcatRoot Description }}</maml:para>
+            <maml:para>Path to systems Tomcat root directory.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>$EasitRoot\Tomcat\$ConfigurationName</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
@@ -1684,7 +1698,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="ConfigName">
           <maml:name>ConfigurationName</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill ConfigurationName Description }}</maml:para>
+            <maml:para>Name of configuration to use in the configuration file.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -1696,31 +1710,31 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="file, filename">
           <maml:name>ConfigurationFileName</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill ConfigurationFileName Description }}</maml:para>
+            <maml:para>Name of the configuration file to use.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>emfConfig.xml</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Home">
           <maml:name>EMFHome</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill EMFHome Description }}</maml:para>
+            <maml:para>Path to root directory for EasitManagementFramework.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>$Home\EMF</dev:defaultValue>
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>PropertySetting</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill PropertySetting Description }}</maml:para>
+            <maml:para>Array of properties and values to set in a configuration.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
           <dev:type>
@@ -1735,31 +1749,31 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>BackupRoot</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill BackupRoot Description }}</maml:para>
+          <maml:para>Path to directory to use for backups of EmailRequest and Tomcat settings</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>$EasitRoot\_Backup\$ConfigurationName</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="file, filename">
         <maml:name>ConfigurationFileName</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill ConfigurationFileName Description }}</maml:para>
+          <maml:para>Name of the configuration file to use.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>emfConfig.xml</dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="ConfigName">
         <maml:name>ConfigurationName</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill ConfigurationName Description }}</maml:para>
+          <maml:para>Name of configuration to use in the configuration file.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1771,7 +1785,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>EasitRoot</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill EasitRoot Description }}</maml:para>
+          <maml:para>Path to Easit directory which usually contains EmailRequest, ImportClient, Tomcat, Java and so on.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1783,43 +1797,43 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ER, EmailRequest, erRoot">
         <maml:name>EmailRequestRoot</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill EmailRequestRoot Description }}</maml:para>
+          <maml:para>Path to root directory for EmailRequest.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>$EasitRoot\EmailRequest</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Home">
         <maml:name>EMFHome</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill EMFHome Description }}</maml:para>
+          <maml:para>Path to root directory for EasitManagementFramework.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>$Home\EMF</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IC, ImportClient, icRoot">
         <maml:name>ImportClientRoot</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill ImportClientRoot Description }}</maml:para>
+          <maml:para>Path to root directory for ImportClient.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>$EasitRoot\ImportClient</dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>PropertySetting</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill PropertySetting Description }}</maml:para>
+          <maml:para>Array of properties and values to set in a configuration.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
         <dev:type>
@@ -1831,38 +1845,38 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>ServiceName</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill ServiceName Description }}</maml:para>
+          <maml:para>DisplayName of the Windows service installed by Apache Tomcat that starts and stops Easit BPS / GO.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>Easit$ConfigurationName</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>SystemRoot</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill SystemRoot Description }}</maml:para>
+          <maml:para>Path to the systems configuration directory.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>$EasitRoot\Systems\$ConfigurationName</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>TomcatRoot</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill TomcatRoot Description }}</maml:para>
+          <maml:para>Path to systems Tomcat root directory.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>$EasitRoot\Tomcat\$ConfigurationName</dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -1893,13 +1907,33 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+        <dev:code>PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -EasitRoot 'E:\Easit'</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>In this example we update the settings for a configuration named Dev. Since the value from EasitRoot is inherited by all other parameters in the parameter set, e.g. SystemRoot in this case becomes E:\Easit\Systems\Dev and TomcatRoot in this becomes E:\Easit\Tomcat\Dev. This principle can be overridden by explicit providing a value for the parameter.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -EasitRoot 'E:\Easit' -TomcatRoot 'F:\Tomcat\Dev'</dev:code>
+        <dev:remarks>
+          <maml:para>In this example we update the settings for a configuration named Dev and overriding the inheritance principle by explicit telling the cmdlet that the value for TomcatRoot is F:\Tomcat\Dev .</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; $PropertySettings = "EasitRoot, E:\Easit", "TomcatRoot, F:\Tomcat\Dev", "BackupRoot, D:\Easit\_Backup"
+PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySettings</dev:code>
+        <dev:remarks>
+          <maml:para>In this example we update the settings for a configuration named Dev by providing an array with property names and values.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
-    <command:relatedLinks />
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Set-EMFConfig.md</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2073,7 +2107,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/Start-EasitGOApplication.md</maml:uri>
+        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Start-EasitGOApplication.md</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -2217,7 +2251,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/Stop-EasitGOApplication.md</maml:uri>
+        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Stop-EasitGOApplication.md</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -2227,11 +2261,11 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:verb>Test</command:verb>
       <command:noun>EMFXMLData</command:noun>
       <maml:description>
-        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+        <maml:para>Validate configuration file against schema.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>The Test-EMFXMLData cmdlet lets to test or verify that a configuration file is valid.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -2239,38 +2273,38 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="Home">
           <maml:name>EMFHome</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill EMFHome Description }}</maml:para>
+            <maml:para>Path to root directory for EasitManagementFramework.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>$Home\EMF</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>Path</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill Path Description }}</maml:para>
+            <maml:para>Full path to the configuration file you would like to validate.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>$EMFHome\emfConfig.xml</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>SchemaFile</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill SchemaFile Description }}</maml:para>
+            <maml:para>Full path to schema that you would like to validate against.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>$EMFHome\emfConfig.xsd</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -2278,38 +2312,38 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="Home">
         <maml:name>EMFHome</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill EMFHome Description }}</maml:para>
+          <maml:para>Path to root directory for EasitManagementFramework.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>$Home\EMF</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>Path</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill Path Description }}</maml:para>
+          <maml:para>Full path to the configuration file you would like to validate.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>$EMFHome\emfConfig.xml</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>SchemaFile</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill SchemaFile Description }}</maml:para>
+          <maml:para>Full path to schema that you would like to validate against.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>$EMFHome\emfConfig.xsd</dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -2340,12 +2374,31 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+        <dev:code>PS C:\&gt; Test-EMFXMLData</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>By just running Test-EMFXMLData a validation of $EMFHome\emfConfig.xml will be done with the schema provided in $EMFHome\emfConfig.xsd .</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Test-EMFXMLData -EMFHome 'D:\EMF'</dev:code>
+        <dev:remarks>
+          <maml:para>If your EMFHome location is another than $Home\EMF you can use this example instead of example 1.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Test-EMFXMLData -Path 'D:\EMF\MyOwnEmfConfig.xml'</dev:code>
+        <dev:remarks>
+          <maml:para>In this example we explicit tell the cmdlet to validate a configuration file in a custom location.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
-    <command:relatedLinks />
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Test-EMFXMLData.md</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
   </command:command>
 </helpItems>
