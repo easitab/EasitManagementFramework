@@ -60,7 +60,7 @@ function Enable-EasitScheduledTask {
     )
     
     begin {
-        Write-Verbose "$($MyInvocation.MyCommand) initialized"
+        Write-Verbose "$($MyInvocation.MyCommand) initialized.."
     }
     
     process {
