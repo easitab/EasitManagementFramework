@@ -21,4 +21,4 @@ on_finish:
     
     "Write-Host \"$env:moduleName\""
 
-    "if (Test-ModuleManifest -Path \"$manifestFile\") {Publish-Module -Path \"$env:moduleRoot\" -NuGetApiKey \"$env:galleryPublishingKey\"}"
+    "#if (Test-ModuleManifest -Path \"$manifestFile\") {Publish-Module -Path \"$env:moduleRoot\" -NuGetApiKey \"$env:galleryPublishingKey\"}"
