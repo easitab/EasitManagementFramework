@@ -2,7 +2,7 @@
 # Actual code that will be executed lives in appveyor.yml
 
 New-Module -Name "$env:moduleName" -ScriptBlock {
-    $modulePath = "$env:moduleRoot\$env:moduleName.psm1"
+    $modulePath = Join-Path -Path "$env:moduleRoot" -ChildPath "$env:moduleName.psm1"
     $privScripts = Get-ChildItem -Path "$env:sourceRoot\private" -Filter "*.ps1" -Recurse
     $pubScripts = Get-ChildItem -Path "$env:sourceRoot\public" -Filter "*.ps1" -Recurse
     if (!(Test-Path -Path $modulePath)) {
@@ -26,9 +26,17 @@ New-Module -Name "$env:moduleName" -ScriptBlock {
             Write-Output "Unable to find modulePath at $modulePath" -ForegroundColor Red
         }
     }
+} | Out-Null
+$moduleFilePath = Join-Path -Path "$env:moduleRoot" -ChildPath "${env:moduleName}.psm1"
+if (Test-Path -Path "$moduleFilePath") {
+    Write-Host "Check for moduleFilePath, OK!" -ForegroundColor Green
 }
+else {
+    throw "Unable to find $moduleFilePath"
+}
+$manifestFilePath = Join-Path -Path "$env:moduleRoot" -ChildPath "${env:moduleName}.psd1"
 $manifest = @{
-    Path              = "$env:moduleRoot\$env:moduleName.psd1" 
+    Path              = "$manifestFilePath" 
     RootModule        = "$env:moduleName.psm1" 
     CompanyName       = "$env:companyName"
     Author            = "$env:moduleAuthor"
@@ -40,5 +48,22 @@ $manifest = @{
     PowerShellVersion = '5.1'
     Copyright         = "(c) 2020 $env:companyName. All rights reserved."
 }
-New-ModuleManifest @manifest
-Get-ChildItem -Path "$env:moduleRoot"
+New-ModuleManifest @manifest | Out-Null
+if (Test-Path -Path "$manifestFilePath") {
+    Write-Host "Check for manifestFilePath, OK!" -ForegroundColor Green
+} else {
+    throw "Unable to find $manifestFilePath"
+}
+
+#################################################################################################
+
+Install-Module Pester -Force
+Invoke-Pester
+
+#################################################################################################
+
+if (Test-ModuleManifest -Path "$manifestFilePath") {
+    $moduleRootPath = Resolve-Path "$env:moduleRoot"
+    Publish-Module -Path "$moduleRootPath" -NuGetApiKey "$env:galleryPublishingKey"
+    Write-Host "Module published!" -ForegroundColor Green
+}
