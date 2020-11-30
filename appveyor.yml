@@ -14,11 +14,11 @@ test_script:
     Invoke-Pester
 on_finish:
 - ps: >-
-    $manifestFile = Join-Path -Path \"$env:moduleRoot\" -ChildPath \"${env:moduleName}.psd1\"
-    Write-Host "$manifestFile"
+    "$manifestFile = Join-Path -Path \"$env:moduleRoot\" -ChildPath \"${env:moduleName}.psd1\""
+    "Write-Host "$manifestFile""
     
-    Write-Host \"$env:moduleRoot\"
+    "Write-Host \"$env:moduleRoot\""
     
-    Write-Host \"$env:moduleName\"
+    "Write-Host \"$env:moduleName\""
 
-    if (Test-ModuleManifest -Path \"$manifestFile\") {Publish-Module -Path \"$env:moduleRoot\" -NuGetApiKey \"$env:galleryPublishingKey\"}
+    "if (Test-ModuleManifest -Path \"$manifestFile\") {Publish-Module -Path \"$env:moduleRoot\" -NuGetApiKey \"$env:galleryPublishingKey\"}"
