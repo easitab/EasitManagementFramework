@@ -11,14 +11,10 @@ test_script:
 - ps: >-
     Install-Module Pester -Force
 
-    Invoke-Pester -EnableExit
-on_success:
-- ps: >-
-    $manifestFile = Join-Path -Path "$env:moduleRoot" -ChildPath "${env:moduleName}.psd1"
-
-    $newManifestTest = Test-ModuleManifest -Path "$manifestFile"
+    Invoke-Pester
 on_finish:
 - ps: >-
-    if ($newManifestTest) {
+    $manifestFile = Join-Path -Path "$env:moduleRoot" -ChildPath "${env:moduleName}.psd1"
+    if (Test-ModuleManifest -Path "$manifestFile") {
             Publish-Module -Path "$env:moduleRoot" -NuGetApiKey "$env:galleryPublishingKey"
         }
