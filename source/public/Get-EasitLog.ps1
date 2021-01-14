@@ -20,7 +20,7 @@ function Get-EasitLog {
     }
     process {
         if (!($LiteralPath) -and !($Path)) {
-            Write-Verbose "LiteralPath and Path are not provided"
+            Write-Verbose "LiteralPath and Path are not provided."
             try {
                 Write-Verbose "Looking for EMF-Config"
                 $emfConfig = Get-EMFConfig -Home $EmfHome -ConfigurationFileName $EmfConfigurationFileName -ConfigurationName $EmfConfigurationName
