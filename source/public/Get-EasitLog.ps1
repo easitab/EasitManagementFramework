@@ -11,7 +11,7 @@ function Get-EasitLog {
         [string] $EmfHome = "$Home\EMF",
         [Parameter(ParameterSetName = 'Configuration')]
         [string] $EmfConfigurationFileName = 'emfConfig.xml',
-        [Parameter(Mandatory,ParameterSetName = 'Configuration')]
+        [Parameter(Mandatory,Position=0,ParameterSetName = 'Configuration')]
         [Alias('system')]
         [string] $EmfConfigurationName
     )
