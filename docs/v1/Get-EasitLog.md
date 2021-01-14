@@ -15,28 +15,25 @@ Get log entries from Easit GO.
 
 ### Configuration (Default)
 
-The parameters in this set should be used if a conifiguration file is present.
-
 ```powershell
 Get-EasitLog [-EmfHome <String>] [-EmfConfigurationFileName <String>] -EmfConfigurationName <String>
  [<CommonParameters>]
 ```
+The parameters in this set should be used if a conifiguration file is present.
 
 ### LiteralPath
-
-Used if you only what to get entries from one specific log file.
 
 ```powershell
 Get-EasitLog [-LiteralPath <String>] [<CommonParameters>]
 ```
+Used if you only what to get entries from one specific log file.
 
 ### Path
-
-Used if you want to get all or some log files in a specific directory.
 
 ```powershell
 Get-EasitLog [-Path <String>] -LogFilename <String> [<CommonParameters>]
 ```
+Used if you want to get all or some log files in a specific directory.
 
 ## DESCRIPTION
 
