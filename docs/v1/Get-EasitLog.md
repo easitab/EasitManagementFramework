@@ -8,42 +8,107 @@ schema: 2.0.0
 # Get-EasitLog
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Get log entries from Easit GO.
 
 ## SYNTAX
 
 ### Configuration (Default)
-```
+
+The parameters in this set should be used if a conifiguration file is present.
+
+```powershell
 Get-EasitLog [-EmfHome <String>] [-EmfConfigurationFileName <String>] -EmfConfigurationName <String>
  [<CommonParameters>]
 ```
 
 ### LiteralPath
-```
+
+Used if you only what to get entries from one specific log file.
+
+```powershell
 Get-EasitLog [-LiteralPath <String>] [<CommonParameters>]
 ```
 
 ### Path
-```
+
+Used if you want to get all or some log files in a specific directory.
+
+```powershell
 Get-EasitLog [-Path <String>] -LogFilename <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+The *Get-EasitLog* cmdlet allows you to parse one or more "Easit logs" and get it contents as objects. The cmdlet gets all content from one or more "Easit logs" and considers each line starting with a date (2022-01-01) as an "entry" and each entry is returned as an object.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get log entries from Easit*.log - Test
+
+This will return all entries in log files from test.
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-EasitLog -EmfConfigurationName 'Test'
 ```
 
-{{ Add example description here }}
+In this example we take advantage of the EMF-configuration file located in '$Home/EMF', and the configuration named Test in it. This will return all entries in log files from test.
+
+### Example 2: Get all log entries from Easit*.log - Production
+
+This will return all entries in log files from production.
+
+```powershell
+PS C:\> Get-EasitLog 'Prod'
+```
+
+In this example we take advantage of the EMF-configuration file located in '$Home/EMF'. The parameter *EmfConfigurationName* is expected as first input if no parameter is specified.
+
+### Example 3: Get log entries - Specific log file
+
+This will return all entries from one specific log file.
+
+```powershell
+PS C:\> Get-EasitLog -LiteralPath 'D:\Logs\easitGO.log'
+```
+
+In this example we specify what log file we would like to get entries from.
+
+### Example 4: Get log entries - Specific path
+
+This will return all entries from all log files named something like *easit*.
+
+```powershell
+PS C:\> Get-EasitLog -Path 'D:\Logs\'
+```
+
+In this example we specify what path we should look for log files in. All files named something like *easit* will be parsed and each entry in these logs will be returned.
+
+### Example 5: Get log entries - Specific path, custom logname
+
+This will return all entries from all log files named something like *easit*2021-01*.
+
+```powershell
+PS C:\> Get-EasitLog -Path 'D:\Logs\' -LogFilename '*easit*2021-01*'
+```
+
+In this example we specify what path we should look for log files in. All files named something like *easit*2021-01* will be parsed and each entry in these logs will be returned.
+
+### Example 6: Get log entries - Custom EMF-Home folder
+
+Custome root folder for EMF configuration and the configuration named *Dev*.
+
+```powershell
+PS C:\> Get-EasitLog -EmfConfigurationName 'Dev' -EmfHome 'D:\Easit\EMF'
+```
+
+In this example we will look for a file named *emfConfig.xml*. In the configuration named Dev we will use the value from *SystemRoot* to find a logs folder and from that folder return all entries from log files named something *easit*.
 
 ## PARAMETERS
 
 ### -EmfConfigurationFileName
-{{ Fill EmfConfigurationFileName Description }}
+
+Name of the configuration file to use.
 
 ```yaml
 Type: String
@@ -52,28 +117,30 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: emfConfig.xml
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -EmfConfigurationName
-{{ Fill EmfConfigurationName Description }}
+
+Name of configuration to use in the configuration file.
 
 ```yaml
 Type: String
 Parameter Sets: Configuration
-Aliases: system
+Aliases:
 
-Required: True
-Position: Named
+Required: False
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -EmfHome
-{{ Fill EmfHome Description }}
+
+Path to root directory for EasitManagementFramework.
 
 ```yaml
 Type: String
@@ -82,13 +149,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: $Home\EMF
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -LiteralPath
-{{ Fill LiteralPath Description }}
+
+Specifies a path to one log file. The value of LiteralPath is used exactly as it's typed. No characters are interpreted as wildcards. If the path includes escape characters, enclose it in single quotation marks. Single quotation marks tell PowerShell to not interpret any characters as escape sequences.
 
 ```yaml
 Type: String
@@ -103,14 +171,15 @@ Accept wildcard characters: False
 ```
 
 ### -LogFilename
-{{ Fill LogFilename Description }}
+
+Name of log file to parse for entries. Wildcards *** can be used. A best effort will be performed to find log files matching the name.
 
 ```yaml
 Type: String
 Parameter Sets: Path
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -118,7 +187,8 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-{{ Fill Path Description }}
+
+Path to directory / folder to look for log files in.
 
 ```yaml
 Type: String
@@ -138,9 +208,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
+
 ## OUTPUTS
 
 ### System.Object
+
 ## NOTES
 
 ## RELATED LINKS
