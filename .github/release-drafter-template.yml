@@ -13,6 +13,7 @@ categories:
   - title: 'Enhancement'
     labels: 
       - 'enhancement'
+      - 'documentation'
       - 'test'
   - title: 'Bug Fixes'
     labels:

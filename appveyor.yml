@@ -3,8 +3,9 @@ pull_requests:
   do_not_increment_build_number: true
 branches:
   only:
-  - /development/
+  - /main/
 skip_non_tags: true
+skip_branch_with_pr: true
 environment:
   moduleName: EasitManagementFramework
   companyName: Easit AB
@@ -12,21 +13,81 @@ environment:
   moduleAuthor: Anders Thyrsson
   projectUri: https://github.com/easitab/EasitManagementFramework
   sourceRoot: C:\projects\easitmanagementframework\source
-  helpInfoURI: https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/
-  licenseUri: https://github.com/easitab/EasitManagementFramework/blob/development/LICENSE
+  helpInfoURI: https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/en-US/EasitManagementFramework-help.xml
+  licenseUri: https://github.com/easitab/EasitManagementFramework/blob/main/LICENSE
   moduleRoot: C:\projects\easitmanagementframework\EasitManagementFramework
 build_script:
-- ps: "New-Module -Name \"$env:moduleName\" -ScriptBlock {\n    $modulePath = Join-Path -Path \"$env:moduleRoot\" -ChildPath \"$env:moduleName.psm1\"\n    $privScripts = Get-ChildItem -Path \"$env:sourceRoot\\private\" -Filter \"*.ps1\" -Recurse\n    $pubScripts = Get-ChildItem -Path \"$env:sourceRoot\\public\" -Filter \"*.ps1\" -Recurse\n    if (!(Test-Path -Path $modulePath)) {\n        $newModuleDir = New-Item -Path \"$env:resourceRoot\" -Name \"$env:moduleName\" -ItemType 'directory' -Force\n        $newModuleFile = New-Item -Path \"$env:moduleRoot\" -Name \"$env:moduleName.psm1\" -ItemType \"file\"\n    }\n    foreach ($privateScript in $privScripts) {\n        $scriptContent = Get-Content -Path \"$($privateScript.FullName)\" -Raw\n        if (Test-Path -Path $modulePath) {\n            Add-Content -Path $modulePath -Value $scriptContent\n        } else {\n            Write-Output \"Unable to find modulePath at $modulePath\" -ForegroundColor Red\n        }\n    }\n    foreach ($publicScript in $pubScripts) {\n        $scriptContent = Get-Content -Path \"$($publicScript.FullName)\" -Raw\n        if (Test-Path -Path $modulePath) {   \n            Add-Content -Path $modulePath -Value $scriptContent                     \n            Add-Content -Path $modulePath -Value \"Export-ModuleMember -Function $($publicScript.BaseName)\"\n        } else {\n            Write-Output \"Unable to find modulePath at $modulePath\" -ForegroundColor Red\n        }\n    }\n} | Out-Null\n$moduleFilePath = Join-Path -Path \"$env:moduleRoot\" -ChildPath \"${env:moduleName}.psm1\"\nif (Test-Path -Path \"$moduleFilePath\") {\n    Write-Host \"Check for moduleFilePath, OK!\" -ForegroundColor Green\n}\nelse {\n    throw \"Unable to find $moduleFilePath\"\n}\n$manifestFilePath = Join-Path -Path \"$env:moduleRoot\" -ChildPath \"${env:moduleName}.psd1\"\n$manifest = @{\n    Path              = \"$manifestFilePath\" \n    RootModule        = \"$env:moduleName.psm1\" \n    CompanyName       = \"$env:companyName\"\n    Author            = \"$env:moduleAuthor\"\n    ModuleVersion     = \"$env:APPVEYOR_BUILD_VERSION\"\n    HelpInfoUri       = \"$env:helpInfoUri\"\n    LicenseUri        = \"$env:licenseUri\"\n    ProjectUri        = \"$env:projectUri\"\n    Description       = 'Management Framework for Easit BPS and Easit GO'\n    PowerShellVersion = '5.1'\n    Copyright         = \"(c) 2020 $env:companyName. All rights reserved.\"\n}\nNew-ModuleManifest @manifest | Out-Null\nif (Test-Path -Path \"$manifestFilePath\") {\n    Write-Host \"Check for manifestFilePath, OK!\" -ForegroundColor Green\n} else {\n    throw \"Unable to find $manifestFilePath\"\n}"
-test: off
-on_success:
+- ps: >-
+    New-Module -Name "$env:moduleName" -ScriptBlock {
+        $modulePath = Join-Path -Path "$env:moduleRoot" -ChildPath "$env:moduleName.psm1"
+        $privScripts = Get-ChildItem -Path "$env:sourceRoot\private" -Filter "*.ps1" -Recurse
+        $pubScripts = Get-ChildItem -Path "$env:sourceRoot\public" -Filter "*.ps1" -Recurse
+        if (!(Test-Path -Path $modulePath)) {
+            $newModuleDir = New-Item -Path "$env:resourceRoot" -Name "$env:moduleName" -ItemType 'directory' -Force
+            $newModuleFile = New-Item -Path "$env:moduleRoot" -Name "$env:moduleName.psm1" -ItemType "file"
+        }
+        foreach ($privateScript in $privScripts) {
+            $scriptContent = Get-Content -Path "$($privateScript.FullName)" -Raw
+            if (Test-Path -Path $modulePath) {
+                Add-Content -Path $modulePath -Value $scriptContent
+            } else {
+                Write-Output "Unable to find modulePath at $modulePath"
+            }
+        }
+        foreach ($publicScript in $pubScripts) {
+            $scriptContent = Get-Content -Path "$($publicScript.FullName)" -Raw
+            if (Test-Path -Path $modulePath) {
+                Add-Content -Path $modulePath -Value $scriptContent
+                Add-Content -Path $modulePath -Value "Export-ModuleMember -Function $($publicScript.BaseName)"
+            } else {
+                Write-Output "Unable to find modulePath at $modulePath"
+            }
+        }
+    } | Out-Null
+
+    $moduleFilePath = Join-Path -Path "$env:moduleRoot" -ChildPath "${env:moduleName}.psm1"
+
+    if (Test-Path -Path "$moduleFilePath") {
+        Write-Output "Check for moduleFilePath, OK!"
+    }
+
+    else {
+        throw "Unable to find $moduleFilePath"
+    }
+
+    $manifestFilePath = Join-Path -Path "$env:moduleRoot" -ChildPath "${env:moduleName}.psd1"
+
+    $manifest = @{
+        Path              = "$manifestFilePath"
+        RootModule        = "$env:moduleName.psm1"
+        CompanyName       = "$env:companyName"
+        Author            = "$env:moduleAuthor"
+        ModuleVersion     = "$env:APPVEYOR_BUILD_VERSION"
+        HelpInfoUri       = "$env:helpInfoUri"
+        LicenseUri        = "$env:licenseUri"
+        ProjectUri        = "$env:projectUri"
+        Description       = 'Management Framework for Easit BPS and Easit GO'
+        PowerShellVersion = '5.1'
+        Copyright         = "(c) 2020 $env:companyName. All rights reserved."
+    }
+
+    New-ModuleManifest @manifest | Out-Null
+
+    if (Test-Path -Path "$manifestFilePath") {
+        Write-Output "Check for manifestFilePath, OK!"
+    } else {
+        throw "Unable to find $manifestFilePath"
+    }
+test_script:
 - ps: >-
     Install-Module Pester -Force
 
     Invoke-Pester
+deploy: off
 on_finish:
 - ps: >-
     if (Test-ModuleManifest -Path "$manifestFilePath") {
         $moduleRootPath = Resolve-Path "$env:moduleRoot"
         Publish-Module -Path "$moduleRootPath" -NuGetApiKey "$env:galleryPublishingKey"
-        Write-Host "Module published!" -ForegroundColor Green
+        Write-Output "Module published!"
     }

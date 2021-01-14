@@ -3,9 +3,9 @@ function Get-EasitLog {
     param (
         [Parameter(ParameterSetName = 'LiteralPath')]
         [string]$LiteralPath,
-        [Parameter(ParameterSetName = 'ContainerPath')]
+        [Parameter(ParameterSetName = 'Path')]
         [string]$Path,
-        [Parameter(ParameterSetName = 'ContainerPath')]
+        [Parameter(ParameterSetName = 'Path')]
         [string]$LogFilename,
         [Parameter(ParameterSetName = 'Configuration')]
         [string] $EmfHome = "$Home\EMF",
@@ -48,9 +48,10 @@ function Get-EasitLog {
             }
         } elseif ($LiteralPath) {
             if (Test-Path -Path $LiteralPath) {
+                $logData += "`n1##${LiteralPath}##`n"
                 Write-Verbose "Getting content of $LiteralPath"
                 try {
-                    $logData = [System.IO.File]::ReadAllText($LiteralPath)
+                    $logData += [System.IO.File]::ReadAllText($LiteralPath)
                     Write-Verbose "Content collected"
                 } catch {
                     throw $_
@@ -87,6 +88,7 @@ function Get-EasitLog {
                 throw $_
             }
             foreach ($file in $files) {
+                $logData += "`n1##$($file.Fullname)##`n"
                 Write-Verbose "Getting content of $file"
                 try {
                     $logData += [System.IO.File]::ReadAllText($file)
@@ -103,11 +105,19 @@ function Get-EasitLog {
         foreach ($logEvent in $logEvents) {
             $logEvent = $logEvent.TrimEnd()
             $logEvent = $logEvent.TrimStart()
-            if ($logEvent.length -gt 0) {
-                try {
-                    $returnObject += $logEvent | Convert-EasitLogEntryToPsObject
-                } catch {
-                    throw $_
+            if (Select-String -InputObject $logEvent -Pattern '##.+##' -Quiet) {
+                $source = Select-String -InputObject $logEvent -Pattern '##.+##'
+                $source = "$($source.Matches.Value)"
+                $source = $source.TrimStart('##')
+                $source = $source.TrimEnd('##')
+                Write-Verbose "source = $source"
+            } else {
+                if ($logEvent.length -gt 0) {
+                    try {
+                        $returnObject += $logEvent | Convert-EasitLogEntryToPsObject -Source "$source"
+                    } catch {
+                        throw $_
+                    }
                 }
             }
         }
