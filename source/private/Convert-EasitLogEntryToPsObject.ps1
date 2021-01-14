@@ -2,7 +2,9 @@ function Convert-EasitLogEntryToPsObject {
     [CmdletBinding(HelpURI="https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Convert-EasitLogEntryToPsObject.md")]
     param (
         [Parameter(ValueFromPipeline)]
-        [string] $String
+        [string] $String,
+        [Parameter()]
+        [string] $Source
     )
     
     begin {
@@ -28,17 +30,22 @@ function Convert-EasitLogEntryToPsObject {
         $stringMessage = $stringMessage.TrimEnd('[')
         Write-Debug "stringMessage = $stringMessage"
 
-        $stringClass = Select-String -InputObject $String -Pattern '\[.+\]'
+        $stringClass = Select-String -InputObject $String -Pattern '\[[\w\.]+\]$'
         $stringClass = "$($stringClass.Matches.Value)"
         $stringClass = $stringClass.TrimStart('[')
         $stringClass = $stringClass.TrimEnd(']')
         Write-Debug "stringClass = $stringClass"
 
-        $stringStack = Select-String -InputObject $String -Pattern '\- [\w|\W|\n\r]*'
-        $stringStack = "$($stringStack.Matches.Value)"
-        $stringStack = $stringStack.TrimStart("- $stringMessage [$stringClass]")
-        $stringStack = $stringStack.TrimStart()
-        Write-Debug "stringStack = $stringStack"
+        if (Select-String -InputObject $String -Pattern '\]\s?(\r|\n)+' -Quiet) {
+            $stringStack = Select-String -InputObject $String -Pattern '\- [\w|\W|\n\r]*'
+            $stringStack = "$($stringStack.Matches.Value)"
+            $stringStack = $stringStack.TrimStart("- $stringMessage [$stringClass]")
+            $stringStack = $stringStack.TrimStart()
+            Write-Debug "stringStack = $stringStack"
+        } else {
+            $stringStack = $null
+        }
+
         Write-Verbose "Creating object from entry strings"
         $returnObject = [PSCustomObject]@{
             Date                = "$stringDate"
@@ -47,6 +54,7 @@ function Convert-EasitLogEntryToPsObject {
             Class               = "$stringClass"
             Message             = "$stringMessage"
             FullStackMessage    = "$stringStack"
+            Source              = "$Source"
         }
         Write-Verbose "Returning entry as object"
         return $returnObject

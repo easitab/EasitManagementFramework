@@ -3,9 +3,10 @@ name: Release Notes
 on:
   push:
     branches: 'development'
-    paths-ignore:
-    - '.github/**'
-    - 'workflows/**'
+    paths:
+    - 'docs/**'
+    - 'source/**'
+    - 'tests/**'
 
 jobs:
   update_release_draft:

@@ -1,7 +1,7 @@
 ---
 external help file: EasitManagementFramework-help.xml
 Module Name: EasitManagementFramework
-online version: https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Convert-EasitLogEntryToPsObject.md
+online version: https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Convert-EasitLogEntryToPsObject.md
 schema: 2.0.0
 ---
 
