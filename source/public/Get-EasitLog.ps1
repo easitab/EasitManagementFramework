@@ -1,18 +1,18 @@
 function Get-EasitLog {
-    [CmdletBinding(DefaultParameterSetName='Configuration',HelpURI="https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Get-EasitLog.md")]
+    [CmdletBinding(HelpURI="https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Get-EasitLog.md")]
     param (
-        [Parameter(ParameterSetName = 'LiteralPath')]
+        [Parameter(ParameterSetName='LiteralPath')]
         [string]$LiteralPath,
-        [Parameter(ParameterSetName = 'Path')]
+        [Parameter(ParameterSetName='Path')]
         [string]$Path,
-        [Parameter(ParameterSetName = 'Path')]
+        [Parameter(Mandatory,ParameterSetName='Path')]
         [string]$LogFilename,
-        [Parameter(ParameterSetName = 'Configuration')]
+        [Parameter()]
         [string] $EmfHome = "$Home\EMF",
-        [Parameter(ParameterSetName = 'Configuration')]
-        [string] $EmfConfigurationFileName = 'emfConfig.xml',
-        [Parameter(ParameterSetName = 'Configuration')]
-        [string] $EmfConfigurationName = 'Prod'
+        [Parameter()]
+        [string] $EmfConfigurationFileName='emfConfig.xml',
+        [Parameter()]
+        [string] $EmfConfigurationName
     )
     
     begin {
