@@ -14,21 +14,18 @@ Get log entries from Easit GO.
 ## SYNTAX
 
 ### Configuration (Default)
-
-```powershell
-Get-EasitLog [-EmfHome <String>] [-EmfConfigurationFileName <String>] -EmfConfigurationName <String>
+```
+Get-EasitLog [-EmfHome <String>] [-EmfConfigurationFileName <String>] [-EmfConfigurationName] <String>
  [<CommonParameters>]
 ```
 
 ### LiteralPath
-
-```powershell
+```
 Get-EasitLog [-LiteralPath <String>] [<CommonParameters>]
 ```
 
 ### Path
-
-```powershell
+```
 Get-EasitLog [-Path <String>] -LogFilename <String> [<CommonParameters>]
 ```
 
@@ -123,9 +120,9 @@ Name of configuration to use in the configuration file.
 ```yaml
 Type: String
 Parameter Sets: Configuration
-Aliases:
+Aliases: system
 
-Required: False
+Required: True
 Position: 0
 Default value: None
 Accept pipeline input: False
@@ -173,7 +170,7 @@ Type: String
 Parameter Sets: Path
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

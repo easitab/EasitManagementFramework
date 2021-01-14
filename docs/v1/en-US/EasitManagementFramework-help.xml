@@ -668,19 +668,19 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:verb>Get</command:verb>
       <command:noun>EasitLog</command:noun>
       <maml:description>
-        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+        <maml:para>Get log entries from Easit GO.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>The Get-EasitLog cmdlet allows you to parse one or more "Easit logs" and get it contents as objects. The cmdlet gets all content from one or more "Easit logs" and considers each line starting with a date (2022-01-01) as an "entry" and each entry is returned as an object.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-EasitLog</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>EmfConfigurationFileName</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="system">
+          <maml:name>EmfConfigurationName</maml:name>
           <maml:description>
-            <maml:para>{{ Fill EmfConfigurationFileName Description }}</maml:para>
+            <maml:para>Name of configuration to use in the configuration file.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -689,29 +689,29 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="system">
-          <maml:name>EmfConfigurationName</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>EmfConfigurationFileName</maml:name>
           <maml:description>
-            <maml:para>{{ Fill EmfConfigurationName Description }}</maml:para>
+            <maml:para>Name of the configuration file to use.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>emfConfig.xml</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>EmfHome</maml:name>
           <maml:description>
-            <maml:para>{{ Fill EmfHome Description }}</maml:para>
+            <maml:para>Path to root directory for EasitManagementFramework.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>$Home\EMF</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
@@ -719,7 +719,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>LiteralPath</maml:name>
           <maml:description>
-            <maml:para>{{ Fill LiteralPath Description }}</maml:para>
+            <maml:para>Specifies a path to one log file. The value of LiteralPath is used exactly as it's typed. No characters are interpreted as wildcards. If the path includes escape characters, enclose it in single quotation marks. Single quotation marks tell PowerShell to not interpret any characters as escape sequences.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -734,7 +734,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>LogFilename</maml:name>
           <maml:description>
-            <maml:para>{{ Fill LogFilename Description }}</maml:para>
+            <maml:para>Name of log file to parse for entries. Wildcards * can be used. A best effort will be performed to find log files matching the name.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -746,7 +746,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Path</maml:name>
           <maml:description>
-            <maml:para>{{ Fill Path Description }}</maml:para>
+            <maml:para>Path to directory / folder to look for log files in.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -761,19 +761,19 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>EmfConfigurationFileName</maml:name>
         <maml:description>
-          <maml:para>{{ Fill EmfConfigurationFileName Description }}</maml:para>
+          <maml:para>Name of the configuration file to use.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>emfConfig.xml</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="system">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="system">
         <maml:name>EmfConfigurationName</maml:name>
         <maml:description>
-          <maml:para>{{ Fill EmfConfigurationName Description }}</maml:para>
+          <maml:para>Name of configuration to use in the configuration file.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -785,19 +785,19 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>EmfHome</maml:name>
         <maml:description>
-          <maml:para>{{ Fill EmfHome Description }}</maml:para>
+          <maml:para>Path to root directory for EasitManagementFramework.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>$Home\EMF</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>LiteralPath</maml:name>
         <maml:description>
-          <maml:para>{{ Fill LiteralPath Description }}</maml:para>
+          <maml:para>Specifies a path to one log file. The value of LiteralPath is used exactly as it's typed. No characters are interpreted as wildcards. If the path includes escape characters, enclose it in single quotation marks. Single quotation marks tell PowerShell to not interpret any characters as escape sequences.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -809,7 +809,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>LogFilename</maml:name>
         <maml:description>
-          <maml:para>{{ Fill LogFilename Description }}</maml:para>
+          <maml:para>Name of log file to parse for entries. Wildcards * can be used. A best effort will be performed to find log files matching the name.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -821,7 +821,7 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Path</maml:name>
         <maml:description>
-          <maml:para>{{ Fill Path Description }}</maml:para>
+          <maml:para>Path to directory / folder to look for log files in.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -858,10 +858,45 @@ PS C:\&gt; Enable-EasitScheduledTask -TaskName "$($taskObj.TaskName)"</dev:code>
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+        <maml:title>------ Example 1: Get log entries from Easit*.log - Test ------</maml:title>
+        <dev:code>PS C:\&gt; Get-EasitLog -EmfConfigurationName 'Test'</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>In this example we take advantage of the EMF-configuration file located in '$Home/EMF', and the configuration named Test in it. This will return all entries in log files from test.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>- Example 2: Get all log entries from Easit*.log - Production -</maml:title>
+        <dev:code>PS C:\&gt; Get-EasitLog 'Prod'</dev:code>
+        <dev:remarks>
+          <maml:para>In this example we take advantage of the EMF-configuration file located in '$Home/EMF'. The parameter EmfConfigurationName is expected as first input if no parameter is specified.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------- Example 3: Get log entries - Specific log file --------</maml:title>
+        <dev:code>PS C:\&gt; Get-EasitLog -LiteralPath 'D:\Logs\easitGO.log'</dev:code>
+        <dev:remarks>
+          <maml:para>In this example we specify what log file we would like to get entries from.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>---------- Example 4: Get log entries - Specific path ----------</maml:title>
+        <dev:code>PS C:\&gt; Get-EasitLog -Path 'D:\Logs\'</dev:code>
+        <dev:remarks>
+          <maml:para>In this example we specify what path we should look for log files in. All files named something like easit will be parsed and each entry in these logs will be returned.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-- Example 5: Get log entries - Specific path, custom logname --</maml:title>
+        <dev:code>PS C:\&gt; Get-EasitLog -Path 'D:\Logs\' -LogFilename '*easit*2021-01*'</dev:code>
+        <dev:remarks>
+          <maml:para>In this example we specify what path we should look for log files in. All files named something like easit 2021-01* will be parsed and each entry in these logs will be returned.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>----- Example 6: Get log entries - Custom EMF-Home folder -----</maml:title>
+        <dev:code>PS C:\&gt; Get-EasitLog -EmfConfigurationName 'Dev' -EmfHome 'D:\Easit\EMF'</dev:code>
+        <dev:remarks>
+          <maml:para>In this example we will look for a file named emfConfig.xml . In the configuration named Dev we will use the value from SystemRoot to find a logs folder and from that folder return all entries from log files named something easit .</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
