@@ -191,18 +191,19 @@ function Get-EasitEmailRequestMailbox {
 function Get-EasitLog {
     [CmdletBinding(DefaultParameterSetName='Configuration',HelpURI="https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Get-EasitLog.md")]
     param (
-        [Parameter(ParameterSetName = 'LiteralPath')]
+        [Parameter(ParameterSetName='LiteralPath')]
         [string]$LiteralPath,
-        [Parameter(ParameterSetName = 'ContainerPath')]
+        [Parameter(ParameterSetName='Path')]
         [string]$Path,
-        [Parameter(ParameterSetName = 'ContainerPath')]
+        [Parameter(Mandatory,ParameterSetName='Path')]
         [string]$LogFilename,
         [Parameter(ParameterSetName = 'Configuration')]
         [string] $EmfHome = "$Home\EMF",
         [Parameter(ParameterSetName = 'Configuration')]
         [string] $EmfConfigurationFileName = 'emfConfig.xml',
-        [Parameter(ParameterSetName = 'Configuration')]
-        [string] $EmfConfigurationName = 'Prod'
+        [Parameter(Mandatory,Position=0,ParameterSetName = 'Configuration')]
+        [Alias('system')]
+        [string] $EmfConfigurationName
     )
     
     begin {
@@ -210,7 +211,7 @@ function Get-EasitLog {
     }
     process {
         if (!($LiteralPath) -and !($Path)) {
-            Write-Verbose "LiteralPath and Path are not provided"
+            Write-Verbose "LiteralPath and Path are not provided.."
             try {
                 Write-Verbose "Looking for EMF-Config"
                 $emfConfig = Get-EMFConfig -Home $EmfHome -ConfigurationFileName $EmfConfigurationFileName -ConfigurationName $EmfConfigurationName
@@ -238,9 +239,10 @@ function Get-EasitLog {
             }
         } elseif ($LiteralPath) {
             if (Test-Path -Path $LiteralPath) {
+                $logData += "`n1##${LiteralPath}##`n"
                 Write-Verbose "Getting content of $LiteralPath"
                 try {
-                    $logData = [System.IO.File]::ReadAllText($LiteralPath)
+                    $logData += [System.IO.File]::ReadAllText($LiteralPath)
                     Write-Verbose "Content collected"
                 } catch {
                     throw $_
@@ -277,6 +279,7 @@ function Get-EasitLog {
                 throw $_
             }
             foreach ($file in $files) {
+                $logData += "`n1##$($file.Fullname)##`n"
                 Write-Verbose "Getting content of $file"
                 try {
                     $logData += [System.IO.File]::ReadAllText($file)
@@ -293,11 +296,19 @@ function Get-EasitLog {
         foreach ($logEvent in $logEvents) {
             $logEvent = $logEvent.TrimEnd()
             $logEvent = $logEvent.TrimStart()
-            if ($logEvent.length -gt 0) {
-                try {
-                    $returnObject += $logEvent | Convert-EasitLogEntryToPsObject
-                } catch {
-                    throw $_
+            if (Select-String -InputObject $logEvent -Pattern '##.+##' -Quiet) {
+                $source = Select-String -InputObject $logEvent -Pattern '##.+##'
+                $source = "$($source.Matches.Value)"
+                $source = $source.TrimStart('##')
+                $source = $source.TrimEnd('##')
+                Write-Verbose "source = $source"
+            } else {
+                if ($logEvent.length -gt 0) {
+                    try {
+                        $returnObject += $logEvent | Convert-EasitLogEntryToPsObject -Source "$source"
+                    } catch {
+                        throw $_
+                    }
                 }
             }
         }
@@ -309,6 +320,7 @@ function Get-EasitLog {
         Write-Verbose "$($MyInvocation.MyCommand) completed"
     }
 }
+
 function Get-EasitScheduledTask {
     [CmdletBinding()]
     param (
@@ -1009,7 +1021,9 @@ function Convert-EasitLogEntryToPsObject {
     [CmdletBinding(HelpURI="https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Convert-EasitLogEntryToPsObject.md")]
     param (
         [Parameter(ValueFromPipeline)]
-        [string] $String
+        [string] $String,
+        [Parameter()]
+        [string] $Source
     )
     
     begin {
@@ -1035,17 +1049,22 @@ function Convert-EasitLogEntryToPsObject {
         $stringMessage = $stringMessage.TrimEnd('[')
         Write-Debug "stringMessage = $stringMessage"
 
-        $stringClass = Select-String -InputObject $String -Pattern '\[.+\]'
+        $stringClass = Select-String -InputObject $String -Pattern '\[[\w\.]+\]$'
         $stringClass = "$($stringClass.Matches.Value)"
         $stringClass = $stringClass.TrimStart('[')
         $stringClass = $stringClass.TrimEnd(']')
         Write-Debug "stringClass = $stringClass"
 
-        $stringStack = Select-String -InputObject $String -Pattern '\- [\w|\W|\n\r]*'
-        $stringStack = "$($stringStack.Matches.Value)"
-        $stringStack = $stringStack.TrimStart("- $stringMessage [$stringClass]")
-        $stringStack = $stringStack.TrimStart()
-        Write-Debug "stringStack = $stringStack"
+        if (Select-String -InputObject $String -Pattern '\]\s?(\r|\n)+' -Quiet) {
+            $stringStack = Select-String -InputObject $String -Pattern '\- [\w|\W|\n\r]*'
+            $stringStack = "$($stringStack.Matches.Value)"
+            $stringStack = $stringStack.TrimStart("- $stringMessage [$stringClass]")
+            $stringStack = $stringStack.TrimStart()
+            Write-Debug "stringStack = $stringStack"
+        } else {
+            $stringStack = $null
+        }
+
         Write-Verbose "Creating object from entry strings"
         $returnObject = [PSCustomObject]@{
             Date                = "$stringDate"
@@ -1054,6 +1073,7 @@ function Convert-EasitLogEntryToPsObject {
             Class               = "$stringClass"
             Message             = "$stringMessage"
             FullStackMessage    = "$stringStack"
+            Source              = "$Source"
         }
         Write-Verbose "Returning entry as object"
         return $returnObject
