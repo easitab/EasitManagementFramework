@@ -1,5 +1,5 @@
-function Get-EasitTrustStoreCertificate {
-    [CmdletBinding(HelpURI="https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Get-EasitTrustStoreCertificate")]
+function Remove-CertificateFromEasitTrustStore {
+    [CmdletBinding(HelpURI="https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Remove-CertificateFromEasitTrustStore.md")]
     param (
         [Parameter(ParameterSetName='LiteralPath',Mandatory=$true)]
         [string] $LiteralPath,
@@ -12,7 +12,7 @@ function Get-EasitTrustStoreCertificate {
         [Parameter(Mandatory=$true)]
         [Alias('keystorepass','truststorepass')]
         [string] $StorePass,
-        [Parameter()]
+        [Parameter(Mandatory=$true)]
         [string] $CertificateAlias,
         [Parameter()]
         [string] $EmfHome = "$Home\EMF",
@@ -58,30 +58,19 @@ function Get-EasitTrustStoreCertificate {
         }
         if ($StorePass) {
             if ($CertificateAlias) {
-                Write-Verbose "Executing: $Keytool -list -v -alias $CertificateAlias -keystore $trustStorePath -storepass $StorePass"
-                $result = & "$Keytool" -list -v -alias "$CertificateAlias" -keystore "$trustStorePath" -storepass "$StorePass"
-                $listCerts = 'false'
+                Write-Verbose "Executing: $Keytool -delete -alias $CertificateAlias -keystore $trustStorePath -storepass $StorePass"
+                $result = & "$Keytool" -delete -alias "$CertificateAlias" -keystore "$trustStorePath" -storepass "$StorePass"
             } else {
-                Write-Verbose "Executing: $Keytool -list -keystore $trustStorePath -storepass $StorePass"
-                $result = & "$Keytool" -list -keystore "$trustStorePath" -storepass "$StorePass"
-                $listCerts = 'true'
+                throw "No certificate alias provided"
             }
         } else {
-            if ($CertificateAlias) {
-                Write-Verbose "Executing: $Keytool -list -v -alias $CertificateAlias -keystore $trustStorePath"
-                $result = & "$Keytool" -list -v -alias "$CertificateAlias" -keystore "$trustStorePath"
-                $listCerts = 'false'
-            } else {
-                Write-Verbose "Executing: $Keytool -list -keystore $trustStorePath"
-                $result = & "$Keytool" -list -keystore "$trustStorePath"
-                $listCerts = 'true'
-            }
+            throw "No storepass provided"
         }
         if (!($result)) {
             break
+        } else {
+            return $result
         }
-        Write-Verbose "$result"
-        Convert-KeytoolResult -InputString $result -ListCerts "$listCerts"
     }
     
     end {
