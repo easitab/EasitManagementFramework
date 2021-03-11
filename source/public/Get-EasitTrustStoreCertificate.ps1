@@ -2,18 +2,18 @@ function Get-EasitTrustStoreCertificate {
     [CmdletBinding()]
     param (
         [Parameter(ParameterSetName='LiteralPath',Mandatory=$true)]
-        [string] $LiteralPath,# = 'C:\Users\anth\GitHub\easitanth\internalTools\TrustStoreManager\truststore.jks',
+        [string] $LiteralPath,
         [Parameter(ParameterSetName='Path')]
-        [string] $Path,# = 'C:\Users\anth\GitHub\easitanth\internalTools\TrustStoreManager',
+        [string] $Path,
         [Parameter(ParameterSetName='Path',Mandatory=$true)]
-        [string] $TrustStoreName,# = 'truststore.jks',
+        [string] $TrustStoreName,
         [Parameter()]
-        [string] $Keytool,# = 'C:\Easit\Java\jre\bin\keytool.exe',
+        [string] $Keytool,
         [Parameter(Mandatory=$true)]
         [Alias('keystorepass','truststorepass')]
-        [string] $StorePass,# = 'password',
+        [string] $StorePass,
         [Parameter()]
-        [string] $CertificateAlias,# = 'www.google.com',
+        [string] $CertificateAlias,
         [Parameter()]
         [string] $EmfHome = "$Home\EMF",
         [Parameter()]
@@ -31,7 +31,7 @@ function Get-EasitTrustStoreCertificate {
     process {
         if (!($Keytool)) {
             try {
-                $Keytool = Get-EasitJavaKeyTool -Path $emfConfig.EasitRoot
+                $Keytool = Get-EasitJavaKeytool -Path $emfConfig.EasitRoot
                 Write-Verbose "Keytool = $Keytool"
             } catch {
                 throw $_

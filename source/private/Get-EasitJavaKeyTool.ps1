@@ -1,4 +1,4 @@
-function Get-EasitJavaKeyTool {
+function Get-EasitJavaKeytool {
     [CmdletBinding()]
     param (
         [Parameter()]
