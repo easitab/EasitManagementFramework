@@ -145,4 +145,3 @@ function Invoke-EasitGOHealthCheck {
         Write-Verbose "$($MyInvocation.MyCommand) completed"
     }
 }
-Invoke-EasitGOHealthCheck -EmfConfigurationName Prod
