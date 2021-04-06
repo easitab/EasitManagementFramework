@@ -15,7 +15,7 @@ Stops an Easit GO application on the local machine.
 
 ```
 Stop-EasitGOApplication [[-EmfHome] <String>] [[-EmfConfigurationFileName] <String>]
- [[-EmfConfigurationName] <String>] [<CommonParameters>]
+ [[-EmfConfigurationName] <String>] [-RunningElevated] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,6 +102,21 @@ Aliases:
 Required: False
 Position: 0
 Default value: $Home\EMF
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RunningElevated
+{{ Fill RunningElevated Description }}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
