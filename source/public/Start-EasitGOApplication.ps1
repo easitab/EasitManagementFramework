@@ -3,19 +3,21 @@ function Start-EasitGOApplication {
     param (
         [Parameter()]
         [string] $EmfHome = "$Home\EMF",
-        
         [Parameter()]
         [string] $EmfConfigurationFileName = 'emfConfig.xml',
-
         [Parameter()]
         [string] $EmfConfigurationName = 'Prod',
-
         [Parameter()]
-        [switch] $Verify
+        [switch] $Verify,
+        [Parameter()]
+        [switch] $RunningElevated
     )
     
     begin {
         Write-Verbose "$($MyInvocation.MyCommand) initialized"
+        if (!($RunningElevated)) {
+            throw "Session is not running with elevated priviliges that is need to perfom this action"
+        }
         try {
             $emfConfig = Get-EMFConfig -Home $EmfHome -ConfigurationFileName $EmfConfigurationFileName -ConfigurationName $EmfConfigurationName
             Write-Verbose "Found EMF Config"
@@ -32,36 +34,25 @@ function Start-EasitGOApplication {
         $tomcatServerXML = Import-EMFXMLData -Path "$tomcatServerXMLPath"
         $tomcatServerPort = "$($tomcatServerXML.Server.Port)"
         try {
-            $easitGoService = Get-CimInstance -ClassName Win32_Service -Filter "Name Like '$easitGoServiceName'"
+            $easitGoService = Get-EasitService -ServiceName "$easitGoServiceName"
         } catch {
             throw $_
         }
         if ($null -eq $easitGoService) {
             throw "Unable to find service with name like $easitGoServiceName"
         } else {
-            Write-Verbose "Successfully got CimInstance for $systemName"
+            Write-Verbose "Successfully got CimInstance for $easitGoServiceName"
         }
-        Write-Verbose "Starting easitGoService...."
+        Write-Verbose "Starting service $easitGoServiceName"
         try {
-            Invoke-CimMethod -InputObject $easitGoService -MethodName StartService | Out-Null
-            $waitingTime = 0
-            do {
-                Write-CustomLog -Message "Waiting for easitGoService to receive state 'Running'" -Level INFO
-                Start-Sleep -Seconds 15
-                $waitingTime += 15
-                $systemToStart = Get-CimInstance -InputObject $easitGoService
-            } while ($systemToStart.State -ne 'Running' -AND $waitingTime -le 240)
-            if ($waitingTime -gt 240) {
-                Write-Warning 'Time to start easitGoService exceeded 2 minutes, sending error!'
-                continue
-            }
+            $easitGoService = Set-EasitService -Service $easitGoService -Action 'StartService'
         } catch {
             throw $_
         }
-        Write-Verbose -Message "easitGoService started and running!"
+        Write-Verbose -Message "Service $easitGoServiceName have been started and is running"
         if ($Verify) {
             try {
-                $url = "http://localhost:${$tomcatServerPort}/monitor/?type=alive"
+                $url = "http://localhost:${tomcatServerPort}/monitor/?type=alive"
                 Write-Verbose "Checking if application is alive"
                 $systemStatus = Invoke-WebRequest -Uri "$url" -UseBasicParsing -ErrorAction Stop
             } catch {
@@ -73,7 +64,7 @@ function Start-EasitGOApplication {
                 Write-Error "easitGoService is started but the application in not reachable!"
             }
         }
-        return $systemToStart
+        return $easitGoService
     }
     
     end {
