@@ -30,6 +30,12 @@ Describe 'Parameters' {
         Get-Command "$commandName" | Should -HaveParameter EmfConfigurationName -Not -Mandatory
     }
     It 'ConfigurationFileName should have a value' {
-        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationName -DefaultValue 'Prod'
+        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationName -DefaultValue 'Dev'
+    }
+    It 'Verify should not be mandatory' {
+        Get-Command "$commandName" | Should -HaveParameter Verify -Not -Mandatory
+    }
+    It 'RunningElevated should not be mandatory' {
+        Get-Command "$commandName" | Should -HaveParameter RunningElevated -Not -Mandatory
     }
 }

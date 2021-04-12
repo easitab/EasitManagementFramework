@@ -16,13 +16,14 @@ function Initialize-EasitManagementFramework {
     
     begin {
         Write-Verbose "$($MyInvocation.MyCommand) initialized!"
+        $ProgressPreference = 'SilentlyContinue'
     }
     
     process {
         if (!(Test-Path -Path $EMFHome)) {
             try {
                 $null = New-Item -Path "$Home" -Name 'EMF' -ItemType Directory
-                Write-Verbose -Message "Created directory EMF in $Home"
+                Write-Information "Created directory EMF in $Home" -InformationAction Continue
             } catch {
                 throw $_
             }
@@ -35,7 +36,7 @@ function Initialize-EasitManagementFramework {
         } catch {
             throw $_
         }
-        Write-Output "Downloading assets..."
+        Write-Information "Downloading assets..." -InformationAction Continue
         try {
             $output1 = Join-Path -Path "$EMFHome" -ChildPath "$ConfigName"
             $wc.DownloadFile($ConfigURL, $output1)
@@ -50,10 +51,11 @@ function Initialize-EasitManagementFramework {
         } catch {
             throw $_
         }
-        Write-Output "Download of assets complete"
+        Write-Information "Download of assets complete" -InformationAction Continue
     }
     
     end {
+        $ProgressPreference = 'Continue'
         Write-Verbose "$($MyInvocation.MyCommand) completed"
     }
 }

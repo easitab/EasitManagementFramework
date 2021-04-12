@@ -6,7 +6,7 @@ function Stop-EasitGOApplication {
         [Parameter()]
         [string] $EmfConfigurationFileName = 'emfConfig.xml',
         [Parameter()]
-        [string] $EmfConfigurationName = 'Prod',
+        [string] $EmfConfigurationName = 'Dev',
         [Parameter()]
         [switch] $RunningElevated
     )
@@ -43,7 +43,7 @@ function Stop-EasitGOApplication {
         } catch {
             throw $_
         }
-        Write-Verbose "Service $easitGoServiceName stopped"
+        Write-Verbose "Service $easitGoServiceName have been stopped"
     }
     
     end {
