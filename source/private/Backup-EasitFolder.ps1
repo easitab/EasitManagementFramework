@@ -13,6 +13,7 @@ function Backup-EasitFolder {
     
     begin {
         Write-Verbose "$($MyInvocation.MyCommand) initialized"
+        $ProgressPreference = 'SilentlyContinue'
     }
     
     process {
@@ -57,6 +58,7 @@ function Backup-EasitFolder {
         }
     }
     end {
+        $ProgressPreference = 'Continue'
         Write-Verbose "$($MyInvocation.MyCommand) completed"
     }
 }
