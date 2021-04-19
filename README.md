@@ -5,22 +5,29 @@
 
 ![Generate and update help](https://github.com/easitab/EasitManagementFramework/workflows/Generate%20and%20update%20help/badge.svg) [![Build status](https://ci.appveyor.com/api/projects/status/jvecjyuro985bgu6?svg=true)](https://ci.appveyor.com/project/easitab/easitmanagementframework)
 
-![Canary build](https://github.com/easitab/EasitManagementFramework/workflows/Canary%20build/badge.svg)
-
 ## Framework outline
 
-These are the functions we currently have ready in public preview of the framework.
+The framework consists of the following functions.
 
-- Disable-EasitScheduledTask :heavy_check_mark:
-- Enable-EasitScheduledTask :heavy_check_mark:
-- Get-EMFConfig :heavy_check_mark:
-- Get-EasitEmailRequestMailbox :heavy_check_mark:
-- Get-EasitScheduledTask :heavy_check_mark:
-- Set-EasitEmailRequestMailboxSetting :heavy_check_mark:
-- Set-EMFConfig :heavy_check_mark:
-- New-EMFConfig :heavy_check_mark:
-- Start-EasitGOApplication :heavy_check_mark:
-- Stop-EasitGOApplication :heavy_check_mark:
+- [Add-CertificateToEasitTrustStore](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Add-CertificateToEasitTrustStore.md)
+- [Disable-EasitScheduledTask](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Disable-EasitScheduledTask.md)
+- [Enable-EasitScheduledTask](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Enable-EasitScheduledTask.md)
+- [Get-EasitEmailRequestMailbox](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Get-EasitEmailRequestMailbox.md)
+- [Get-EasitLog](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Get-EasitLog.md)
+- [Get-EasitScheduledTask](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Get-EasitScheduledTask.md)
+- [Get-EasitTrustStoreCertificate](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Get-EasitTrustStoreCertificate.md)
+- [Get-EMFConfig](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Get-EMFConfig.md)
+- [Initialize-EasitManagementFramework](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Initialize-EasitManagementFramework.md)
+- [Invoke-EasitGOHealthCheck](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Invoke-EasitGOHealthCheck.md)
+- [Invoke-EasitGOUpdate](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Invoke-EasitGOUpdate.md)
+- [Invoke-Email2GOUpdate](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Invoke-Email2GOUpdate.md)
+- [New-EMFConfig](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/New-EMFConfig.md)
+- [Remove-CertificateFromEasitTrustStore](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Remove-CertificateFromEasitTrustStore.md)
+- [Set-EasitEmailRequestMailboxSetting](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Set-EasitEmailRequestMailboxSetting.md)
+- [Set-EMFConfig](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Set-EMFConfig.md)
+- [Start-EasitGOApplication](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Start-EasitGOApplication.md)
+- [Stop-EasitGOApplication](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Stop-EasitGOApplication.md)
+- [Test-EMFXMLData](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1/Test-EMFXMLData.md)
 
 ## Roadmap
 
@@ -33,6 +40,7 @@ Bugfixes and general improvments will be done aswell and therefore you should no
 
 * [How to install](https://github.com/easitab/EasitManagementFramework/blob/development/docs/HOW-TO-Install.md)
 * [How to report an issue or bug](https://github.com/easitab/EasitManagementFramework/blob/development/docs/HOW-TO-ReportAnIssueOrBug.md)
+* [Hot to test](https://github.com/easitab/EasitManagementFramework/blob/development/docs/HOW-TO-Test.md)
 
 ## Support and questions
 Please create an issue if you have any questions (*help wanted*), bugs (*bug*), improvments (*enhancement*) and / or feature request (*feature*). Add the corresponding label to the issue to help us triage and prioritize your issue correct.
