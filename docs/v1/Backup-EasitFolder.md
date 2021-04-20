@@ -13,7 +13,7 @@ Private cmdlet, not used by user directly.
 
 ## SYNTAX
 
-```powershell
+```
 Backup-EasitFolder [-FolderToBackup] <String> [-DestinationFolder] <String> [[-ArchiveName] <String>]
  [[-Cleanup] <Boolean>] [<CommonParameters>]
 ```

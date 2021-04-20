@@ -13,7 +13,7 @@ Cmdlet to get "health details" of server and the Easit application.
 
 ## SYNTAX
 
-```powershell
+```
 Invoke-EasitGOHealthCheck [[-EmfHome] <String>] [[-EmfConfigurationFileName] <String>]
  [-EmfConfigurationName] <String> [<CommonParameters>]
 ```
@@ -83,7 +83,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

@@ -14,16 +14,14 @@ Cmdlet to get a or all certificate in the truststore.
 ## SYNTAX
 
 ### LiteralPath
-
-```powershell
+```
 Get-EasitTrustStoreCertificate -LiteralPath <String> [-Keytool <String>] -StorePass <String>
  [-CertificateAlias <String>] [-EmfHome <String>] [-EmfConfigurationFileName <String>]
  [-EmfConfigurationName <String>] [<CommonParameters>]
 ```
 
 ### Path
-
-```powershell
+```
 Get-EasitTrustStoreCertificate [-Path <String>] -TrustStoreName <String> [-Keytool <String>]
  -StorePass <String> [-CertificateAlias <String>] [-EmfHome <String>] [-EmfConfigurationFileName <String>]
  [-EmfConfigurationName <String>] [<CommonParameters>]
@@ -198,7 +196,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

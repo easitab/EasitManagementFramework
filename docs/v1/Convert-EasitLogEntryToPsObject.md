@@ -13,7 +13,7 @@ Private cmdlet, not used by user directly.
 
 ## SYNTAX
 
-```powershell
+```
 Convert-EasitLogEntryToPsObject [[-String] <String>] [[-Source] <String>] [<CommonParameters>]
 ```
 

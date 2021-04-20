@@ -13,7 +13,7 @@ Stops an Easit GO application on the local machine.
 
 ## SYNTAX
 
-```powershell
+```
 Stop-EasitGOApplication [[-EmfHome] <String>] [[-EmfConfigurationFileName] <String>]
  [[-EmfConfigurationName] <String>] [-RunningElevated] [<CommonParameters>]
 ```

@@ -13,7 +13,7 @@ Update patch level of Email2GO.
 
 ## SYNTAX
 
-```powershell
+```
 Invoke-Email2GOUpdate [[-EmfHome] <String>] [[-EmfConfigurationFileName] <String>]
  [[-EmfConfigurationName] <String>] [[-UpdateResourceDirectory] <String>] [-UpdateFilename] <String>
  [-RunningElevated] [-Cleanup] [<CommonParameters>]
@@ -149,7 +149,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
