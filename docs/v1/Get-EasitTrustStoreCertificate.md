@@ -8,40 +8,54 @@ schema: 2.0.0
 # Get-EasitTrustStoreCertificate
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Cmdlet to get a or all certificate in the truststore.
 
 ## SYNTAX
 
 ### LiteralPath
-```
+
+```powershell
 Get-EasitTrustStoreCertificate -LiteralPath <String> [-Keytool <String>] -StorePass <String>
  [-CertificateAlias <String>] [-EmfHome <String>] [-EmfConfigurationFileName <String>]
  [-EmfConfigurationName <String>] [<CommonParameters>]
 ```
 
 ### Path
-```
+
+```powershell
 Get-EasitTrustStoreCertificate [-Path <String>] -TrustStoreName <String> [-Keytool <String>]
  -StorePass <String> [-CertificateAlias <String>] [-EmfHome <String>] [-EmfConfigurationFileName <String>]
  [-EmfConfigurationName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+With this cmdlet you can look at all or one certificate in the truststore to see information like when it expires and issuer. If no alias is provided all certificates and a count of total certificates present in truststore is returned.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-EasitTrustStoreCertificate -LiteralPath 'C:\Certs\EasitTrustStore.jks' -StorePass "$PasswordToTruststore"
 ```
 
-{{ Add example description here }}
+In this example we want to get all certificates in the truststore.
+
+### Example 2
+
+```powershell
+PS C:\> Get-EasitTrustStoreCertificate -LiteralPath 'C:\Certs\EasitTrustStore.jks' -CertificateAlias 'MyCert' -StorePass "$PasswordToTruststore"
+```
+
+In this example we want to get a certificate with the alias *MyCert* from the truststore.
 
 ## PARAMETERS
 
 ### -CertificateAlias
-{{ Fill CertificateAlias Description }}
+
+Alias for the certificate. This is set when the certificate is imported to the truststore.
 
 ```yaml
 Type: String
@@ -56,7 +70,8 @@ Accept wildcard characters: False
 ```
 
 ### -EmfConfigurationFileName
-{{ Fill EmfConfigurationFileName Description }}
+
+Name of the configuration file to use.
 
 ```yaml
 Type: String
@@ -71,7 +86,8 @@ Accept wildcard characters: False
 ```
 
 ### -EmfConfigurationName
-{{ Fill EmfConfigurationName Description }}
+
+Name of configuration to use in the configuration file.
 
 ```yaml
 Type: String
@@ -86,7 +102,8 @@ Accept wildcard characters: False
 ```
 
 ### -EmfHome
-{{ Fill EmfHome Description }}
+
+Path to root directory for EasitManagementFramework.
 
 ```yaml
 Type: String
@@ -101,7 +118,8 @@ Accept wildcard characters: False
 ```
 
 ### -Keytool
-{{ Fill Keytool Description }}
+
+Full path to keytool.exe that should be used to interact with the truststore.
 
 ```yaml
 Type: String
@@ -116,7 +134,8 @@ Accept wildcard characters: False
 ```
 
 ### -LiteralPath
-{{ Fill LiteralPath Description }}
+
+Full path to truststore.
 
 ```yaml
 Type: String
@@ -131,7 +150,8 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-{{ Fill Path Description }}
+
+Path to directory that the truststore is located in.
 
 ```yaml
 Type: String
@@ -146,7 +166,8 @@ Accept wildcard characters: False
 ```
 
 ### -StorePass
-{{ Fill StorePass Description }}
+
+Password to the truststore.
 
 ```yaml
 Type: String
@@ -161,7 +182,8 @@ Accept wildcard characters: False
 ```
 
 ### -TrustStoreName
-{{ Fill TrustStoreName Description }}
+
+Name of the truststore. For example, EasitTruststore.jks
 
 ```yaml
 Type: String
@@ -176,6 +198,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
