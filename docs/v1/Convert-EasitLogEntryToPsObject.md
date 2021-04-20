@@ -8,30 +8,34 @@ schema: 2.0.0
 # Convert-EasitLogEntryToPsObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Private cmdlet, not used by user directly.
 
 ## SYNTAX
 
-```
+```powershell
 Convert-EasitLogEntryToPsObject [[-String] <String>] [[-Source] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+Parses and log entries in "Easit logs" and converts them to PSObjects.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $logEvent | Convert-EasitLogEntryToPsObject -Source "$source"
 ```
 
-{{ Add example description here }}
+In this example the string in $logEvent look like this: ``date time level - message [java class]``
 
 ## PARAMETERS
 
 ### -Source
-{{ Fill Source Description }}
+
+Source of the log entry, the file that the log entry is from.
 
 ```yaml
 Type: String
@@ -46,7 +50,8 @@ Accept wildcard characters: False
 ```
 
 ### -String
-{{ Fill String Description }}
+
+String to parse and convert.
 
 ```yaml
 Type: String

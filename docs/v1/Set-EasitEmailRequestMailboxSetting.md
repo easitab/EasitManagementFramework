@@ -13,7 +13,7 @@ Used to update / change settings for a "mailbox" used by EmailRequest.
 
 ## SYNTAX
 
-```
+```powershell
 Set-EasitEmailRequestMailboxSetting [[-EmfHome] <String>] [[-EmfConfigurationFileName] <String>]
  [[-EmfConfigurationName] <String>] [[-EmailRequestConfigurationFilename] <String>] [-MailboxName] <String>
  [-SettingName] <String> [-SettingValue] <String> [<CommonParameters>]

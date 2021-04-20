@@ -8,7 +8,8 @@ schema: 2.0.0
 # Convert-KeytoolResult
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Private cmdlet, not used by user directly.
 
 ## SYNTAX
 
@@ -17,21 +18,23 @@ Convert-KeytoolResult [[-InputString] <String[]>] [[-ListCerts] <String>] [<Comm
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+Converts output from keytool.exe to PSObject.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Convert-KeytoolResult -InputString $outputFromKeytool
 ```
 
-{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -InputString
-{{ Fill InputString Description }}
+
+String with output from keytool to convert.
 
 ```yaml
 Type: String[]
@@ -46,7 +49,8 @@ Accept wildcard characters: False
 ```
 
 ### -ListCerts
-{{ Fill ListCerts Description }}
+
+Tells the cmdlet what formatting to expect.
 
 ```yaml
 Type: String
@@ -61,6 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

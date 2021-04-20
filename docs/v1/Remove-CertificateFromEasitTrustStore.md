@@ -8,40 +8,46 @@ schema: 2.0.0
 # Remove-CertificateFromEasitTrustStore
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Removes a certificate from a truststore.
 
 ## SYNTAX
 
 ### LiteralPath
-```
+
+```powershell
 Remove-CertificateFromEasitTrustStore -LiteralPath <String> [-Keytool <String>] -StorePass <String>
  -CertificateAlias <String> [-EmfHome <String>] [-EmfConfigurationFileName <String>]
  [-EmfConfigurationName <String>] [<CommonParameters>]
 ```
 
 ### Path
-```
+
+```powershell
 Remove-CertificateFromEasitTrustStore [-Path <String>] -TrustStoreName <String> [-Keytool <String>]
  -StorePass <String> -CertificateAlias <String> [-EmfHome <String>] [-EmfConfigurationFileName <String>]
  [-EmfConfigurationName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+The *Remove-CertificateFromEasitTrustStore* cmdlet let you remove a certificate from a truststore. The cmdlet executes keytool.exe with a combination of switches and inputs based on the input to this cmdlet and displays its output.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-CertificateFromEasitTrustStore -Path 'D:\Easit\TrustStore\' -TrustStoreName 'CompanyTruststore.jks' -CertificateAlias 'OurCert' -StorePass 'TrustStorePassword'
 ```
 
-{{ Add example description here }}
+Removes a certificate from a truststore using the Path and TrustStoreName parameters.
 
 ## PARAMETERS
 
 ### -CertificateAlias
-{{ Fill CertificateAlias Description }}
+
+The alias given to the certificate in the truststore.
 
 ```yaml
 Type: String
@@ -56,7 +62,8 @@ Accept wildcard characters: False
 ```
 
 ### -EmfConfigurationFileName
-{{ Fill EmfConfigurationFileName Description }}
+
+Name of the configuration file to use.
 
 ```yaml
 Type: String
@@ -71,7 +78,8 @@ Accept wildcard characters: False
 ```
 
 ### -EmfConfigurationName
-{{ Fill EmfConfigurationName Description }}
+
+Name of configuration to use in the configuration file.
 
 ```yaml
 Type: String
@@ -86,7 +94,8 @@ Accept wildcard characters: False
 ```
 
 ### -EmfHome
-{{ Fill EmfHome Description }}
+
+Path to root directory for EasitManagementFramework.
 
 ```yaml
 Type: String
@@ -101,7 +110,8 @@ Accept wildcard characters: False
 ```
 
 ### -Keytool
-{{ Fill Keytool Description }}
+
+Full path to the keytool to use when managing the truststore.
 
 ```yaml
 Type: String
@@ -116,7 +126,8 @@ Accept wildcard characters: False
 ```
 
 ### -LiteralPath
-{{ Fill LiteralPath Description }}
+
+Full path to truststore.
 
 ```yaml
 Type: String
@@ -131,7 +142,8 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-{{ Fill Path Description }}
+
+Path to folder where the truststore is located.
 
 ```yaml
 Type: String
@@ -146,7 +158,8 @@ Accept wildcard characters: False
 ```
 
 ### -StorePass
-{{ Fill StorePass Description }}
+
+Truststore password.
 
 ```yaml
 Type: String
@@ -161,7 +174,8 @@ Accept wildcard characters: False
 ```
 
 ### -TrustStoreName
-{{ Fill TrustStoreName Description }}
+
+Name of the truststore.
 
 ```yaml
 Type: String
@@ -176,6 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

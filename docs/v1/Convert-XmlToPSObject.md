@@ -8,30 +8,35 @@ schema: 2.0.0
 # Convert-XmlToPSObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Private cmdlet, not used by user directly.
 
 ## SYNTAX
 
-```
+```powershell
 Convert-XmlToPSObject [-XmlObject] <XmlDocument> [-SystemProperties] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+Generic cmdlet to convert XML-files to PSObjects. Only supports formatting like properties.xml at the moment.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $xmlObject = New-Object System.Xml.XmlDocument
+PS C:\> $xmlObject.Load('D:\Easit\Systems\Prod\config\properties.xml')
+PS C:\> Convert-XmlToPSObject -XmlObject $xml -SystemProperties
 ```
 
-{{ Add example description here }}
+In this example we would like to convert properties.xml to a PSObject.
 
 ## PARAMETERS
 
 ### -SystemProperties
-{{ Fill SystemProperties Description }}
+
+Tells the cmdlet that the file to convert have a certain formatting.
 
 ```yaml
 Type: SwitchParameter
@@ -46,7 +51,8 @@ Accept wildcard characters: False
 ```
 
 ### -XmlObject
-{{ Fill XmlObject Description }}
+
+XMLObject to convert.
 
 ```yaml
 Type: XmlDocument
@@ -61,6 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

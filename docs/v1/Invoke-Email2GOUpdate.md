@@ -8,32 +8,37 @@ schema: 2.0.0
 # Invoke-Email2GOUpdate
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Update patch level of Email2GO.
 
 ## SYNTAX
 
-```
+```powershell
 Invoke-Email2GOUpdate [[-EmfHome] <String>] [[-EmfConfigurationFileName] <String>]
  [[-EmfConfigurationName] <String>] [[-UpdateResourceDirectory] <String>] [-UpdateFilename] <String>
  [-RunningElevated] [-Cleanup] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+This cmdlet lets to update the patch level of Email2GO in a structured and automatic way. By default the cmdlet looks for a file with the name passed in as -UpdateFilename in a folder called Update located in EasitRoot. The cmdlet will try to backup the database for Easit GO by executing a stored procedure named like the value passed in as -StoredProcedureName.
+If -SkipDbBackup parameter is stated the cmdlet assumes you already have performed a backup of the database.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Invoke-Email2GOUpdate -UpdateFilename 'email2GO-patch-1.2.zip' -RunningElevated
 ```
 
-{{ Add example description here }}
+In this example we will update Email2GO with the file email2GO-patch-1.2.zip. By providing RunningElevated we let the cmdlet know that we have the correct privileges. If the RunningElevated parameter is omitted the cmdlet will throw an error like 'Session is not running with elevated priviliges that is need to perfom this action'.
 
 ## PARAMETERS
 
 ### -Cleanup
-{{ Fill Cleanup Description }}
+
+Used if the cmdlet should try to remove folders or files no longer needed when update is completed.
 
 ```yaml
 Type: SwitchParameter
@@ -48,7 +53,8 @@ Accept wildcard characters: False
 ```
 
 ### -EmfConfigurationFileName
-{{ Fill EmfConfigurationFileName Description }}
+
+Name of the configuration file to use.
 
 ```yaml
 Type: String
@@ -63,7 +69,8 @@ Accept wildcard characters: False
 ```
 
 ### -EmfConfigurationName
-{{ Fill EmfConfigurationName Description }}
+
+Name of configuration to use in the configuration file.
 
 ```yaml
 Type: String
@@ -78,7 +85,8 @@ Accept wildcard characters: False
 ```
 
 ### -EmfHome
-{{ Fill EmfHome Description }}
+
+Path to root directory for EasitManagementFramework.
 
 ```yaml
 Type: String
@@ -93,7 +101,8 @@ Accept wildcard characters: False
 ```
 
 ### -RunningElevated
-{{ Fill RunningElevated Description }}
+
+Fail safe swith to avoid running the cmdlet by misstake or with wrong priviliges.
 
 ```yaml
 Type: SwitchParameter
@@ -108,7 +117,8 @@ Accept wildcard characters: False
 ```
 
 ### -UpdateFilename
-{{ Fill UpdateFilename Description }}
+
+Name of file to use for updating Easit GO.
 
 ```yaml
 Type: String
@@ -123,7 +133,8 @@ Accept wildcard characters: False
 ```
 
 ### -UpdateResourceDirectory
-{{ Fill UpdateResourceDirectory Description }}
+
+Used if a custom or other location than the directory 'Update' in EasitRoot should be used to find file to update Easit GO with.
 
 ```yaml
 Type: String
@@ -138,6 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

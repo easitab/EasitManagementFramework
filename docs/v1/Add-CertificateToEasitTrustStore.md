@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-CertificateToEasitTrustStore
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Add a certificate to a truststore.
 
 ## SYNTAX
 
@@ -27,21 +27,39 @@ Add-CertificateToEasitTrustStore [-Path <String>] -TrustStoreName <String> -Cert
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The *Add-CertificateToEasitTrustStore* cmdlet let you add a certificate to a truststore. If the truststore does not exist it will be created. The cmdlet executes keytool.exe with a combination of switches and inputs based on the input to this cmdlet and displays its output.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Add-CertificateToEasitTrustStore -Path 'D:\Easit\TrustStore\' -TrustStoreName 'CompanyTruststore.jks' -Certificate 'D:\certs\ourCert.crt' -CertificateAlias 'OurCert' -StorePass 'TrustStorePassword'
 ```
 
-{{ Add example description here }}
+Adds a certificate to a truststore using the Path and TrustStoreName parameters.
+
+### Example 2
+
+```powershell
+PS C:\> Add-CertificateToEasitTrustStore -LiteralPath 'D:\Easit\TrustStore\CompanyTruststore.jks' -Certificate 'D:\certs\ourCert.crt' -CertificateAlias 'OurCert' -StorePass 'TrustStorePassword'
+```
+
+Adds a certificate to a truststore using the LiteralPath parameter.
+
+### Example 3
+
+```powershell
+PS C:\> Add-CertificateToEasitTrustStore -LiteralPath 'D:\Easit\TrustStore\CompanyTruststore.jks' -Certificate 'D:\certs\ourCert.crt' -CertificateAlias 'OurCert' -StorePass 'TrustStorePassword' -NoPrompt
+```
+
+Adds a certificate to a truststore useing the LiteralPath parameter and suppress all prompts.
 
 ## PARAMETERS
 
 ### -Certificate
-{{ Fill Certificate Description }}
+
+Full path to certificate that should be imported / added to the truststore.
 
 ```yaml
 Type: String
@@ -56,7 +74,8 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateAlias
-{{ Fill CertificateAlias Description }}
+
+The alias given to the certificate in the truststore. This can be used to look up certificate details in the truststore at a later point in time.
 
 ```yaml
 Type: String
@@ -71,7 +90,8 @@ Accept wildcard characters: False
 ```
 
 ### -EmfConfigurationFileName
-{{ Fill EmfConfigurationFileName Description }}
+
+Name of the configuration file to use.
 
 ```yaml
 Type: String
@@ -86,7 +106,8 @@ Accept wildcard characters: False
 ```
 
 ### -EmfConfigurationName
-{{ Fill EmfConfigurationName Description }}
+
+Name of configuration to use in the configuration file.
 
 ```yaml
 Type: String
@@ -101,7 +122,8 @@ Accept wildcard characters: False
 ```
 
 ### -EmfHome
-{{ Fill EmfHome Description }}
+
+Path to root directory for EasitManagementFramework.
 
 ```yaml
 Type: String
@@ -116,7 +138,8 @@ Accept wildcard characters: False
 ```
 
 ### -Keytool
-{{ Fill Keytool Description }}
+
+Full path to the keytool to use when managing the truststore.
 
 ```yaml
 Type: String
@@ -131,7 +154,8 @@ Accept wildcard characters: False
 ```
 
 ### -LiteralPath
-{{ Fill LiteralPath Description }}
+
+Full path to truststore.
 
 ```yaml
 Type: String
@@ -146,7 +170,8 @@ Accept wildcard characters: False
 ```
 
 ### -NoPrompt
-{{ Fill NoPrompt Description }}
+
+Suppress all prompts from the keytool executable.
 
 ```yaml
 Type: SwitchParameter
@@ -161,7 +186,8 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-{{ Fill Path Description }}
+
+Path to folder where the truststore is located.
 
 ```yaml
 Type: String
@@ -176,7 +202,8 @@ Accept wildcard characters: False
 ```
 
 ### -StorePass
-{{ Fill StorePass Description }}
+
+Truststore password.
 
 ```yaml
 Type: String
@@ -191,7 +218,8 @@ Accept wildcard characters: False
 ```
 
 ### -TrustCaCerts
-{{ Fill TrustCaCerts Description }}
+
+Trust certificates from cacerts.
 
 ```yaml
 Type: SwitchParameter
@@ -206,7 +234,8 @@ Accept wildcard characters: False
 ```
 
 ### -TrustStoreName
-{{ Fill TrustStoreName Description }}
+
+Name of the truststore.
 
 ```yaml
 Type: String

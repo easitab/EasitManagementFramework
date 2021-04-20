@@ -8,30 +8,34 @@ schema: 2.0.0
 # Get-EasitJavaKeytool
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Private cmdlet, not used by user directly.
 
 ## SYNTAX
 
-```
+```powershell
 Get-EasitJavaKeytool [[-Path] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+Finds keytool.exe and returns it via Get-ChildItem. Cmdlet adds Java to the path before executing Get-ChildItem.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $Keytool = Get-EasitJavaKeytool -Path $emfConfig.EasitRoot
 ```
 
-{{ Add example description here }}
+This will look for keytool.exe in $emfConfig.EasitRoot and if it finds it returns it.
 
 ## PARAMETERS
 
 ### -Path
-{{ Fill Path Description }}
+
+Path to look for keytool.exe recursively in.
 
 ```yaml
 Type: String
@@ -46,6 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

@@ -8,31 +8,37 @@ schema: 2.0.0
 # Backup-EasitFolder
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Private cmdlet, not used by user directly.
 
 ## SYNTAX
 
-```
+```powershell
 Backup-EasitFolder [-FolderToBackup] <String> [-DestinationFolder] <String> [[-ArchiveName] <String>]
  [[-Cleanup] <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+Compresses provided folder or file to a archive and moves it to a specified location. If used with the parameter -Cleanup the provided folder to create archive with will be removed.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $folder = 'D:\Easit\Systems\Prod\conf'
+PS C:\> $backupRoot = 'D:\Easit\_backup'
+PS C:\> Backup-EasitFolder -FolderToBackup "$folder" -DestinationFolder $backupRoot
 ```
 
-{{ Add example description here }}
+This will create a zipfile with the contents of *D:\Easit\Systems\Prod\conf* named conf_todaysdateincludingminuteandseconds.zip in *``D:\Easit\_backup\todaysdate\``*
 
 ## PARAMETERS
 
 ### -ArchiveName
-{{ Fill ArchiveName Description }}
+
+Used if a custom name for the zipfile should be used.
 
 ```yaml
 Type: String
@@ -47,7 +53,8 @@ Accept wildcard characters: False
 ```
 
 ### -Cleanup
-{{ Fill Cleanup Description }}
+
+Used if the cmdlet should try to remove folder or file provided via parameter FolderToBackup.
 
 ```yaml
 Type: Boolean
@@ -62,7 +69,8 @@ Accept wildcard characters: False
 ```
 
 ### -DestinationFolder
-{{ Fill DestinationFolder Description }}
+
+Path to folder where the zipfile should be saved.
 
 ```yaml
 Type: String
@@ -77,7 +85,8 @@ Accept wildcard characters: False
 ```
 
 ### -FolderToBackup
-{{ Fill FolderToBackup Description }}
+
+File or folder to *backup*.
 
 ```yaml
 Type: String

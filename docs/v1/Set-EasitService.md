@@ -8,30 +8,42 @@ schema: 2.0.0
 # Set-EasitService
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Private cmdlet, not used by user directly.
 
 ## SYNTAX
 
-```
+```powershell
 Set-EasitService [-Service] <CimInstance> [-Action] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+Cmdlet to invoke methods to CimInstance (Win32_Process).
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-EasitService -Service $easitGoService -Action 'StartService'
 ```
 
-{{ Add example description here }}
+In this example we attempt to start a service.
+
+### Example 2
+
+```powershell
+PS C:\> Set-EasitService -Service $easitGoService -Action 'StopService'
+```
+
+In this example we attempt to stop a service.
 
 ## PARAMETERS
 
 ### -Action
-{{ Fill Action Description }}
+
+Method to invoke for the CimInstance / service.
 
 ```yaml
 Type: String
@@ -47,7 +59,8 @@ Accept wildcard characters: False
 ```
 
 ### -Service
-{{ Fill Service Description }}
+
+Service to invoke method on.
 
 ```yaml
 Type: CimInstance
@@ -62,6 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

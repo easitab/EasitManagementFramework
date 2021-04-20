@@ -35,7 +35,7 @@ function Import-EMFXMLData {
         
         if ($ReturnAsPSObject) {
             try {
-                $psObject = Convert-XmlToPSObject -XmlObject $xml -SystemProperties
+                $psObject = Convert-XmlToPSObject -XmlObject $xmlObject -SystemProperties
             } catch {
                 throw $_
             }

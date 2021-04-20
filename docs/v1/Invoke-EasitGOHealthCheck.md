@@ -8,31 +8,35 @@ schema: 2.0.0
 # Invoke-EasitGOHealthCheck
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Cmdlet to get "health details" of server and the Easit application.
 
 ## SYNTAX
 
-```
+```powershell
 Invoke-EasitGOHealthCheck [[-EmfHome] <String>] [[-EmfConfigurationFileName] <String>]
  [-EmfConfigurationName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+This cmdlet provide details such as free system memory, free drive space, if the Easit service is runnning and if the application can be connected to. The cmdlet do not present any evaluation if the result is good or bad. The cmdlet provides detailed that can be used in an evaluation if the setup is correct or not.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Invoke-EasitGOHealthCheck -system 'prod'
 ```
 
-{{ Add example description here }}
+Get health details for a system / application called prod in the configuration file for EMF. 
 
 ## PARAMETERS
 
 ### -EmfConfigurationFileName
-{{ Fill EmfConfigurationFileName Description }}
+
+Name of the configuration file to use.
 
 ```yaml
 Type: String
@@ -47,7 +51,8 @@ Accept wildcard characters: False
 ```
 
 ### -EmfConfigurationName
-{{ Fill EmfConfigurationName Description }}
+
+Name of configuration to use in the configuration file.
 
 ```yaml
 Type: String
@@ -62,7 +67,8 @@ Accept wildcard characters: False
 ```
 
 ### -EmfHome
-{{ Fill EmfHome Description }}
+
+Path to root directory for EasitManagementFramework.
 
 ```yaml
 Type: String
@@ -77,6 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
