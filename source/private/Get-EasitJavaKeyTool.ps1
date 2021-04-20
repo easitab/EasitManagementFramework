@@ -18,7 +18,7 @@ function Get-EasitJavaKeytool {
                 throw $_
             }
         } else {
-            throw "$javaPath is not a valid path"
+            throw "$javaPath is not a valid path.."
         }
     }
     end {
