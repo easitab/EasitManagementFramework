@@ -1,30 +1,66 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <systems>
+  <Test>
+    <WarName>ROOT</WarName>
+    <SystemRoot>D:\Easit\Systems\Test</SystemRoot>
+    <ServiceName>EasitTest</ServiceName>
+    <EmailRequestRoot>D:\Easit\Tomcat\Test</EmailRequestRoot>
+    <EasitRoot>D:\Easit</EasitRoot>
+    <BackupRoot>D:\Easit\_Backup\Test</BackupRoot>
+    <TomcatRoot>D:\Easit\Tomcat\Test</TomcatRoot>
+    <ImportClientRoot>D:\Easit\Tomcat\Test</ImportClientRoot>
+    <UpdateResourceDirectory>D:\Easit\Update</UpdateResourceDirectory>
+    <StoredBackupProcedure>BackupTest</StoredBackupProcedure>
+  </Test>
   <Prod>
-    <SystemRoot>D:\Easit\Systems\Prod</SystemRoot>
+    <SystemRoot>D:\Easit\Systems\Test</SystemRoot>
+    <WarName>ROOT</WarName>
     <ServiceName>EasitProd</ServiceName>
     <EasitRoot>D:\Easit</EasitRoot>
     <BackupRoot>D:\Easit\_Backup\Prod</BackupRoot>
     <TomcatRoot>D:\Easit\Tomcat\Prod</TomcatRoot>
     <EmailRequestRoot>D:\Easit\EmailRequest</EmailRequestRoot>
     <ImportClientRoot>D:\Easit\ImportClient</ImportClientRoot>
+    <UpdateResourceDirectory>D:\Easit\Update</UpdateResourceDirectory>
+    <StoredBackupProcedure>BackupProd</StoredBackupProcedure>
   </Prod>
-  <Test>
-    <SystemRoot>D:\Easit\Systems2\Test</SystemRoot>
-    <ServiceName>EasitTest</ServiceName>
-    <EasitRoot>D:\Easit</EasitRoot>
-    <BackupRoot>C:\Easit\_Backup2\Test</BackupRoot>
-    <TomcatRoot>D:\Easit\Tomcat\Test</TomcatRoot>
-    <EmailRequestRoot>D:\Easit\Tomcat\Test</EmailRequestRoot>
-    <ImportClientRoot>D:\Easit\Tomcat\Test</ImportClientRoot>
-  </Test>
   <Dev>
     <SystemRoot>D:\Easit\Systems\Dev</SystemRoot>
     <ServiceName>EasitDev</ServiceName>
+    <WarName>ROOT</WarName>
     <EasitRoot>D:\Easit</EasitRoot>
-    <BackupRoot>C:\Easit\_Backup2\Dev</BackupRoot>
+    <BackupRoot>D:\Easit\_Backup\Dev</BackupRoot>
     <TomcatRoot>D:\Easit\Tomcat\Dev</TomcatRoot>
     <EmailRequestRoot>D:\Easit\Tomcat\Dev</EmailRequestRoot>
     <ImportClientRoot>D:\Easit\Tomcat\Dev</ImportClientRoot>
+    <UpdateResourceDirectory>D:\Easit\Update</UpdateResourceDirectory>
+    <StoredBackupProcedure>BackupDev</StoredBackupProcedure>
   </Dev>
+  <IntegrationProd>
+    <SystemRoot>D:\Easit\Systems\IntegrationProd</SystemRoot>
+    <ServiceName>IntegrationProd</ServiceName>
+    <EasitRoot>D:\Easit</EasitRoot>
+    <BackupRoot>D:\Easit\_Backup\IntegrationProd</BackupRoot>
+    <TomcatRoot>D:\Easit\Tomcat\IntegrationProd</TomcatRoot>
+  </IntegrationProd>
+  <IntegrationTest>
+    <SystemRoot>D:\Easit\Systems\IntegrationTest</SystemRoot>
+    <ServiceName>IntegrationTest</ServiceName>
+    <EasitRoot>D:\Easit</EasitRoot>
+    <BackupRoot>D:\Easit\_Backup\IntegrationTest</BackupRoot>
+    <TomcatRoot>D:\Easit\Tomcat\IntegrationTest</TomcatRoot>
+  </IntegrationTest>
+  <IntegrationDev>
+    <SystemRoot>D:\Easit\Systems\IntegrationDev</SystemRoot>
+    <ServiceName>IntegrationDev</ServiceName>
+    <EasitRoot>D:\Easit</EasitRoot>
+    <BackupRoot>D:\Easit\_Backup\IntegrationDev</BackupRoot>
+    <TomcatRoot>D:\Easit\Tomcat\IntegrationDev</TomcatRoot>
+  </IntegrationDev>
+  <Email2GO>
+    <ServiceName>email2go-service</ServiceName>
+    <SystemRoot>D:\Easit\Email2GO</SystemRoot>
+    <BackupRoot>D:\Easit\_Backup\Email2GO</BackupRoot>
+    <UpdateResourceDirectory>D:\Easit\Update</UpdateResourceDirectory>
+  </Email2GO>
 </systems>

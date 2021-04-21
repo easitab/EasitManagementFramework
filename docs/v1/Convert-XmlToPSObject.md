@@ -1,11 +1,11 @@
 ---
 external help file: EasitManagementFramework-help.xml
 Module Name: EasitManagementFramework
-online version: https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Convert-EasitLogEntryToPsObject.md
+online version: https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Convert-XmlToPSObject.md
 schema: 2.0.0
 ---
 
-# Convert-EasitLogEntryToPsObject
+# Convert-XmlToPSObject
 
 ## SYNOPSIS
 
@@ -14,54 +14,55 @@ Private cmdlet, not used by user directly.
 ## SYNTAX
 
 ```
-Convert-EasitLogEntryToPsObject [[-String] <String>] [[-Source] <String>] [<CommonParameters>]
+Convert-XmlToPSObject [-XmlObject] <XmlDocument> [-SystemProperties] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-Parses and log entries in "Easit logs" and converts them to PSObjects.
+Generic cmdlet to convert XML-files to PSObjects. Only supports formatting like properties.xml at the moment.
 
 ## EXAMPLES
 
 ### Example 1
-
 ```powershell
-PS C:\> $logEvent | Convert-EasitLogEntryToPsObject -Source "$source"
+PS C:\> $xmlObject = New-Object System.Xml.XmlDocument
+PS C:\> $xmlObject.Load('D:\Easit\Systems\Prod\config\properties.xml')
+PS C:\> Convert-XmlToPSObject -XmlObject $xml -SystemProperties
 ```
 
-In this example the string in $logEvent look like this: ``date time level - message [java class]``
+In this example we would like to convert properties.xml to a PSObject.
 
 ## PARAMETERS
 
-### -Source
+### -SystemProperties
 
-Source of the log entry, the file that the log entry is from.
+Tells the cmdlet that the file to convert have a certain formatting.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -String
+### -XmlObject
 
-String to parse and convert.
+XMLObject to convert.
 
 ```yaml
-Type: String
+Type: XmlDocument
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -70,13 +71,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
-
-[https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Convert-EasitLogEntryToPsObject.md](https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Convert-EasitLogEntryToPsObject.md)
-

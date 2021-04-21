@@ -3,7 +3,8 @@ function Import-EMFXMLData {
     param (
         [Parameter(Mandatory)]
         [string] $Path,
-
+        [Parameter()]
+        [switch] $ReturnAsPSObject,
         [Parameter()]
         [switch] $Validate
     )
@@ -14,13 +15,6 @@ function Import-EMFXMLData {
     
     process {
         Write-Verbose "Process block start"
-        $xml = New-Object System.Xml.XmlDocument
-        try {
-            $xml.Load($Path)
-            Write-Verbose 'Loaded XML-file to XML-object'
-        } catch {
-            throw $_
-        }
         if ($Validate) {
             try {
                 Test-EMFXMLData -Path $Path
@@ -31,9 +25,24 @@ function Import-EMFXMLData {
         } else {
             Write-Verbose "Skipping validation"
         }
+        $xmlObject = New-Object System.Xml.XmlDocument
+        try {
+            $xmlObject.Load($Path)
+            Write-Verbose 'Loaded XML-file to XML-object'
+        } catch {
+            throw $_
+        }
         
-        
-        return $xml
+        if ($ReturnAsPSObject) {
+            try {
+                $psObject = Convert-XmlToPSObject -XmlObject $xmlObject -SystemProperties
+            } catch {
+                throw $_
+            }
+            return $psObject
+        } else {
+            return $xmlObject
+        }
         Write-Verbose "Process block end"
     }
     

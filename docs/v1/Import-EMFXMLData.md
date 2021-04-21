@@ -14,7 +14,7 @@ Private cmdlet, not used by user directly.
 ## SYNTAX
 
 ```
-Import-EMFXMLData [-Path] <String> [-Validate] [<CommonParameters>]
+Import-EMFXMLData [-Path] <String> [-ReturnAsPSObject] [-Validate] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +44,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReturnAsPSObject
+{{ Fill ReturnAsPSObject Description }}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

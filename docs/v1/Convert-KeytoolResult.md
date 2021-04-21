@@ -1,11 +1,11 @@
 ---
 external help file: EasitManagementFramework-help.xml
 Module Name: EasitManagementFramework
-online version: https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Convert-EasitLogEntryToPsObject.md
+online version: https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Convert-KeytoolResult.md
 schema: 2.0.0
 ---
 
-# Convert-EasitLogEntryToPsObject
+# Convert-KeytoolResult
 
 ## SYNOPSIS
 
@@ -14,28 +14,42 @@ Private cmdlet, not used by user directly.
 ## SYNTAX
 
 ```
-Convert-EasitLogEntryToPsObject [[-String] <String>] [[-Source] <String>] [<CommonParameters>]
+Convert-KeytoolResult [[-InputString] <String[]>] [[-ListCerts] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-Parses and log entries in "Easit logs" and converts them to PSObjects.
+Converts output from keytool.exe to PSObject.
 
 ## EXAMPLES
 
 ### Example 1
 
 ```powershell
-PS C:\> $logEvent | Convert-EasitLogEntryToPsObject -Source "$source"
+PS C:\> Convert-KeytoolResult -InputString $outputFromKeytool
 ```
-
-In this example the string in $logEvent look like this: ``date time level - message [java class]``
 
 ## PARAMETERS
 
-### -Source
+### -InputString
 
-Source of the log entry, the file that the log entry is from.
+String with output from keytool to convert.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ListCerts
+
+Tells the cmdlet what formatting to expect.
 
 ```yaml
 Type: String
@@ -49,34 +63,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -String
-
-String to parse and convert.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### None
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
-
-[https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Convert-EasitLogEntryToPsObject.md](https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Convert-EasitLogEntryToPsObject.md)
-

@@ -19,8 +19,8 @@ Describe 'Parameters' {
     It 'Path should not be mandatory' {
         Get-Command "$commandName" | Should -HaveParameter Path -Not -Mandatory
     }
-    It 'LogFilename should not be mandatory' {
-        Get-Command "$commandName" | Should -HaveParameter LogFilename -Not -Mandatory
+    It 'LogFilename should be mandatory' {
+        Get-Command "$commandName" | Should -HaveParameter LogFilename -Mandatory
     }
     It 'EMFHome should not be mandatory' {
         Get-Command "$commandName" | Should -HaveParameter EMFHome -Not -Mandatory
@@ -34,10 +34,7 @@ Describe 'Parameters' {
     It 'EmfConfigurationFileName should have a value' {
         Get-Command "$commandName" | Should -HaveParameter EmfConfigurationFileName -DefaultValue 'emfConfig.xml'
     }
-    It 'EmfConfigurationName should be not mandatory' {
-        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationName -Not -Mandatory
+    It 'EmfConfigurationName should be mandatory' {
+        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationName -Mandatory
     }
-    It 'EmfConfigurationName should have a value' {
-        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationName -DefaultValue 'Prod'
-    } 
 }

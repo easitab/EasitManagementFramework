@@ -1,11 +1,11 @@
 ---
 external help file: EasitManagementFramework-help.xml
 Module Name: EasitManagementFramework
-online version: https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Convert-EasitLogEntryToPsObject.md
+online version: https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Set-EasitService.md
 schema: 2.0.0
 ---
 
-# Convert-EasitLogEntryToPsObject
+# Set-EasitService
 
 ## SYNOPSIS
 
@@ -14,54 +14,63 @@ Private cmdlet, not used by user directly.
 ## SYNTAX
 
 ```
-Convert-EasitLogEntryToPsObject [[-String] <String>] [[-Source] <String>] [<CommonParameters>]
+Set-EasitService [-Service] <CimInstance> [-Action] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-Parses and log entries in "Easit logs" and converts them to PSObjects.
+Cmdlet to invoke methods to CimInstance (Win32_Process).
 
 ## EXAMPLES
 
 ### Example 1
 
 ```powershell
-PS C:\> $logEvent | Convert-EasitLogEntryToPsObject -Source "$source"
+PS C:\> Set-EasitService -Service $easitGoService -Action 'StartService'
 ```
 
-In this example the string in $logEvent look like this: ``date time level - message [java class]``
+In this example we attempt to start a service.
+
+### Example 2
+
+```powershell
+PS C:\> Set-EasitService -Service $easitGoService -Action 'StopService'
+```
+
+In this example we attempt to stop a service.
 
 ## PARAMETERS
 
-### -Source
+### -Action
 
-Source of the log entry, the file that the log entry is from.
+Method to invoke for the CimInstance / service.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: StartService, StopService
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -String
+### -Service
 
-String to parse and convert.
+Service to invoke method on.
 
 ```yaml
-Type: String
+Type: CimInstance
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -70,13 +79,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
-
-[https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Convert-EasitLogEntryToPsObject.md](https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Convert-EasitLogEntryToPsObject.md)
-
