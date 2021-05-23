@@ -49,14 +49,7 @@ function Get-EasitLog {
             }
         } elseif ($LiteralPath) {
             if (Test-Path -Path $LiteralPath) {
-                $logData += "`n1##${LiteralPath}##`n"
-                Write-Verbose "Getting content of $LiteralPath"
-                try {
-                    $logData += [System.IO.File]::ReadAllText($LiteralPath)
-                    Write-Verbose "Content collected"
-                } catch {
-                    throw $_
-                }
+                $Path = $LiteralPath
             } else {
                 throw "Unable to find $LiteralPath"
             }
@@ -79,7 +72,7 @@ function Get-EasitLog {
                 $LogFilename = 'easit'
                 $gciParams = @{
                     Include = '*easit*.log'
-                    Exclude = '*err*', '*out*'
+                    Exclude = '*stderr*', '*stdout*'
                 }
             }
             try {
@@ -88,42 +81,71 @@ function Get-EasitLog {
             } catch {
                 throw $_
             }
-            foreach ($file in $files) {
-                $logData += "`n1##$($file.Fullname)##`n"
-                Write-Verbose "Getting content of $file"
-                try {
-                    $logData += [System.IO.File]::ReadAllText($file)
-                    Write-Verbose "Content collected"
-                } catch {
-                    throw $_
+        }
+        if ($LiteralPath) {
+            try {
+                $files = Get-ChildItem "$Path" -ErrorAction Stop
+                Write-Verbose "Collected $Path"
+            } catch {
+                throw $_
+            }
+        }
+        
+        foreach ($file in $files) {
+            $logData += "`n1##$($file.Fullname)##`n"
+            Write-Verbose "Getting content of $file"
+            try {
+                $encoding = [System.Text.Encoding]::UTF8
+                $fileStream = [System.IO.FileStream]::new($file, 'Open', 'Read', 'ReadWrite')
+                $textReader = [System.IO.StreamReader]::new($fileStream,$encoding)
+                $collectedData = $textReader.ReadToEnd()
+                if ([string]::IsNullOrWhiteSpace($collectedData)) {
+                    Write-Verbose "$file did not contain any entries, skipping"
+                    continue
                 }
+                if (!([string]::IsNullOrWhiteSpace($collectedData))) {
+                    $collectedDataContainsData = $true
+                }
+                $logData += $collectedData
+                Write-Verbose "Content collected"
+            } catch [System.IO.IOException] {
+                Write-Warning "$file locked by other process, skipping"
+                continue
+            } catch {
+                Write-Warning "$($_.Exception), skipping"
+                continue
             }
         }
         $returnObject = @()
-        Write-Verbose "Splitting entries in logfile"
-        $logEvents = $logData -split "(?=[\r|\n]+\d)"
-        Write-Verbose "Converting entries to objects"
-        foreach ($logEvent in $logEvents) {
-            $logEvent = $logEvent.TrimEnd()
-            $logEvent = $logEvent.TrimStart()
-            if (Select-String -InputObject $logEvent -Pattern '##.+##' -Quiet) {
-                $source = Select-String -InputObject $logEvent -Pattern '##.+##'
-                $source = "$($source.Matches.Value)"
-                $source = $source.TrimStart('##')
-                $source = $source.TrimEnd('##')
-                Write-Verbose "source = $source"
-            } else {
-                if ($logEvent.length -gt 0) {
-                    try {
-                        $returnObject += $logEvent | Convert-EasitLogEntryToPsObject -Source "$source"
-                    } catch {
-                        throw $_
+        if ($collectedDataContainsData) {
+            Write-Verbose "Splitting entries in logfile"
+            $logEvents = $logData -split "(?=[\r|\n]+\d)"
+            Write-Verbose "Converting entries to objects"
+            foreach ($logEvent in $logEvents) {
+                $logEvent = $logEvent.TrimEnd()
+                $logEvent = $logEvent.TrimStart()
+                if (Select-String -InputObject $logEvent -Pattern '##.+##' -Quiet) {
+                    $source = Select-String -InputObject $logEvent -Pattern '##.+##'
+                    $source = "$($source.Matches.Value)"
+                    $source = $source.TrimStart('##')
+                    $source = $source.TrimEnd('##')
+                    Write-Verbose "source = $source"
+                } else {
+                    if ($logEvent.length -gt 0) {
+                        try {
+                            $returnObject += $logEvent | Convert-EasitLogEntryToPsObject -Source "$source"
+                        } catch {
+                            throw $_
+                        }
                     }
                 }
             }
+            Write-Verbose "Returning converted entries as objects"
+            return $returnObject
+        } else {
+            Write-Verbose "Log collection did not produce any entries"
+            return
         }
-        Write-Verbose "Returning converted entries as objects"
-        return $returnObject
     }
 
     end {
