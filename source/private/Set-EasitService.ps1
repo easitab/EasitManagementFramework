@@ -29,12 +29,12 @@ function Set-EasitService {
         try {
             do {
                 Write-Verbose "Waiting for service to complete method invokation"
-                Start-Sleep -Seconds 15
-                $waitingTime += 15
+                Start-Sleep -Seconds 5
+                $waitingTime += 5
                 $serviceToCheck = Get-CimInstance -InputObject $Service
             } while ($serviceToCheck.State -ne "$waitForServiceState" -AND $waitingTime -le 240)
             if ($waitingTime -gt 240) {
-                Write-Warning "Time to start service exceeded 2 minutes, please look in logs for any problems"
+                Write-Warning "Time to invoke method $Action exceeded 2 minutes"
             }
         } catch {
             throw $_

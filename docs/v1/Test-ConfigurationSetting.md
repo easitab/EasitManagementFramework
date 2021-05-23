@@ -1,74 +1,60 @@
 ---
 external help file: EasitManagementFramework-help.xml
 Module Name: EasitManagementFramework
-online version: https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Set-EasitService.md
+online version: https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Test-ConfigurationSetting.md
 schema: 2.0.0
 ---
 
-# Set-EasitService
+# Test-ConfigurationSetting
 
 ## SYNOPSIS
-
-Private cmdlet, not used by user directly.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-Set-EasitService [-Service] <CimInstance> [-Action] <String> [<CommonParameters>]
+Test-ConfigurationSetting [[-Hashtable] <Hashtable>] [[-XmlObject] <XmlDocument>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
-Cmdlet to invoke methods to CimInstance (Win32_Process).
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
-
 ```powershell
-PS C:\> Set-EasitService -Service $easitGoService -Action 'StartService'
+PS C:\> {{ Add example code here }}
 ```
 
-In this example we attempt to start a service.
-
-### Example 2
-
-```powershell
-PS C:\> Set-EasitService -Service $easitGoService -Action 'StopService'
-```
-
-In this example we attempt to stop a service.
+{{ Add example description here }}
 
 ## PARAMETERS
 
-### -Action
-
-Method to invoke for the CimInstance / service.
+### -Hashtable
+{{ Fill Hashtable Description }}
 
 ```yaml
-Type: String
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
-Accepted values: StartService, StopService
 
-Required: True
-Position: 1
+Required: False
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Service
-
-Service to invoke method on.
+### -XmlObject
+{{ Fill XmlObject Description }}
 
 ```yaml
-Type: CimInstance
+Type: XmlDocument
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -80,11 +66,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
-
 ## NOTES
 
 ## RELATED LINKS

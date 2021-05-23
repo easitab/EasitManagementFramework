@@ -14,7 +14,8 @@ Validate configuration file against schema.
 ## SYNTAX
 
 ```
-Test-EMFXMLData [[-EMFHome] <String>] [[-Path] <String>] [[-SchemaFile] <String>] [<CommonParameters>]
+Test-EMFXMLData [[-EMFHome] <String>] [[-Path] <String>] [[-SchemaFile] <String>] [-ValidateSettings]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,6 +94,21 @@ Aliases:
 Required: False
 Position: 2
 Default value: $EMFHome\emfConfig.xsd
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ValidateSettings
+{{ Fill ValidateSettings Description }}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

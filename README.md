@@ -40,7 +40,7 @@ Bugfixes and general improvments will be done aswell and therefore you should no
 
 * [How to install](https://github.com/easitab/EasitManagementFramework/blob/development/docs/HOW-TO-Install.md)
 * [How to report an issue or bug](https://github.com/easitab/EasitManagementFramework/blob/development/docs/HOW-TO-ReportAnIssueOrBug.md)
-* [Hot to test](https://github.com/easitab/EasitManagementFramework/blob/development/docs/HOW-TO-Test.md)
+* [How to test](https://github.com/easitab/EasitManagementFramework/blob/development/docs/HOW-TO-Test.md)
 
 ## Support and questions
 Please create an issue if you have any questions (*help wanted*), bugs (*bug*), improvments (*enhancement*) and / or feature request (*feature*). Add the corresponding label to the issue to help us triage and prioritize your issue correct.
