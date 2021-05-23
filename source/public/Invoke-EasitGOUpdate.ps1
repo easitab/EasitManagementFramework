@@ -71,13 +71,13 @@ function Invoke-EasitGOUpdate {
         Write-Verbose "Using backupRoot: $backupRoot"
 
         try {
-            $configRoot = (Get-ChildItem -Path "$systemRoot\*" - 'config' -Directory -Recurse).Fullname
+            $configRoot = (Get-ChildItem -Path "$systemRoot" -Include 'config' -Directory -Recurse).Fullname
         } catch {
             throw $_
         }
         if (!($configRoot)) {
             try {
-                $configRoot = (Get-ChildItem -Path "$($emfConfig.TomcatRoot)\*" - 'config' -Directory -Recurse).Fullname
+                $configRoot = (Get-ChildItem -Path "$($emfConfig.TomcatRoot)" -Include 'config' -Directory -Recurse).Fullname
             } catch {
                 throw $_
             }
@@ -88,7 +88,7 @@ function Invoke-EasitGOUpdate {
         Write-Verbose "Using configRoot: $configRoot"
 
         try {
-            $systemConfigFile = (Get-ChildItem -Path "$configRoot\*" - 'properties.xml' -Directory -Recurse).Fullname
+            $systemConfigFile = (Get-ChildItem -Path "$configRoot" -Include 'properties.xml' -File -Recurse).Fullname
         } catch {
             throw $_
         }
@@ -103,13 +103,13 @@ function Invoke-EasitGOUpdate {
         }
         Write-Verbose "Got system properties"
         try {
-            $logsRoot = (Get-ChildItem -Path "$systemRoot\*" - 'logs' -Directory -Recurse).Fullname
+            $logsRoot = (Get-ChildItem -Path "$systemRoot" -Include 'logs' -Directory -Recurse).Fullname
         } catch {
             throw $_
         }
         if (!($logsRoot)) {
             try {
-                $logsRoot = (Get-ChildItem -Path "$($emfConfig.TomcatRoot)\*" - 'logs' -Directory -Recurse).Fullname
+                $logsRoot = (Get-ChildItem -Path "$($emfConfig.TomcatRoot)" -Include 'logs' -Directory -Recurse).Fullname
             } catch {
                 throw $_
             }
@@ -119,13 +119,13 @@ function Invoke-EasitGOUpdate {
         }
         Write-Verbose "Using logsRoot: $logsRoot"
         try {
-            $webappsRoot = (Get-ChildItem -Path "$systemRoot\*" - 'webapps' -Directory -Recurse).Fullname
+            $webappsRoot = (Get-ChildItem -Path "$systemRoot" -Include 'webapps' -Directory -Recurse).Fullname
         } catch {
             throw $_
         }
         if (!($webappsRoot)) {
             try {
-                $webappsRoot = (Get-ChildItem -Path "$($emfConfig.TomcatRoot)\*" - 'webapps' -Directory -Recurse).Fullname
+                $webappsRoot = (Get-ChildItem -Path "$($emfConfig.TomcatRoot)" -Include 'webapps' -Directory -Recurse).Fullname
             } catch {
                 throw $_
             }
@@ -136,13 +136,13 @@ function Invoke-EasitGOUpdate {
         Write-Verbose "Using webappsRoot: $webappsRoot"
 
         try {
-            $warFile = (Get-ChildItem -Path "$systemRoot\*" - "$($emfConfig.WarName)" -Directory -Recurse).Fullname
+            $warFile = (Get-ChildItem -Path "$systemRoot" -Include "$($emfConfig.WarName).war" -Directory -Recurse).Fullname
         } catch {
             throw $_
         }
         if (!($warFile)) {
             try {
-                $warFile = (Get-ChildItem -Path "$($emfConfig.TomcatRoot)\*" - "$($emfConfig.WarName)" -Directory -Recurse).Fullname
+                $warFile = (Get-ChildItem -Path "$($emfConfig.TomcatRoot)" -Include "$($emfConfig.WarName).war" -File -Recurse).Fullname
             } catch {
                 throw $_
             }
@@ -156,31 +156,6 @@ function Invoke-EasitGOUpdate {
         $todayMinute = Get-Date -Format "yyyyMMdd_HHmm"
         Write-Information "Trying to find update file" -InformationAction Continue
         if (Test-Path -Path $UpdateFile) {
-            if ($UpdateFile -match '\.zip$') {
-                $expandedArchiveFolder = Join-Path -Path $UpdateResourceDirectory -ChildPath "$todayMinute"
-                if (!(Test-Path -Path $expandedArchiveFolder)) {
-                    try {
-                        Write-Verbose "Creating $expandedArchiveFolder"
-                        $expandedArchiveFolder = New-Item -Path $UpdateResourceDirectory -Name $todayMinute -ItemType Directory
-                    } catch {
-                        throw $_
-                    }
-                } else {
-                    try {
-                        Write-Verbose "$expandedArchiveFolder already exist, removing files in folder"
-                        Get-ChildItem $expandedArchiveFolder | Remove-Item
-                        Write-Verbose "Files removed"
-                    } catch {
-                        throw $_
-                    }
-                }
-                try {
-                    Expand-Archive -Path $UpdateFile -DestinationPath $expandedArchiveFolder -InformationAction SilentlyContinue
-                    $UpdateFile = (Get-ChildItem -Path $expandedArchiveFolder | Where-Object -Property Name -Like '*.msp').Fullname
-                } catch {
-                    throw $_
-                }
-            }
             Write-Information "Using UpdateFile: $UpdateFile" -InformationAction Continue
         } else {
             throw "Unable to find $UpdateFile"
@@ -214,16 +189,17 @@ function Invoke-EasitGOUpdate {
         Write-Information "Stopping service" -InformationAction Continue
         try {
             $service = Stop-EasitGOApplication -EMFHome $EmfHome -ConfigurationFileName $EmfConfigurationFileName -ConfigurationName $EmfConfigurationName -RunningElevated $RunningElevated
-            #$service = Set-EasitService -Service $service -Action 'StopService'
         } catch {
             throw $_
         }
         Write-Information "Service stopped" -InformationAction Continue
         if ($SkipDbBackup) {
-            Write-Verbose "-SkipDbBackup is specified, assuming manual backup have been done"
-        } else {
+            Write-Warning "-SkipDbBackup is specified, assuming manual backup of database have been done"
+        }
+        if (!($SkipDbBackup)) {
             $LASTEXITCODE = 0
             $ErrorActionPreference = 'Stop'
+            Write-Information "Attempting to execute stored procedure on database server" -InformationAction Continue
             if ($useLocalCommand) {
                 try {
                     Invoke-Sqlcmd -ServerInstance "$dbServer" -Database "$dbName" -Query "EXEC $StoredProcedureName" -OutputSqlErrors $true
@@ -288,7 +264,7 @@ function Invoke-EasitGOUpdate {
         }
         try {
             Copy-Item -Path "$newWarToCopy" -Destination "$webappsRoot"
-            Get-ChildItem -Path "$webappsRoot\${UpdateFilename}.war" | Rename-Item -NewName "$($emfConfig.WarName)"
+            Get-ChildItem -Path "$webappsRoot\${UpdateFilename}" | Rename-Item -NewName "$($emfConfig.WarName).war"
         } catch {
             throw $_
         }
