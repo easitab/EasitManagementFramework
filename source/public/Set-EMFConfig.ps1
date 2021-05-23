@@ -1,7 +1,6 @@
 function Set-EMFConfig {
     [CmdletBinding()]
     param (
-        
         [Parameter()]
         [Alias('Home')]
         [string] $EMFHome = "$Home\EMF",
@@ -15,7 +14,7 @@ function Set-EMFConfig {
         [string] $ConfigurationName,
 
         [Parameter(Mandatory,ParameterSetName='Manual')]
-        [string] $EasitRoot = 'D:\Easit',
+        [string] $EasitRoot,
 
         [Parameter(ParameterSetName='Manual')]
         [string] $SystemRoot = "$EasitRoot\Systems\$ConfigurationName",
@@ -24,7 +23,10 @@ function Set-EMFConfig {
         [string] $ServiceName = "Easit$ConfigurationName",
 
         [Parameter(ParameterSetName='Manual')]
-        [string] $TomcatRoot = "$EasitRoot\Tomcat\$ConfigurationName",
+        [string] $WarName = "ROOT",
+
+        [Parameter(ParameterSetName='Manual')]
+        [string] $TomcatRoot = "$EasitRoot\Systems\$ConfigurationName",
 
         [Parameter(ParameterSetName='Manual')]
         [string] $BackupRoot = "$EasitRoot\_Backup\$ConfigurationName",
@@ -37,8 +39,18 @@ function Set-EMFConfig {
         [Alias('IC','ImportClient','icRoot')]
         [string] $ImportClientRoot = "$EasitRoot\ImportClient",
 
+        [Parameter(ParameterSetName='Manual')]
+        [Alias('urd')]
+        [string] $UpdateResourceDirectory = "$EasitRoot\Update",
+
+        [Parameter(ParameterSetName='Manual')]
+        [Alias('sbp')]
+        [string] $StoredBackupProcedure = 'StoredBackupProcedureName',
+
         [Parameter(Mandatory,ParameterSetName='Array')]
-        [string[]] $PropertySetting
+        [string[]] $PropertySetting,
+        [Parameter()]
+        [switch]$ValidateSettings
     )
     
     begin {
@@ -62,17 +74,20 @@ function Set-EMFConfig {
         if ($paramName -eq 'Manual') {
             Write-Verbose "ParameterSetName = $paramName"
             $configurationSettings = [ordered]@{
-                ConfigurationName = "$ConfigurationName"
                 EasitRoot = "$EasitRoot"
+                WarName = "$WarName"
                 SystemRoot = "$SystemRoot"
                 ServiceName = "$ServiceName"
                 TomcatRoot = "$TomcatRoot"
                 BackupRoot = "$BackupRoot"
                 EmailRequestRoot = "$EmailRequestRoot"
                 ImportClientRoot = "$ImportClientRoot"
+                UpdateResourceDirectory = "$UpdateResourceDirectory"
+                StoredBackupProcedure = "$StoredBackupProcedure"
             }
             Write-Verbose "Created hashtable with settings"
-        } else {
+        } 
+        if ($paramName -eq 'Array') {
             Write-Verbose "ParameterSetName = $paramName"
             try {
                 foreach ($prop in $PropertySetting) {
@@ -100,13 +115,45 @@ function Set-EMFConfig {
             $currentConfigurationFile.Load("$EMFHome\$ConfigurationFileName")
         } catch {
             Write-Verbose "Something went wrong while loading currentConfigurationFile"
-            throw $_
+            throw "$($_.Exception.Message)"
         }
-        $configurationSettings.GetEnumerator() | ForEach-Object {
-            $settingName = "$($_.Key)"
-            $settingValue = "$($_.Value)"
-            $currentConfigurationFile.systems.${ConfigurationName}.${settingName} = $settingValue
-        }            
+        if (!($currentConfigurationFile.systems.${ConfigurationName})) {
+            Write-Warning "Unable to find configuration block for $ConfigurationName"
+            return
+        }
+        if ($ValidateSettings) {
+            Write-Information "Validating new configuration settings" -InformationAction Continue
+            $validatePathSetting = 'SystemRoot','EmailRequestRoot','EasitRoot','BackupRoot','TomcatRoot','ImportClientRoot','UpdateResourceDirectory'
+            foreach ($configSetting in $configurationSettings.GetEnumerator()) {
+                $configSettingName = "$($configSetting.Key)"
+                $configSettingValue = "$($configSetting.Value)"
+                Write-Verbose "Validating configuration setting $configSettingName"
+                if ($configSettingName -in $validatePathSetting) {
+                    $validationResult = Test-Path "$configSettingValue" -IsValid
+                }
+                if ($configSettingName -eq 'ServiceName') {
+                    $validationResult = Get-Service -Name "$configSettingValue" -ErrorAction SilentlyContinue
+                }
+                if ($configSettingName -eq 'WarName') {
+                    $validationResult = Get-ChildItem -Path "$SystemRoot" -Recurse -Include "${configSettingValue}.war" -ErrorAction SilentlyContinue
+                }
+                if (!($validationResult)) {
+                    Write-Warning "Configuration setting $configSettingName ($configSettingValue) failed validation"
+                }
+            }
+            Write-Information "Validation complete" -InformationAction Continue
+        }
+        
+        try {
+            $configurationSettings.GetEnumerator() | ForEach-Object {
+                $settingName = "$($_.Key)"
+                $settingValue = "$($_.Value)"
+                $currentConfigurationFile.systems.${ConfigurationName}.${settingName} = $settingValue
+            }
+        } catch {
+            Write-Warning "$($_.Exception.Message)"
+        }
+        
         try {
             $currentConfigurationFile.Save("$EMFHome\$ConfigurationFileName")
         } catch {
