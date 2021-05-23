@@ -98,6 +98,7 @@ function New-EMFConfig {
             $configObject.Save("$emfConfigFilePathTemp")
             try {
                 Test-EMFXMLData -Path $emfConfigFilePathTemp -SchemaFile $SchemaFile
+                Test-ConfigurationSetting -XmlObject $configObject
                 Remove-Item $emfConfigFilePathTemp -Force | Out-Null
             } catch {
                 Remove-Item $emfConfigFilePathTemp -Force | Out-Null
