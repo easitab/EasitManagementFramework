@@ -58,7 +58,6 @@ function Set-EMFConfig {
     }
     
     process {
-    Write-Verbose "Process block start"
         if (Test-Path "$EMFHome\$ConfigurationFileName") {
             Write-Verbose "Located $EMFHome\$ConfigurationFileName"
             try {
@@ -122,28 +121,8 @@ function Set-EMFConfig {
             return
         }
         if ($ValidateSettings) {
-            Write-Information "Validating new configuration settings" -InformationAction Continue
-            $validatePathSetting = 'SystemRoot','EmailRequestRoot','EasitRoot','BackupRoot','TomcatRoot','ImportClientRoot','UpdateResourceDirectory'
-            foreach ($configSetting in $configurationSettings.GetEnumerator()) {
-                $configSettingName = "$($configSetting.Key)"
-                $configSettingValue = "$($configSetting.Value)"
-                Write-Verbose "Validating configuration setting $configSettingName"
-                if ($configSettingName -in $validatePathSetting) {
-                    $validationResult = Test-Path "$configSettingValue" -IsValid
-                }
-                if ($configSettingName -eq 'ServiceName') {
-                    $validationResult = Get-Service -Name "$configSettingValue" -ErrorAction SilentlyContinue
-                }
-                if ($configSettingName -eq 'WarName') {
-                    $validationResult = Get-ChildItem -Path "$SystemRoot" -Recurse -Include "${configSettingValue}.war" -ErrorAction SilentlyContinue
-                }
-                if (!($validationResult)) {
-                    Write-Warning "Configuration setting $configSettingName ($configSettingValue) failed validation"
-                }
-            }
-            Write-Information "Validation complete" -InformationAction Continue
+            Test-ConfigurationSetting -Hashtable $configurationSettings
         }
-        
         try {
             $configurationSettings.GetEnumerator() | ForEach-Object {
                 $settingName = "$($_.Key)"
@@ -160,7 +139,6 @@ function Set-EMFConfig {
             Write-Verbose "Something went wrong while updating configuration file ($ConfigurationFileName), block $ConfigurationName"
             throw $_
         }
-        Write-Verbose "Process block end"
     }
     
     end {

@@ -9,7 +9,10 @@ function Test-EMFXMLData {
         [string] $Path = "$EMFHome\emfConfig.xml",
 
         [Parameter()]
-        [string] $SchemaFile = "$EMFHome\emfConfig.xsd"
+        [string] $SchemaFile = "$EMFHome\emfConfig.xsd",
+
+        [Parameter()]
+        [switch]$ValidateSettings
     )
     
     begin {
@@ -17,7 +20,6 @@ function Test-EMFXMLData {
     }
     
     process {
-        Write-Verbose "Process block start"
         if (Test-Path $Path) {
             Write-Verbose "Found $Path"
         } else {
@@ -54,12 +56,15 @@ function Test-EMFXMLData {
                 throw ($Exception = $args[1].Exception)
             })
             Write-Verbose "XML validate without errors"
-            return $true
         } catch {
             $schemaReader.Close()
             throw $_
         }
-        Write-Verbose "Process block end"
+        if ($ValidateSettings) {
+            Test-ConfigurationSetting -XmlObject $xml
+        }
+        Write-Information "Configuration file ($Path) validation OK against $SchemaFile" -InformationAction Continue
+        return
     }
     
     end {
