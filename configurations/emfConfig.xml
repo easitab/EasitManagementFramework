@@ -4,21 +4,21 @@
     <WarName>ROOT</WarName>
     <SystemRoot>D:\Easit\Systems\Test</SystemRoot>
     <ServiceName>EasitTest</ServiceName>
-    <EmailRequestRoot>D:\Easit\Tomcat\Test</EmailRequestRoot>
+    <EmailRequestRoot>D:\Easit\EmailRequest</EmailRequestRoot>
     <EasitRoot>D:\Easit</EasitRoot>
     <BackupRoot>D:\Easit\_Backup\Test</BackupRoot>
-    <TomcatRoot>D:\Easit\Tomcat\Test</TomcatRoot>
-    <ImportClientRoot>D:\Easit\Tomcat\Test</ImportClientRoot>
+    <TomcatRoot>D:\Easit\Systems\Test</TomcatRoot>
+    <ImportClientRoot>D:\Easit\ImportClient</ImportClientRoot>
     <UpdateResourceDirectory>D:\Easit\Update</UpdateResourceDirectory>
     <StoredBackupProcedure>BackupTest</StoredBackupProcedure>
   </Test>
   <Prod>
-    <SystemRoot>D:\Easit\Systems\Test</SystemRoot>
+    <SystemRoot>D:\Easit\Systems\Prod</SystemRoot>
     <WarName>ROOT</WarName>
     <ServiceName>EasitProd</ServiceName>
     <EasitRoot>D:\Easit</EasitRoot>
     <BackupRoot>D:\Easit\_Backup\Prod</BackupRoot>
-    <TomcatRoot>D:\Easit\Tomcat\Prod</TomcatRoot>
+    <TomcatRoot>D:\Easit\Systems\Prod</TomcatRoot>
     <EmailRequestRoot>D:\Easit\EmailRequest</EmailRequestRoot>
     <ImportClientRoot>D:\Easit\ImportClient</ImportClientRoot>
     <UpdateResourceDirectory>D:\Easit\Update</UpdateResourceDirectory>
@@ -30,9 +30,9 @@
     <WarName>ROOT</WarName>
     <EasitRoot>D:\Easit</EasitRoot>
     <BackupRoot>D:\Easit\_Backup\Dev</BackupRoot>
-    <TomcatRoot>D:\Easit\Tomcat\Dev</TomcatRoot>
-    <EmailRequestRoot>D:\Easit\Tomcat\Dev</EmailRequestRoot>
-    <ImportClientRoot>D:\Easit\Tomcat\Dev</ImportClientRoot>
+    <TomcatRoot>D:\Easit\Systems\Dev</TomcatRoot>
+    <EmailRequestRoot>D:\Easit\EmailRequest</EmailRequestRoot>
+    <ImportClientRoot>D:\Easit\ImportClient</ImportClientRoot>
     <UpdateResourceDirectory>D:\Easit\Update</UpdateResourceDirectory>
     <StoredBackupProcedure>BackupDev</StoredBackupProcedure>
   </Dev>

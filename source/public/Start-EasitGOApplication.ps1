@@ -45,14 +45,14 @@ function Start-EasitGOApplication {
         } catch {
             throw $_
         }
-        Write-Verbose -Message "Service $easitGoServiceName have been started and is running"
+        Write-Information -Message "Service $easitGoServiceName have been started and is running" -InformationAction Continue
         if ($Verify) {
             $verificationFailed = $false
             Write-Verbose "Trying to verify connectivity"
-            $tomcatConf = (Get-ChildItem -Path "$($emfConfig.SystemRoot)\*" - 'conf' -Directory -Recurse).Fullname
+            $tomcatConf = (Get-ChildItem -Path "$($emfConfig.SystemRoot)" -Include 'conf' -Directory -Recurse).Fullname
             if (!($tomcatConf)) {
                 try {
-                    $tomcatConf = (Get-ChildItem -Path "$($emfConfig.TomcatRoot)\*" - 'conf' -Directory -Recurse).Fullname
+                    $tomcatConf = (Get-ChildItem -Path "$($emfConfig.TomcatRoot)" -Include 'conf' -Directory -Recurse).Fullname
                 } catch {
                     Write-Warning "Unable to find folder conf in $($emfConfig.TomcatRoot)"
                     $verificationFailed = $true
@@ -63,38 +63,47 @@ function Start-EasitGOApplication {
                 }
             }
             if (!($verificationFailed)) {
-                $tomcatServerXMLPath = (Get-ChildItem -Path "$tomcatConf\*" -Include 'server.xml').FullName
-                if ($tomcatServerXMLPath) {
-                    try {
-                        $tomcatServerXML = Import-EMFXMLData -Path "$tomcatServerXMLPath"
-                    } catch {
-                        Write-Warning "Unable to import server.xml, system connectivity not verified"
+                if (Test-Path -Path "$tomcatConf") {
+                    $tomcatServerXMLPath = (Get-ChildItem -Path "$tomcatConf" -Recurse -Include 'server.xml').FullName
+                    if ($tomcatServerXMLPath) {
+                        try {
+                            $tomcatServerXML = Import-EMFXMLData -Path "$tomcatServerXMLPath"
+                        } catch {
+                            Write-Warning "Unable to import server.xml, system connectivity not verified"
+                            $verificationFailed = $true
+                        }
+                        $tomcatServerPort = "$($tomcatServerXML.Server.Port)"
+                    } else {
+                        Write-Warning "Unable to get server.xml from $tomcatConf"
                         $verificationFailed = $true
                     }
-                    $tomcatServerPort = "$($tomcatServerXML.Server.Port)"
                 } else {
-                    Write-Warning "Unable to get server.xml from $tomcatConf"
                     $verificationFailed = $true
                 }
-                if (!($verificationFailed)) {
-                    try {
-                        Start-Sleep -Seconds 15
-                        $url = "http://localhost:${tomcatServerPort}/monitor/?type=alive"
-                        Write-Verbose "Checking if application is alive"
-                        $systemStatus = Invoke-WebRequest -Uri "$url" -UseBasicParsing -ErrorAction Stop
-                    } catch {
-                        Write-Warning "Unable to connect to system"
-                    }
-                    if (!($systemStatus.StatusCode -eq 200)) {
-                        Write-Warning "easitGoService is started but the system is not reachable!"
-                    }
+            }
+            if (!($verificationFailed)) {
+                Write-Information "Giving the Easit application some time to startup" -InformationAction Continue
+                try {
+                    Start-Sleep -Seconds 15
+                    Write-Information "Trying to ping Easit application" -InformationAction Continue
+                    $url = "http://localhost:${tomcatServerPort}/monitor/?type=alive"
+                    $systemStatus = Invoke-WebRequest -Uri "$url" -UseBasicParsing -ErrorAction Stop
+                } catch {
+                    Write-Verbose "$($_.Exception)"
+                }
+                if (!($systemStatus.StatusCode -eq 200)) {
+                    Write-Verbose "Web request did not return 200, but $($systemStatus.StatusCode)"
+                    $verificationFailed = $true
+                }
+                if ($systemStatus.StatusCode -eq 200) {
+                    Write-Information "Connectivity to the Easit application have been verified" -InformationAction Continue
+                    $verificationFailed = $false
                 }
             }
             if ($verificationFailed) {
-                Write-Warning "Unable to verify system connectivity"
+                Write-Information "Unable to verify connectivity to the Easit application" -InformationAction Continue
             }
         }
-        Write-Information "System is up and running!" -InformationAction Continue
         return $easitGoService
     }
     
