@@ -16,14 +16,15 @@ Update or set property for existing configuration.
 ### Manual
 ```
 Set-EMFConfig [-EMFHome <String>] [-ConfigurationFileName <String>] [-ConfigurationName] <String>
- -EasitRoot <String> [-SystemRoot <String>] [-ServiceName <String>] [-TomcatRoot <String>]
- [-BackupRoot <String>] [-EmailRequestRoot <String>] [-ImportClientRoot <String>] [<CommonParameters>]
+ -EasitRoot <String> [-SystemRoot <String>] [-ServiceName <String>] [-WarName <String>] [-TomcatRoot <String>]
+ [-BackupRoot <String>] [-EmailRequestRoot <String>] [-ImportClientRoot <String>]
+ [-UpdateResourceDirectory <String>] [-StoredBackupProcedure <String>] [-ValidateSettings] [<CommonParameters>]
 ```
 
 ### Array
 ```
 Set-EMFConfig [-EMFHome <String>] [-ConfigurationFileName <String>] [-ConfigurationName] <String>
- -PropertySetting <String[]> [<CommonParameters>]
+ -PropertySetting <String[]> [-ValidateSettings] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -203,6 +204,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StoredBackupProcedure
+{{ Fill StoredBackupProcedure Description }}
+
+```yaml
+Type: String
+Parameter Sets: Manual
+Aliases: sbp
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SystemRoot
 
 Path to the systems configuration directory.
@@ -231,6 +247,51 @@ Aliases:
 Required: False
 Position: Named
 Default value: $EasitRoot\Tomcat\$ConfigurationName
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpdateResourceDirectory
+{{ Fill UpdateResourceDirectory Description }}
+
+```yaml
+Type: String
+Parameter Sets: Manual
+Aliases: urd
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ValidateSettings
+{{ Fill ValidateSettings Description }}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WarName
+{{ Fill WarName Description }}
+
+```yaml
+Type: String
+Parameter Sets: Manual
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

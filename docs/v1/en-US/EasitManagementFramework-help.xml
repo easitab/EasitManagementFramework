@@ -4530,6 +4530,18 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
           </dev:type>
           <dev:defaultValue>Easit$ConfigurationName</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="sbp">
+          <maml:name>StoredBackupProcedure</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill StoredBackupProcedure Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>SystemRoot</maml:name>
           <maml:description>
@@ -4553,6 +4565,41 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
             <maml:uri />
           </dev:type>
           <dev:defaultValue>$EasitRoot\Tomcat\$ConfigurationName</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="urd">
+          <maml:name>UpdateResourceDirectory</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill UpdateResourceDirectory Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>ValidateSettings</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill ValidateSettings Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>WarName</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill WarName Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
@@ -4604,6 +4651,17 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>ValidateSettings</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill ValidateSettings Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -4716,6 +4774,18 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
         </dev:type>
         <dev:defaultValue>Easit$ConfigurationName</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="sbp">
+        <maml:name>StoredBackupProcedure</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill StoredBackupProcedure Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>SystemRoot</maml:name>
         <maml:description>
@@ -4739,6 +4809,42 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
           <maml:uri />
         </dev:type>
         <dev:defaultValue>$EasitRoot\Tomcat\$ConfigurationName</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="urd">
+        <maml:name>UpdateResourceDirectory</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill UpdateResourceDirectory Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>ValidateSettings</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill ValidateSettings Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>WarName</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill WarName Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
