@@ -23,7 +23,7 @@ function Get-EasitScheduledTask {
         }
         if ($EmailRequest) {
             try {
-                $easitErTask = Get-ScheduledTask -TaskName "*easit*" | Where-Object -Property 'TaskName' -Match -Value '*mail*'
+                $easitErTask = Get-ScheduledTask -TaskName "*easit*" | Where-Object -Property 'TaskName' -Match -Value 'mail'
                 $easitTasks += $easitErTask
             } catch {
                 throw $_
@@ -31,7 +31,7 @@ function Get-EasitScheduledTask {
         }
         if ($ImportClient) {
             try {
-                $easitIcTask = Get-ScheduledTask -TaskName "*easit*" | Where-Object -Property 'TaskName' -Match -Value '*import*'
+                $easitIcTask = Get-ScheduledTask -TaskName "*easit*" | Where-Object -Property 'TaskName' -Match -Value 'import'
                 $easitTasks += $easitIcTask
             } catch {
                 throw $_
