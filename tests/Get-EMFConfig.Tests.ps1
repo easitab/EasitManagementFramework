@@ -13,14 +13,14 @@ Describe 'Parameters' {
             Write-Host "Unable to locate code file to test against!" -ForegroundColor Red
         }
     }
-    It 'ConfigurationFileName should not be mandatory' {
-        Get-Command "$commandName" | Should -HaveParameter ConfigurationFileName -Not -Mandatory
+    It 'EmfConfigurationFileName should not be mandatory' {
+        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationFileName -Not -Mandatory
     }
     It 'ConfigurationFileName should have a value' {
-        Get-Command "$commandName" | Should -HaveParameter ConfigurationFileName -DefaultValue 'emfConfig.xml'
+        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationFileName -DefaultValue 'emfConfig.xml'
     }
     It 'ConfigurationName should be mandatory' {
-        Get-Command "$commandName" | Should -HaveParameter ConfigurationName -Mandatory
+        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationName -Mandatory
     }
     It 'ConfigurationName should be null' {
         $ConfigurationName | Should -BeNullOrEmpty

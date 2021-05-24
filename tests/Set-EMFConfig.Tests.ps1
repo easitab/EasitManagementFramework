@@ -19,19 +19,26 @@ Describe 'Parameters' {
     It 'EMFHome should have a value' {
         Get-Command "$commandName" | Should -HaveParameter EMFHome -DefaultValue '$Home\EMF'
     }
-    It 'ConfigurationFileName should not be mandatory' {
-        Get-Command "$commandName" | Should -HaveParameter ConfigurationFileName -Not -Mandatory
+    It 'EmfConfigurationFileName should not be mandatory' {
+        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationFileName -Not -Mandatory
     }
-    It 'ConfigurationFileName should have a value' {
-        Get-Command "$commandName" | Should -HaveParameter ConfigurationFileName -DefaultValue 'emfConfig.xml'
+    It 'EmfConfigurationFileName should have a value' {
+        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationFileName -DefaultValue 'emfConfig.xml'
     }
-    It 'ConfigurationName should be mandatory' {
-        Get-Command "$commandName" | Should -HaveParameter ConfigurationName -Mandatory
+    It 'EmfConfigurationName should be mandatory' {
+        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationName -Mandatory
     }
-    It 'ConfigurationName should be null' {
-        $ConfigurationName | Should -BeNullOrEmpty
+    It 'EmfConfigurationName should be null' {
+        $EmfConfigurationName | Should -BeNullOrEmpty
     }
     It 'PropertySetting should be mandatory' {
         Get-Command "$commandName" | Should -HaveParameter PropertySetting -Mandatory
+    }
+    It 'ValidateSettings should not be mandatory' {
+        Get-Command "$commandName" | Should -HaveParameter ValidateSettings -Not -Mandatory
+    }
+    It 'ValidateSettings should be a switch' {
+        [switch]$ValidateSettings = $false
+        $ValidateSettings | Should -BeOfType [System.Management.Automation.SwitchParameter]
     }
 }
