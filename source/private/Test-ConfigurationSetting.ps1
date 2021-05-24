@@ -20,7 +20,11 @@ function Test-ConfigurationSetting {
                 $configSettingValue = "$($configSetting.Value)"
                 Write-Verbose "Validating configuration setting $configSettingName"
                 if ($configSettingName -in $validatePathSetting) {
-                    $validationResult = Test-Path "$configSettingValue" -IsValid
+                    if (Test-Path "$configSettingValue" -IsValid) {
+                        $validationResult = Test-Path "$configSettingValue"
+                    } else {
+                        $validationResult = $false
+                    }
                 }
                 if ($configSettingName -eq 'ServiceName') {
                     $validationResult = Get-Service -Name "$configSettingValue" -ErrorAction SilentlyContinue
@@ -45,19 +49,21 @@ function Test-ConfigurationSetting {
         if ($XmlObject) {
             foreach ($system in $XmlObject.systems.ChildNodes) {
                 Write-Information "Validating settings for configuration $($system.Name)" -InformationAction Continue
-                $configurationName = "$($system.Name)"
                 foreach ($configSetting in $system.ChildNodes) {
                     $configSettingName = "$($configSetting.Name)"
                     $configSettingValue = "$($configSetting.InnerText)"
                     Write-Verbose "Validating configuration setting $configSettingName"
                     if ($configSettingName -in $validatePathSetting) {
-                        $validationResult = Test-Path "$configSettingValue" -IsValid
+                        if (Test-Path "$configSettingValue" -IsValid) {
+                            $validationResult = Test-Path "$configSettingValue"
+                        } else {
+                            $validationResult = $false
+                        }
                     }
                     if ($configSettingName -eq 'ServiceName') {
                         $validationResult = Get-Service -Name "$configSettingValue" -ErrorAction SilentlyContinue
                     }
                     if ($configSettingName -eq 'WarName') {
-                        $systemRootPath = $XmlObject.systems."${configurationName}".SystemRoot.InnerText
                         $systemRoot = $system.GetElementsByTagName('SystemRoot')
                         $systemRoot = $systemRoot.'#text'
                         $validationResult = Get-ChildItem -Path "$systemRoot" -Recurse -Include "${configSettingValue}.war" -ErrorAction SilentlyContinue
