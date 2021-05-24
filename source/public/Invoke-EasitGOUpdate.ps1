@@ -188,7 +188,7 @@ function Invoke-EasitGOUpdate {
         Write-Information "Starting update process for Easit GO" -InformationAction Continue
         Write-Information "Stopping service" -InformationAction Continue
         try {
-            $service = Stop-EasitGOApplication -EMFHome $EmfHome -ConfigurationFileName $EmfConfigurationFileName -ConfigurationName $EmfConfigurationName -RunningElevated $RunningElevated
+            $service = Stop-EasitGOApplication -EMFHome $EmfHome -ConfigurationFileName $EmfConfigurationFileName -ConfigurationName $EmfConfigurationName -RunningElevated:$RunningElevated
         } catch {
             throw $_
         }
@@ -239,18 +239,18 @@ function Invoke-EasitGOUpdate {
             }
         }
         try {
-            Remove-Item "$logsRoot\*.*" -Recurse -Force -InformationAction SilentlyContinue
+            Remove-Item "$logsRoot" -Include '*.*' -Recurse -Force -Confirm:$false -InformationAction SilentlyContinue
         } catch {
             Write-Warning "$($_.Exception)"
         }
         try {
-            Remove-Item "$warFile" -InformationAction SilentlyContinue
+            Remove-Item "$warFile" -Confirm:$false -InformationAction SilentlyContinue
         } catch {
             Write-Warning "$($_.Exception)"
         }
         $expandedWarFolder = Join-Path -Path "$webappsRoot" -ChildPath "$($emfConfig.WarName)"
         try {
-            Remove-Item "$expandedWarFolder" -InformationAction SilentlyContinue
+            Remove-Item "$expandedWarFolder" -Confirm:$false -InformationAction SilentlyContinue
         } catch {
             Write-Warning "$($_.Exception)"
         }
@@ -270,7 +270,7 @@ function Invoke-EasitGOUpdate {
         }
         Write-Information "Starting service" -InformationAction Continue
         try {
-            $service = Start-EasitGOApplication -EMFHome $EmfHome -ConfigurationFileName $EmfConfigurationFileName -ConfigurationName $EmfConfigurationName -Verify -RunningElevated $RunningElevated
+            $service = Start-EasitGOApplication -EMFHome $EmfHome -ConfigurationFileName $EmfConfigurationFileName -ConfigurationName $EmfConfigurationName -Verify -RunningElevated:$RunningElevated
         } catch {
             throw $_
         }

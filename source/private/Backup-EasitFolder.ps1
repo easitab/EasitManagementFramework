@@ -13,7 +13,6 @@ function Backup-EasitFolder {
     
     begin {
         Write-Verbose "$($MyInvocation.MyCommand) initialized"
-        $ProgressPreference = 'SilentlyContinue'
     }
     
     process {
@@ -41,14 +40,40 @@ function Backup-EasitFolder {
                 CompressionLevel = "Optimal"
                 DestinationPath = "$zipFile"
             }
-            Compress-Archive @compress -InformationAction SilentlyContinue
+            Add-Type -Assembly System.IO.Compression.FileSystem
+            $compressionLevel = [IO.Compression.CompressionLevel]::Optimal
+            if (Test-Path -Path $FolderToBackup -PathType Leaf) {
+                try {
+                    $zip = [System.IO.Compression.ZipFile]::Open($zipFile, 'create')
+                    $zip.Dispose()
+                    $zip = [System.IO.Compression.ZipFile]::Open($zipFile, 'update')
+                    [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip, $FolderToBackup, $leaf, $compressionLevel) | Out-Null
+                    $zip.Dispose()
+                } catch {
+                    $zip.Dispose()
+                    Remove-Item $zipFile -Recurse -Force -Confirm:$false -InformationAction SilentlyContinue -ErrorAction SilentlyContinue
+                    Remove-Item $zip -Recurse -Force -Confirm:$false -InformationAction SilentlyContinue -ErrorAction SilentlyContinue
+                    $trySlowWay = $true
+                }
+            }
+            if (Test-Path -Path $FolderToBackup -PathType Container) {
+                try {
+                    [IO.Compression.ZipFile]::CreateFromDirectory($FolderToBackup, $zipFile, $compressionLevel, $false)
+                } catch {
+                    Remove-Item $zipFile -Recurse -Force -Confirm:$false -InformationAction SilentlyContinue -ErrorAction SilentlyContinue
+                    $trySlowWay = $true
+                }
+            }
+            if ($trySlowWay -or !(Test-Path -Path $zipFile)) {
+                Compress-Archive @compress -InformationAction SilentlyContinue
+            }
             Write-Verbose "Created zip archive for $FolderToBackup"
         } catch {
             throw $_
         }
         if ($Cleanup) {
             try {
-                Remove-Item $FolderToBackup -Recurse -Force -InformationAction SilentlyContinue
+                Remove-Item $FolderToBackup -Recurse -Force -Confirm:$false -InformationAction SilentlyContinue
                 Write-Verbose "Removed $FolderToBackup"
             } catch {
                 throw $_
@@ -58,7 +83,6 @@ function Backup-EasitFolder {
         }
     }
     end {
-        $ProgressPreference = 'Continue'
         Write-Verbose "$($MyInvocation.MyCommand) completed"
     }
 }

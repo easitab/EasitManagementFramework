@@ -19,22 +19,22 @@ Describe 'Parameters' {
     It 'EMFHome should have a value' {
         Get-Command "$commandName" | Should -HaveParameter EMFHome -DefaultValue '$Home\EMF'
     }
-    It 'ConfigurationFileName should not be mandatory' {
-        Get-Command "$commandName" | Should -HaveParameter ConfigurationFileName -Not -Mandatory
+    It 'EmfConfigurationFileName should not be mandatory' {
+        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationFileName -Not -Mandatory
     }
-    It 'ConfigurationFileName should have a value' {
-        Get-Command "$commandName" | Should -HaveParameter ConfigurationFileName -DefaultValue 'emfConfig.xml'
+    It 'EmfConfigurationFileName should have a value' {
+        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationFileName -DefaultValue 'emfConfig.xml'
     }
-    It 'ConfigurationName should be mandatory' {
-        Get-Command "$commandName" | Should -HaveParameter ConfigurationName -Mandatory
+    It 'EmfConfigurationName should be mandatory' {
+        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationName -Mandatory
     }
-    It 'ConfigurationName should be null' {
+    It 'EmfConfigurationName should be null' {
         $ConfigurationName | Should -BeNullOrEmpty
     }
-    It 'ConfigurationSettings should be mandatory' {
-        Get-Command "$commandName" | Should -HaveParameter ConfigurationSettings -Mandatory
+    It 'EmfConfigurationSettings should be mandatory' {
+        Get-Command "$commandName" | Should -HaveParameter EmfConfigurationSettings -Mandatory
     }
-    It 'ConfigurationSettings should be a hashtable' {
+    It 'EmfConfigurationSettings should be a hashtable' {
         $ConfigSettings = @{}
         $ConfigSettings | Should -BeOfType [System.Collections.Hashtable]
     }
@@ -42,11 +42,11 @@ Describe 'Parameters' {
         $ConfigSettings = @{}
         $ConfigSettings | Should -BeNullOrEmpty
     }
-    It 'ValidateConfig should not be mandatory' {
-        Get-Command "$commandName" | Should -HaveParameter ValidateConfig -Not -Mandatory
+    It 'Validate should not be mandatory' {
+        Get-Command "$commandName" | Should -HaveParameter Validate -Not -Mandatory
     }
-    It 'ValidateConfig should be a switch' {
-        [switch]$ValidateConfig = $false
-        $ValidateConfig | Should -BeOfType [System.Management.Automation.SwitchParameter]
+    It 'Validate should be a switch' {
+        [switch]$Validate = $false
+        $Validate | Should -BeOfType [System.Management.Automation.SwitchParameter]
     }
 }
