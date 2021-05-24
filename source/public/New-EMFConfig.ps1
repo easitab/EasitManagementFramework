@@ -6,17 +6,17 @@ function New-EMFConfig {
         [string] $EMFHome = "$Home\EMF",
         
         [Parameter()]
-        [Alias('file','filename')]
-        [string] $ConfigurationFileName = 'emfConfig.xml',
+        [Alias('ConfigurationFileName','ConfigFile','ConfigFileName')]
+        [string] $EmfConfigurationFileName = 'emfConfig.xml',
         
         [Parameter(Mandatory)]
         [ValidateSet("Prod","Test","Dev","IntegrationProd","IntegrationTest","IntegrationDev")]
-        [Alias('ConfigName')]
-        [string] $ConfigurationName,
+        [Alias('ConfigurationName','ConfigName')]
+        [string] $EmfConfigurationName,
 
         [Parameter(Mandatory)]
-        [Alias('ConfigSettings')]
-        [hashtable] $ConfigurationSettings,
+        [Alias('ConfigurationSettings','ConfigSettings')]
+        [hashtable] $EmfConfigurationSettings,
 
         [Parameter()]
         [switch ] $Validate,
@@ -30,7 +30,6 @@ function New-EMFConfig {
     }
     
     process {
-    Write-Verbose "Process block start!"
         $emfConfigFilePath = "$EMFHome\$ConfigurationFileName"
         if (Test-Path "$emfConfigFilePath") {
             Write-Verbose -Message "$emfConfigFilePath already exists."

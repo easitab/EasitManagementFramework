@@ -6,12 +6,12 @@ function Set-EMFConfig {
         [string] $EMFHome = "$Home\EMF",
 
         [Parameter()]
-        [Alias('file','filename')]
-        [string] $ConfigurationFileName = 'emfConfig.xml',
+        [Alias('ConfigurationFileName','ConfigFile','ConfigFileName')]
+        [string] $EmfConfigurationFileName = 'emfConfig.xml',
 
         [Parameter(Mandatory,Position=0)]
-        [Alias('ConfigName')]
-        [string] $ConfigurationName,
+        [Alias('ConfigurationName','ConfigName')]
+        [string] $EmfConfigurationName,
 
         [Parameter(Mandatory,ParameterSetName='Manual')]
         [string] $EasitRoot,
