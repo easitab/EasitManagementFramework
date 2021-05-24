@@ -65,7 +65,7 @@ Name of EasitManagementFramework configuration file to use.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: ConfigurationFileName, ConfigFile, ConfigFileName
 
 Required: False
 Position: 1
@@ -81,7 +81,7 @@ Name of configuration to use in EasitManagementFramework configuration file.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: ConfigurationName, ConfigName
 
 Required: False
 Position: 2

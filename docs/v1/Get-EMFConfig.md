@@ -14,7 +14,7 @@ Gets the configuration for one system.
 ## SYNTAX
 
 ```
-Get-EMFConfig [-EMFHome <String>] [-ConfigurationFileName <String>] [-ConfigurationName] <String>
+Get-EMFConfig [-EMFHome <String>] [-EmfConfigurationFileName <String>] [-EmfConfigurationName] <String>
  [<CommonParameters>]
 ```
 
@@ -44,30 +44,28 @@ Get the configuration for each system in the array systems.
 
 ## PARAMETERS
 
-### -ConfigurationFileName
-
-Name of the configuration file to use.
+### -EmfConfigurationFileName
+{{ Fill EmfConfigurationFileName Description }}
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: file, filename
+Aliases: ConfigurationFileName, ConfigFile, ConfigFileName
 
 Required: False
 Position: Named
-Default value: emfConfig.xml
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConfigurationName
-
-Name of configuration to use in the configuration file.
+### -EmfConfigurationName
+{{ Fill EmfConfigurationName Description }}
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: ConfigName
+Aliases: ConfigurationName, ConfigName
 
 Required: True
 Position: 0

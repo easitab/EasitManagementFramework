@@ -14,8 +14,8 @@ Create a new configuration for EMF.
 ## SYNTAX
 
 ```
-New-EMFConfig [[-EMFHome] <String>] [[-ConfigurationFileName] <String>] [-ConfigurationName] <String>
- [-ConfigurationSettings] <Hashtable> [-Validate] [[-SchemaFile] <String>] [<CommonParameters>]
+New-EMFConfig [[-EMFHome] <String>] [[-EmfConfigurationFileName] <String>] [-EmfConfigurationName] <String>
+ [-EmfConfigurationSettings] <Hashtable> [-Validate] [[-SchemaFile] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,14 +36,13 @@ This will create a configuration named Test with two (*SystemRoot* and *ServiceN
 
 ## PARAMETERS
 
-### -ConfigurationFileName
-
-Name of the configuration file to use.
+### -EmfConfigurationFileName
+{{ Fill EmfConfigurationFileName Description }}
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: file, filename
+Aliases: ConfigurationFileName, ConfigFile, ConfigFileName
 
 Required: False
 Position: 1
@@ -52,14 +51,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConfigurationName
-
-Name of configuration to use in the configuration file.
+### -EmfConfigurationName
+{{ Fill EmfConfigurationName Description }}
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: ConfigName
+Aliases: ConfigurationName, ConfigName
 Accepted values: Prod, Test, Dev, IntegrationProd, IntegrationTest, IntegrationDev
 
 Required: True
@@ -69,14 +67,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConfigurationSettings
-
-Hashtable with properties and its values that the configuration should have.
+### -EmfConfigurationSettings
+{{ Fill EmfConfigurationSettings Description }}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: ConfigSettings
+Aliases: ConfigurationSettings, ConfigSettings
 
 Required: True
 Position: 3
