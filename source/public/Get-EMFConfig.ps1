@@ -19,26 +19,25 @@ function Get-EMFConfig {
     }
     
     process {
-        Write-Verbose "Process block start"
-        if (Test-Path "$EMFHome\$ConfigurationFileName") {
-            Write-Verbose "Found $EMFHome\$ConfigurationFileName"
+        if (Test-Path "$EMFHome\$EmfConfigurationFileName") {
+            Write-Verbose "Found $EMFHome\$EmfConfigurationFileName"
         } else {            
-            throw [System.IO.FileNotFoundException] "$EMFHome\$ConfigurationFileName does not exist"
+            throw [System.IO.FileNotFoundException] "$EMFHome\$EmfConfigurationFileName does not exist"
         }
         Write-Verbose "Retrieving configurations data"
         try {
-            $configurationFileData = Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"
+            $configurationFileData = Import-EMFXMLData -Path "$EMFHome\$EmfConfigurationFileName"
             Write-Verbose "Configuration data retrieved"
         } catch {
             throw $_
         }
-        if ($configurationFileData.systems.$ConfigurationName) {
-            Write-Verbose "Found configuration named $ConfigurationName"
+        if ($configurationFileData.systems.$EmfConfigurationName) {
+            Write-Verbose "Found configuration named $EmfConfigurationName"
         } else {
-            throw "No configuration found named $ConfigurationName"
+            throw "No configuration found named $EmfConfigurationName"
         }
         $returnObject = New-Object -TypeName psobject
-        $configProperties = $configurationFileData.systems.$ConfigurationName
+        $configProperties = $configurationFileData.systems.$EmfConfigurationName
         foreach ($property in $configProperties.ChildNodes) {
             $returnObject | Add-Member -MemberType NoteProperty -Name "$($property.Name)" -Value "$($property.InnerText)"
         }
