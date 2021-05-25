@@ -30,15 +30,15 @@ function New-EMFConfig {
     }
     
     process {
-        $emfConfigFilePath = "$EMFHome\$ConfigurationFileName"
+        $emfConfigFilePath = "$EMFHome\$EmfConfigurationFileName"
         if (Test-Path "$emfConfigFilePath") {
             Write-Verbose -Message "$emfConfigFilePath already exists."
             try {
-                Get-EMFConfig -EMFHome $EMFHome -ConfigurationFileName $ConfigurationFileName -ConfigurationName $ConfigurationName
-                Write-Warning "A configuration with the name $ConfigurationName does already exist in $emfConfigFilePath. Use Set-EMFConfig to update configuration!"
+                Get-EMFConfig -EMFHome $EMFHome -EmfConfigurationFileName $EmfConfigurationFileName -EmfConfigurationName $EmfConfigurationName
+                Write-Warning "A configuration with the name $EmfConfigurationName does already exist in $emfConfigFilePath. Use Set-EMFConfig to update configuration!"
                 break
             } catch {
-                Write-Verbose "No configuration with name $ConfigurationName found"
+                Write-Verbose "No configuration with name $EmfConfigurationName found"
             }
         } else {
             Write-Verbose "$emfConfigFilePath does not exist."
@@ -67,17 +67,17 @@ function New-EMFConfig {
             throw $_
         }
         try {
-            Write-Verbose "Creating xml element for $ConfigurationName"
-            $configObjectItem = $configObject.CreateElement("$ConfigurationName")
+            Write-Verbose "Creating xml element for $EmfConfigurationName"
+            $configObjectItem = $configObject.CreateElement("$EmfConfigurationName")
             $configObjectItems.AppendChild($configObjectItem) | Out-Null
         } catch {
-            Write-Verbose "Failed to create xml element for $ConfigurationName"
+            Write-Verbose "Failed to create xml element for $EmfConfigurationName"
             throw $_
         }
         foreach ($setting in $ConfigurationSettings.GetEnumerator()) {
             $settingName = $setting.Name
             $settingValue = $setting.Value
-            if (!($settingName -eq 'ConfigurationName')) {
+            if (!($settingName -eq 'EmfConfigurationName')) {
                 try {
                     Write-Verbose "Creating xml element for setting $settingName"
                     $configObjectItemSetting = $configObject.CreateElement("$settingName")
@@ -88,7 +88,7 @@ function New-EMFConfig {
                     throw $_
                 }
             } else {
-                Write-Verbose "SettingName = ConfigurationName"
+                Write-Verbose "SettingName = EmfConfigurationName"
             }
         }
 
