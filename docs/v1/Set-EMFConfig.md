@@ -15,7 +15,7 @@ Update or set property for existing configuration.
 
 ### Manual
 ```
-Set-EMFConfig [-EMFHome <String>] [-ConfigurationFileName <String>] [-ConfigurationName] <String>
+Set-EMFConfig [-EMFHome <String>] [-EmfConfigurationFileName <String>] [-EmfConfigurationName] <String>
  -EasitRoot <String> [-SystemRoot <String>] [-ServiceName <String>] [-WarName <String>] [-TomcatRoot <String>]
  [-BackupRoot <String>] [-EmailRequestRoot <String>] [-ImportClientRoot <String>]
  [-UpdateResourceDirectory <String>] [-StoredBackupProcedure <String>] [-ValidateSettings] [<CommonParameters>]
@@ -23,7 +23,7 @@ Set-EMFConfig [-EMFHome <String>] [-ConfigurationFileName <String>] [-Configurat
 
 ### Array
 ```
-Set-EMFConfig [-EMFHome <String>] [-ConfigurationFileName <String>] [-ConfigurationName] <String>
+Set-EMFConfig [-EMFHome <String>] [-EmfConfigurationFileName <String>] [-EmfConfigurationName] <String>
  -PropertySetting <String[]> [-ValidateSettings] [<CommonParameters>]
 ```
 
@@ -76,38 +76,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConfigurationFileName
-
-Name of the configuration file to use.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: file, filename
-
-Required: False
-Position: Named
-Default value: emfConfig.xml
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigurationName
-
-Name of configuration to use in the configuration file.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ConfigName
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EasitRoot
 
 Path to Easit directory which usually contains EmailRequest, ImportClient, Tomcat, Java and so on.
@@ -136,6 +104,36 @@ Aliases: ER, EmailRequest, erRoot
 Required: False
 Position: Named
 Default value: $EasitRoot\EmailRequest
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EmfConfigurationFileName
+{{ Fill EmfConfigurationFileName Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ConfigurationFileName, ConfigFile, ConfigFileName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EmfConfigurationName
+{{ Fill EmfConfigurationName Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ConfigurationName, ConfigName
+
+Required: True
+Position: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -2421,10 +2421,10 @@ PS C:\&gt; Get-EasitService -ServiceName "$easitGoServiceName"</dev:code>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-EMFConfig</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="ConfigName">
-          <maml:name>ConfigurationName</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="ConfigurationName, ConfigName">
+          <maml:name>EmfConfigurationName</maml:name>
           <maml:description>
-            <maml:para>Name of configuration to use in the configuration file.</maml:para>
+            <maml:para>{{ Fill EmfConfigurationName Description }}</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -2433,17 +2433,17 @@ PS C:\&gt; Get-EasitService -ServiceName "$easitGoServiceName"</dev:code>
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="file, filename">
-          <maml:name>ConfigurationFileName</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ConfigurationFileName, ConfigFile, ConfigFileName">
+          <maml:name>EmfConfigurationFileName</maml:name>
           <maml:description>
-            <maml:para>Name of the configuration file to use.</maml:para>
+            <maml:para>{{ Fill EmfConfigurationFileName Description }}</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>emfConfig.xml</dev:defaultValue>
+          <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Home">
           <maml:name>EMFHome</maml:name>
@@ -2460,22 +2460,22 @@ PS C:\&gt; Get-EasitService -ServiceName "$easitGoServiceName"</dev:code>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="file, filename">
-        <maml:name>ConfigurationFileName</maml:name>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ConfigurationFileName, ConfigFile, ConfigFileName">
+        <maml:name>EmfConfigurationFileName</maml:name>
         <maml:description>
-          <maml:para>Name of the configuration file to use.</maml:para>
+          <maml:para>{{ Fill EmfConfigurationFileName Description }}</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>emfConfig.xml</dev:defaultValue>
+        <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="ConfigName">
-        <maml:name>ConfigurationName</maml:name>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="ConfigurationName, ConfigName">
+        <maml:name>EmfConfigurationName</maml:name>
         <maml:description>
-          <maml:para>Name of configuration to use in the configuration file.</maml:para>
+          <maml:para>{{ Fill EmfConfigurationName Description }}</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -3518,10 +3518,10 @@ PS C:\&gt; Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"</dev:code>
           </dev:type>
           <dev:defaultValue>$Home\EMF</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="file, filename">
-          <maml:name>ConfigurationFileName</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="ConfigurationFileName, ConfigFile, ConfigFileName">
+          <maml:name>EmfConfigurationFileName</maml:name>
           <maml:description>
-            <maml:para>Name of the configuration file to use.</maml:para>
+            <maml:para>{{ Fill EmfConfigurationFileName Description }}</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -3530,10 +3530,10 @@ PS C:\&gt; Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"</dev:code>
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="ConfigName">
-          <maml:name>ConfigurationName</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="ConfigurationName, ConfigName">
+          <maml:name>EmfConfigurationName</maml:name>
           <maml:description>
-            <maml:para>Name of configuration to use in the configuration file.</maml:para>
+            <maml:para>{{ Fill EmfConfigurationName Description }}</maml:para>
           </maml:description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">Prod</command:parameterValue>
@@ -3550,10 +3550,10 @@ PS C:\&gt; Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"</dev:code>
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="ConfigSettings">
-          <maml:name>ConfigurationSettings</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="ConfigurationSettings, ConfigSettings">
+          <maml:name>EmfConfigurationSettings</maml:name>
           <maml:description>
-            <maml:para>Hashtable with properties and its values that the configuration should have.</maml:para>
+            <maml:para>{{ Fill EmfConfigurationSettings Description }}</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -3588,10 +3588,10 @@ PS C:\&gt; Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"</dev:code>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="file, filename">
-        <maml:name>ConfigurationFileName</maml:name>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="ConfigurationFileName, ConfigFile, ConfigFileName">
+        <maml:name>EmfConfigurationFileName</maml:name>
         <maml:description>
-          <maml:para>Name of the configuration file to use.</maml:para>
+          <maml:para>{{ Fill EmfConfigurationFileName Description }}</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -3600,10 +3600,10 @@ PS C:\&gt; Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"</dev:code>
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="ConfigName">
-        <maml:name>ConfigurationName</maml:name>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="ConfigurationName, ConfigName">
+        <maml:name>EmfConfigurationName</maml:name>
         <maml:description>
-          <maml:para>Name of configuration to use in the configuration file.</maml:para>
+          <maml:para>{{ Fill EmfConfigurationName Description }}</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -3612,10 +3612,10 @@ PS C:\&gt; Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"</dev:code>
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="ConfigSettings">
-        <maml:name>ConfigurationSettings</maml:name>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="ConfigurationSettings, ConfigSettings">
+        <maml:name>EmfConfigurationSettings</maml:name>
         <maml:description>
-          <maml:para>Hashtable with properties and its values that the configuration should have.</maml:para>
+          <maml:para>{{ Fill EmfConfigurationSettings Description }}</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
@@ -4434,10 +4434,10 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Set-EMFConfig</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="ConfigName">
-          <maml:name>ConfigurationName</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="ConfigurationName, ConfigName">
+          <maml:name>EmfConfigurationName</maml:name>
           <maml:description>
-            <maml:para>Name of configuration to use in the configuration file.</maml:para>
+            <maml:para>{{ Fill EmfConfigurationName Description }}</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -4457,18 +4457,6 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
             <maml:uri />
           </dev:type>
           <dev:defaultValue>$EasitRoot\_Backup\$ConfigurationName</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="file, filename">
-          <maml:name>ConfigurationFileName</maml:name>
-          <maml:description>
-            <maml:para>Name of the configuration file to use.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>emfConfig.xml</dev:defaultValue>
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>EasitRoot</maml:name>
@@ -4493,6 +4481,18 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
             <maml:uri />
           </dev:type>
           <dev:defaultValue>$EasitRoot\EmailRequest</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ConfigurationFileName, ConfigFile, ConfigFileName">
+          <maml:name>EmfConfigurationFileName</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill EmfConfigurationFileName Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Home">
           <maml:name>EMFHome</maml:name>
@@ -4604,10 +4604,10 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Set-EMFConfig</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="ConfigName">
-          <maml:name>ConfigurationName</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="ConfigurationName, ConfigName">
+          <maml:name>EmfConfigurationName</maml:name>
           <maml:description>
-            <maml:para>Name of configuration to use in the configuration file.</maml:para>
+            <maml:para>{{ Fill EmfConfigurationName Description }}</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -4616,17 +4616,17 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="file, filename">
-          <maml:name>ConfigurationFileName</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ConfigurationFileName, ConfigFile, ConfigFileName">
+          <maml:name>EmfConfigurationFileName</maml:name>
           <maml:description>
-            <maml:para>Name of the configuration file to use.</maml:para>
+            <maml:para>{{ Fill EmfConfigurationFileName Description }}</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>emfConfig.xml</dev:defaultValue>
+          <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Home">
           <maml:name>EMFHome</maml:name>
@@ -4678,30 +4678,6 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
         </dev:type>
         <dev:defaultValue>$EasitRoot\_Backup\$ConfigurationName</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="file, filename">
-        <maml:name>ConfigurationFileName</maml:name>
-        <maml:description>
-          <maml:para>Name of the configuration file to use.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>emfConfig.xml</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="ConfigName">
-        <maml:name>ConfigurationName</maml:name>
-        <maml:description>
-          <maml:para>Name of configuration to use in the configuration file.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>EasitRoot</maml:name>
         <maml:description>
@@ -4725,6 +4701,30 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
           <maml:uri />
         </dev:type>
         <dev:defaultValue>$EasitRoot\EmailRequest</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="ConfigurationFileName, ConfigFile, ConfigFileName">
+        <maml:name>EmfConfigurationFileName</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill EmfConfigurationFileName Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="ConfigurationName, ConfigName">
+        <maml:name>EmfConfigurationName</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill EmfConfigurationName Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Home">
         <maml:name>EMFHome</maml:name>
@@ -4930,7 +4930,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
           </dev:type>
           <dev:defaultValue>$Home\EMF</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="ConfigurationFileName, ConfigFile, ConfigFileName">
           <maml:name>EmfConfigurationFileName</maml:name>
           <maml:description>
             <maml:para>Name of EasitManagementFramework configuration file to use.</maml:para>
@@ -4942,7 +4942,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
           </dev:type>
           <dev:defaultValue>emfConfig.xml</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="ConfigurationName, ConfigName">
           <maml:name>EmfConfigurationName</maml:name>
           <maml:description>
             <maml:para>Name of configuration to use in EasitManagementFramework configuration file.</maml:para>
@@ -4979,7 +4979,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="ConfigurationFileName, ConfigFile, ConfigFileName">
         <maml:name>EmfConfigurationFileName</maml:name>
         <maml:description>
           <maml:para>Name of EasitManagementFramework configuration file to use.</maml:para>
@@ -4991,7 +4991,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
         </dev:type>
         <dev:defaultValue>emfConfig.xml</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="ConfigurationName, ConfigName">
         <maml:name>EmfConfigurationName</maml:name>
         <maml:description>
           <maml:para>Name of configuration to use in EasitManagementFramework configuration file.</maml:para>
@@ -5129,7 +5129,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
           </dev:type>
           <dev:defaultValue>$Home\EMF</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="ConfigurationFileName, ConfigFile, ConfigFileName">
           <maml:name>EmfConfigurationFileName</maml:name>
           <maml:description>
             <maml:para>Name of EasitManagementFramework configuration file to use.</maml:para>
@@ -5141,7 +5141,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
           </dev:type>
           <dev:defaultValue>emfConfig.xml</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="ConfigurationName, ConfigName">
           <maml:name>EmfConfigurationName</maml:name>
           <maml:description>
             <maml:para>Name of configuration to use in EasitManagementFramework configuration file.</maml:para>
@@ -5167,7 +5167,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="ConfigurationFileName, ConfigFile, ConfigFileName">
         <maml:name>EmfConfigurationFileName</maml:name>
         <maml:description>
           <maml:para>Name of EasitManagementFramework configuration file to use.</maml:para>
@@ -5179,7 +5179,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
         </dev:type>
         <dev:defaultValue>emfConfig.xml</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="ConfigurationName, ConfigName">
         <maml:name>EmfConfigurationName</maml:name>
         <maml:description>
           <maml:para>Name of configuration to use in EasitManagementFramework configuration file.</maml:para>

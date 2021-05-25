@@ -3,12 +3,18 @@ function Start-EasitGOApplication {
     param (
         [Parameter()]
         [string] $EmfHome = "$Home\EMF",
+
         [Parameter()]
+        [Alias('ConfigurationFileName','ConfigFile','ConfigFileName')]
         [string] $EmfConfigurationFileName = 'emfConfig.xml',
+
         [Parameter()]
+        [Alias('ConfigurationName','ConfigName')]
         [string] $EmfConfigurationName = 'Dev',
+
         [Parameter()]
         [switch] $Verify,
+        
         [Parameter()]
         [switch] $RunningElevated
     )
