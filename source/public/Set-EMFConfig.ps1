@@ -17,19 +17,19 @@ function Set-EMFConfig {
         [string] $EasitRoot,
 
         [Parameter(ParameterSetName='Manual')]
-        [string] $SystemRoot = "$EasitRoot\Systems\$ConfigurationName",
+        [string] $SystemRoot = "$EasitRoot\Systems\$EmfConfigurationName",
 
         [Parameter(ParameterSetName='Manual')]
-        [string] $ServiceName = "Easit$ConfigurationName",
+        [string] $ServiceName = "Easit$EmfConfigurationName",
 
         [Parameter(ParameterSetName='Manual')]
         [string] $WarName = "ROOT",
 
         [Parameter(ParameterSetName='Manual')]
-        [string] $TomcatRoot = "$EasitRoot\Systems\$ConfigurationName",
+        [string] $TomcatRoot = "$EasitRoot\Systems\$EmfConfigurationName",
 
         [Parameter(ParameterSetName='Manual')]
-        [string] $BackupRoot = "$EasitRoot\_Backup\$ConfigurationName",
+        [string] $BackupRoot = "$EasitRoot\_Backup\$EmfConfigurationName",
 
         [Parameter(ParameterSetName='Manual')]
         [Alias('ER','EmailRequest','erRoot')]
@@ -58,16 +58,16 @@ function Set-EMFConfig {
     }
     
     process {
-        if (Test-Path "$EMFHome\$ConfigurationFileName") {
-            Write-Verbose "Located $EMFHome\$ConfigurationFileName"
+        if (Test-Path "$EMFHome\$EmfConfigurationFileName") {
+            Write-Verbose "Located $EMFHome\$EmfConfigurationFileName"
             try {
-                $currentConfigSettings = Get-EMFConfig -EMFHome $EMFHome -ConfigurationFileName $ConfigurationFileName -ConfigurationName $ConfigurationName
+                $currentConfigSettings = Get-EMFConfig -EMFHome $EMFHome -EmfConfigurationFileName $EmfConfigurationFileName -EmfConfigurationName $EmfConfigurationName
                 Write-Verbose "Successfully retrieved configuration"
             } catch {
                 throw $_
             }
         } else {
-            throw "Cannot find $EMFHome\$ConfigurationFileName"
+            throw "Cannot find $EMFHome\$EmfConfigurationFileName"
         }
         $paramName = $PSCmdlet.ParameterSetName
         if ($paramName -eq 'Manual') {
@@ -111,13 +111,13 @@ function Set-EMFConfig {
         }
         try {
             $currentConfigurationFile = New-Object System.Xml.XmlDocument
-            $currentConfigurationFile.Load("$EMFHome\$ConfigurationFileName")
+            $currentConfigurationFile.Load("$EMFHome\$EmfConfigurationFileName")
         } catch {
             Write-Verbose "Something went wrong while loading currentConfigurationFile"
             throw "$($_.Exception.Message)"
         }
-        if (!($currentConfigurationFile.systems.${ConfigurationName})) {
-            Write-Warning "Unable to find configuration block for $ConfigurationName"
+        if (!($currentConfigurationFile.systems.${EmfConfigurationName})) {
+            Write-Warning "Unable to find configuration block for $EmfConfigurationName"
             return
         }
         if ($ValidateSettings) {
@@ -127,16 +127,16 @@ function Set-EMFConfig {
             $configurationSettings.GetEnumerator() | ForEach-Object {
                 $settingName = "$($_.Key)"
                 $settingValue = "$($_.Value)"
-                $currentConfigurationFile.systems.${ConfigurationName}.${settingName} = $settingValue
+                $currentConfigurationFile.systems.${EmfConfigurationName}.${settingName} = $settingValue
             }
         } catch {
             Write-Warning "$($_.Exception.Message)"
         }
         
         try {
-            $currentConfigurationFile.Save("$EMFHome\$ConfigurationFileName")
+            $currentConfigurationFile.Save("$EMFHome\$EmfConfigurationFileName")
         } catch {
-            Write-Verbose "Something went wrong while updating configuration file ($ConfigurationFileName), block $ConfigurationName"
+            Write-Verbose "Something went wrong while updating configuration file ($EmfConfigurationFileName), block $EmfConfigurationName"
             throw $_
         }
     }
