@@ -3005,6 +3005,7 @@ PS C:\&gt; Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"</dev:code>
     </command:details>
     <maml:description>
       <maml:para>This cmdlet lets to update the patch level of Easit GO in a structured and automatic way. By default the cmdlet looks for a file with the name passed in as -UpdateFilename in a folder called Update located in EasitRoot.</maml:para>
+      <maml:para>Manual steps for updating Easit GO, if this function failes for some reasing, can be found here: HOW-TO-InvokeEasitGOUpdate_ManualSteps (https://github.com/easitab/EasitManagementFramework/blob/development/docs/HOW-TO-InvokeEasitGOUpdate_ManualSteps.md)</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -5543,6 +5544,94 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
         <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Test-EMFXMLData.md</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Test-ForFileLock</command:name>
+      <command:verb>Test</command:verb>
+      <command:noun>ForFileLock</command:noun>
+      <maml:description>
+        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>{{ Fill in the Description }}</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Test-ForFileLock</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>FilePath</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill FilePath Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>FilePath</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill FilePath Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+        <dev:remarks>
+          <maml:para>{{ Add example description here }}</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Test-ForFileLock.md</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Test-ForFileLock.md</maml:linkText>
+        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Test-ForFileLock.md</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
