@@ -238,18 +238,24 @@ function Invoke-EasitGOUpdate {
             }
         }
         try {
+            Write-Verbose "Removing $logsRoot"
             Remove-Item "$logsRoot" -Include '*.*' -Recurse -Force -Confirm:$false -InformationAction SilentlyContinue
+            Write-Verbose "$logsRoot removed"
         } catch {
             Write-Warning "$($_.Exception)"
         }
         try {
+            Write-Verbose "Removing $warFile"
             Remove-Item "$warFile" -Confirm:$false -InformationAction SilentlyContinue
+            Write-Verbose "$warFile removed"
         } catch {
             Write-Warning "$($_.Exception)"
         }
         $expandedWarFolder = Join-Path -Path "$webappsRoot" -ChildPath "$($emfConfig.WarName)"
         try {
-            Remove-Item "$expandedWarFolder" -Confirm:$false -InformationAction SilentlyContinue
+            Write-Verbose "Removing $expandedWarFolder"
+            Remove-Item "$expandedWarFolder" -Recurse -Force -Confirm:$false -InformationAction SilentlyContinue
+            Write-Verbose "$expandedWarFolder removed"
         } catch {
             Write-Warning "$($_.Exception)"
         }
