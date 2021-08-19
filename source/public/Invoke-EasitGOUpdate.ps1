@@ -18,7 +18,7 @@ function Invoke-EasitGOUpdate {
         [Parameter()]
         [switch] $StoredProcedureName
     )
-    
+
     begin {
         Write-Verbose "$($MyInvocation.MyCommand) initialized"
         if (!($RunningElevated)) {
@@ -26,7 +26,7 @@ function Invoke-EasitGOUpdate {
         }
         $emfConfig = Get-EMFConfig -EMFHome $EmfHome -ConfigurationFileName $EmfConfigurationFileName -ConfigurationName $EmfConfigurationName
     }
-    
+
     process {
         if ([string]::IsNullOrWhiteSpace($UpdateResourceDirectory)) {
             if ([string]::IsNullOrWhiteSpace($emfConfig.UpdateResourceDirectory)) {
@@ -51,7 +51,7 @@ function Invoke-EasitGOUpdate {
                 Write-Verbose "Using systemRoot: $systemRoot"
             }
         }
-        
+
         if ([string]::IsNullOrWhiteSpace($emfConfig.BackupRoot)) {
             throw "No path provided as BackupRoot. Please update BackupRoot in $EmfHome\$EmfConfigurationFileName for Email2GO"
         } else {
@@ -209,7 +209,6 @@ function Invoke-EasitGOUpdate {
                 if ($LASTEXITCODE -ne 0) {
                     throw "Invoke-Sqlcmd returned $LASTEXITCODE"
                 }
-                
             }
             if (!($useLocalCommand)) {
                 try {
@@ -255,7 +254,7 @@ function Invoke-EasitGOUpdate {
             Write-Warning "$($_.Exception)"
         }
         Write-Information "Backup of files and folders have been completed" -InformationAction Continue
-        
+
         Write-Information "Updating war file" -InformationAction Continue
         $newWarToCopy = Join-Path -Path "$($emfConfig.UpdateResourceDirectory)" -ChildPath "$UpdateFilename"
         Write-Verbose "Looking for $UpdateFilename in $($emfConfig.UpdateResourceDirectory)"
@@ -276,7 +275,7 @@ function Invoke-EasitGOUpdate {
         }
         Write-Information "Update of Easit GO have been completed" -InformationAction Continue
     }
-    
+
     end {
         Write-Verbose "$($MyInvocation.MyCommand) completed"
     }
