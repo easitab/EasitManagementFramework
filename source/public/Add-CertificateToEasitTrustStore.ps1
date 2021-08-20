@@ -22,7 +22,7 @@ function Add-CertificateToEasitTrustStore {
         [Parameter()]
         [switch] $NoPrompt,
         [Parameter()]
-        [string] $EmfHome = "$Home\EMF",
+        [string] $EmfHome = "${env:ALLUSERSPROFILE}\EMF",
         [Parameter()]
         [string] $EmfConfigurationFileName = 'emfConfig.xml',
         [Parameter()]

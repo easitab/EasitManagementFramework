@@ -1422,7 +1422,7 @@ serverUrl    port         instanceName nameOfDatabase</dev:code>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>$Home\EMF</dev:defaultValue>
+          <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>EmfConfigurationFileName</maml:name>
@@ -1521,7 +1521,7 @@ serverUrl    port         instanceName nameOfDatabase</dev:code>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>$Home\EMF</dev:defaultValue>
+        <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="Mailbox">
         <maml:name>MailboxName</maml:name>
@@ -1731,7 +1731,7 @@ serverUrl    port         instanceName nameOfDatabase</dev:code>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>$Home\EMF</dev:defaultValue>
+          <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
@@ -1812,7 +1812,7 @@ serverUrl    port         instanceName nameOfDatabase</dev:code>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>$Home\EMF</dev:defaultValue>
+        <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>LiteralPath</maml:name>
@@ -1881,14 +1881,14 @@ serverUrl    port         instanceName nameOfDatabase</dev:code>
         <maml:title>------ Example 1: Get log entries from Easit*.log - Test ------</maml:title>
         <dev:code>PS C:\&gt; Get-EasitLog -EmfConfigurationName 'Test'</dev:code>
         <dev:remarks>
-          <maml:para>In this example we take advantage of the EMF-configuration file located in '$Home/EMF', and the configuration named Test in it. This will return all entries in log files from test.</maml:para>
+          <maml:para>In this example we take advantage of the EMF-configuration file located in '${env:ALLUSERSPROFILE}/EMF', and the configuration named Test in it. This will return all entries in log files from test.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>- Example 2: Get all log entries from Easit*.log - Production -</maml:title>
         <dev:code>PS C:\&gt; Get-EasitLog 'Prod'</dev:code>
         <dev:remarks>
-          <maml:para>In this example we take advantage of the EMF-configuration file located in '$Home/EMF'. The parameter EmfConfigurationName is expected as first input if no parameter is specified.</maml:para>
+          <maml:para>In this example we take advantage of the EMF-configuration file located in '${env:ALLUSERSPROFILE}/EMF'. The parameter EmfConfigurationName is expected as first input if no parameter is specified.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
@@ -2543,7 +2543,7 @@ PS C:\&gt; Get-EasitService -ServiceName "$easitGoServiceName"</dev:code>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>$Home\EMF</dev:defaultValue>
+          <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -2582,7 +2582,7 @@ PS C:\&gt; Get-EasitService -ServiceName "$easitGoServiceName"</dev:code>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>$Home\EMF</dev:defaultValue>
+        <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -2751,7 +2751,7 @@ PS C:\&gt; $systems | ForEach-Object {Get-EMFConfig -ConfigurationName $PSItem }
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; $EMFHome = "$Home\EMF"
+        <dev:code>PS C:\&gt; $EMFHome = "${env:ALLUSERSPROFILE}\EMF"
 PS C:\&gt; $ConfigurationFileName = 'emfConfig.xml'
 PS C:\&gt; Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"</dev:code>
         <dev:remarks>
@@ -2791,7 +2791,7 @@ PS C:\&gt; Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"</dev:code>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>$Home\EMF</dev:defaultValue>
+          <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>ConfigURL</maml:name>
@@ -2878,7 +2878,7 @@ PS C:\&gt; Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"</dev:code>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>$Home\EMF</dev:defaultValue>
+        <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
         <maml:name>SchemaName</maml:name>
@@ -3605,7 +3605,7 @@ PS C:\&gt; Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"</dev:code>
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>$Home\EMF</dev:defaultValue>
+          <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="ConfigurationFileName, ConfigFile, ConfigFileName">
           <maml:name>EmfConfigurationFileName</maml:name>
@@ -3723,7 +3723,7 @@ PS C:\&gt; Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"</dev:code>
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>$Home\EMF</dev:defaultValue>
+        <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
         <maml:name>SchemaFile</maml:name>
@@ -4172,7 +4172,7 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>$Home\EMF</dev:defaultValue>
+          <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>EmfConfigurationFileName</maml:name>
@@ -4295,7 +4295,7 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>$Home\EMF</dev:defaultValue>
+        <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="Mailbox">
         <maml:name>MailboxName</maml:name>
@@ -4593,7 +4593,7 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>$Home\EMF</dev:defaultValue>
+          <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IC, ImportClient, icRoot">
           <maml:name>ImportClientRoot</maml:name>
@@ -4727,7 +4727,7 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>$Home\EMF</dev:defaultValue>
+          <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>PropertySetting</maml:name>
@@ -4825,7 +4825,7 @@ PS C:\&gt; New-EMFConfig -ConfigurationName Test -ConfigurationSettings $hastabl
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>$Home\EMF</dev:defaultValue>
+        <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="IC, ImportClient, icRoot">
         <maml:name>ImportClientRoot</maml:name>
@@ -5017,7 +5017,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>$Home\EMF</dev:defaultValue>
+          <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="ConfigurationFileName, ConfigFile, ConfigFileName">
           <maml:name>EmfConfigurationFileName</maml:name>
@@ -5102,7 +5102,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>$Home\EMF</dev:defaultValue>
+        <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>RunningElevated</maml:name>
@@ -5180,7 +5180,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
         <maml:title>-------------------------- Example 4 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Start-EasitGOApplication -EmfHome 'C:\Users\localAdmin\EMF'</dev:code>
         <dev:remarks>
-          <maml:para>In this example the cmdlet will try to start the application with a service name specified in the in emfConfig.xml in C:\Users\localAdmin\EMF . This example can be used if you have your configuration files located in another place then $Home/EMF .</maml:para>
+          <maml:para>In this example the cmdlet will try to start the application with a service name specified in the in emfConfig.xml in C:\Users\localAdmin\EMF . This example can be used if you have your configuration files located in another place then ${env:ALLUSERSPROFILE}/EMF .</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -5216,7 +5216,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>$Home\EMF</dev:defaultValue>
+          <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="ConfigurationFileName, ConfigFile, ConfigFileName">
           <maml:name>EmfConfigurationFileName</maml:name>
@@ -5290,7 +5290,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>$Home\EMF</dev:defaultValue>
+        <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>RunningElevated</maml:name>
@@ -5347,7 +5347,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
         <maml:title>-------------------------- Example 4 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Stop-EasitGOApplication -EmfHome 'C:\Users\localAdmin\EMF'</dev:code>
         <dev:remarks>
-          <maml:para>In this example the cmdlet will try to stop the application with a service name specified in the in emfConfig.xml in C:\Users\localAdmin\EMF . This example can be used if you have your configuration files located in another place then $Home/EMF .</maml:para>
+          <maml:para>In this example the cmdlet will try to stop the application with a service name specified in the in emfConfig.xml in C:\Users\localAdmin\EMF . This example can be used if you have your configuration files located in another place then ${env:ALLUSERSPROFILE}/EMF .</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -5491,7 +5491,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
             <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>$Home\EMF</dev:defaultValue>
+          <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>Path</maml:name>
@@ -5541,7 +5541,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>$Home\EMF</dev:defaultValue>
+        <dev:defaultValue>${env:ALLUSERSPROFILE}\EMF</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>Path</maml:name>
@@ -5617,7 +5617,7 @@ PS C:\&gt; Set-EMFConfig -ConfigurationName 'Dev' -PropertySettings $PropertySet
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Test-EMFXMLData -EMFHome 'D:\EMF'</dev:code>
         <dev:remarks>
-          <maml:para>If your EMFHome location is another than $Home\EMF you can use this example instead of example 1.</maml:para>
+          <maml:para>If your EMFHome location is another than ${env:ALLUSERSPROFILE}\EMF you can use this example instead of example 1.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>

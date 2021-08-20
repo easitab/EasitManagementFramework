@@ -2,7 +2,7 @@ function Invoke-Email2GOUpdate {
     [CmdletBinding(HelpURI="https://github.com/easitab/EasitManagementFramework/blob/main/docs/v1/Invoke-Email2GOUpdate.md")]
     param (
         [Parameter()]
-        [string] $EmfHome = "$Home\EMF",
+        [string] $EmfHome = "${env:ALLUSERSPROFILE}\EMF",
         [Parameter()]
         [string] $EmfConfigurationFileName = 'emfConfig.xml',
         [Parameter()]
