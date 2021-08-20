@@ -13,7 +13,7 @@ Private cmdlet, not used by user directly.
 
 ## SYNTAX
 
-```powershell
+```
 Import-EMFXMLData [-Path] <String> [-ReturnAsPSObject] [-Validate] [<CommonParameters>]
 ```
 
