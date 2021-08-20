@@ -151,9 +151,7 @@ function Invoke-EasitGOUpdate {
             }
         }
         Write-Verbose "Using warFile: $warFile"
-
         $UpdateFile = Join-Path -Path $UpdateResourceDirectory -ChildPath $UpdateFilename
-        $todayMinute = Get-Date -Format "yyyyMMdd_HHmm"
         Write-Information "Trying to find update file" -InformationAction Continue
         if (Test-Path -Path $UpdateFile) {
             Write-Information "Using UpdateFile: $UpdateFile" -InformationAction Continue
@@ -169,22 +167,30 @@ function Invoke-EasitGOUpdate {
 
         if (!($SkipDbBackup)) {
             $rawDbUrl = "$($systemProperties.'dataSource.url')"
-            $dbServer = $rawDbUrl -match '.*\:.*\:\/\/(.*)\/'
-            $dbServer = $Matches[1]
-            $dbName = Split-Path $systemProperties.'dataSource.url' -Leaf
-            $useLocalCommand = $false
-            if (Get-Command -Module 'SqlServer') {
-                Write-Verbose "Found module SqlServer"
-                $useLocalCommand = $true
+            try {
+                $dbConnectionDetails = Get-DatabaseDetails -Uri $rawDbUrl
+                Write-Verbose $dbConnectionDetails
+            } catch {
+                Write-Verbose $dbConnectionDetails
+                throw "Unable to resolve database connection details"
+            }
+            if ($dbConnectionDetails.supportedProtocol) {
+                Write-Warning "EasitManagementFramework only supports MSSQL at the moment. Perform manual backup of database and specify -SkipDbBackup"
+                break
             } else {
-                Write-Verbose "Module SqlServer is not installed on this computer, will attempt to connect to sql server $dbServer"
-                if (!(Test-NetConnection -ComputerName "$dbServer" -Port 1433)) {
-                    throw "Unable to connect to sql server $dbServer on port 1433, check connection or perform manual backup of database and specify -SkipDbBackup"
+                $useLocalCommand = $false
+                if (Get-Command -Module 'SqlServer') {
+                    Write-Verbose "Found module SqlServer"
+                    $useLocalCommand = $true
+                } else {
+                    Write-Verbose "Module SqlServer is not installed on this computer, will attempt to connect to sql server $($dbConnectionDetails.dbServerName)"
+                    if (!(Test-NetConnection -ComputerName "$($dbConnectionDetails.dbServerName)" -Port $dbConnectionDetails.dbServerPort)) {
+                        throw "Unable to connect to sql server $($dbConnectionDetails.dbServerName) on port $($dbConnectionDetails.dbServerPort), check connection or perform manual backup of database and specify -SkipDbBackup"
+                    }
+                    Write-Verbose "Successfully connected to sql server $($dbConnectionDetails.dbServerName)"
                 }
-                Write-Verbose "Successfully connected to sql server $dbServer"
             }
         }
-
         Write-Information "Starting update process for Easit GO" -InformationAction Continue
         Write-Information "Stopping service" -InformationAction Continue
         try {
@@ -201,8 +207,13 @@ function Invoke-EasitGOUpdate {
             $ErrorActionPreference = 'Stop'
             Write-Information "Attempting to execute stored procedure on database server" -InformationAction Continue
             if ($useLocalCommand) {
+                if ($dbConnectionDetails.dbInstance) {
+                    $serverInstance = "$($dbConnectionDetails.dbServerName)\$($dbConnectionDetails.dbInstance)"
+                } else {
+                    $serverInstance = "$($dbConnectionDetails.dbServerName)"
+                }
                 try {
-                    Invoke-Sqlcmd -ServerInstance "$dbServer" -Database "$dbName" -Query "EXEC $StoredProcedureName" -OutputSqlErrors $true
+                    Invoke-Sqlcmd -ServerInstance "$($dbConnectionDetails.dbServerName)" -Database "$($dbConnectionDetails.dbName)" -Query "EXEC $StoredProcedureName" -OutputSqlErrors $true
                 } catch {
                     throw $_
                 }
