@@ -43,7 +43,7 @@ This will return all entries in log files from test.
 PS C:\> Get-EasitLog -EmfConfigurationName 'Test'
 ```
 
-In this example we take advantage of the EMF-configuration file located in '$Home/EMF', and the configuration named Test in it. This will return all entries in log files from test.
+In this example we take advantage of the EMF-configuration file located in '${env:ALLUSERSPROFILE}/EMF', and the configuration named Test in it. This will return all entries in log files from test.
 
 ### Example 2: Get all log entries from Easit*.log - Production
 
@@ -53,7 +53,7 @@ This will return all entries in log files from production.
 PS C:\> Get-EasitLog 'Prod'
 ```
 
-In this example we take advantage of the EMF-configuration file located in '$Home/EMF'. The parameter *EmfConfigurationName* is expected as first input if no parameter is specified.
+In this example we take advantage of the EMF-configuration file located in '${env:ALLUSERSPROFILE}/EMF'. The parameter *EmfConfigurationName* is expected as first input if no parameter is specified.
 
 ### Example 3: Get log entries - Specific log file
 
@@ -140,7 +140,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: $Home\EMF
+Default value: ${env:ALLUSERSPROFILE}\EMF
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

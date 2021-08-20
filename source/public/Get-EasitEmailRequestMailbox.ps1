@@ -2,7 +2,7 @@ function Get-EasitEmailRequestMailbox {
     [CmdletBinding()]
     param (
         [Parameter()]
-        [string] $EmfHome = "$Home\EMF",
+        [string] $EmfHome = "${env:ALLUSERSPROFILE}\EMF",
         
         [Parameter()]
         [string] $EmfConfigurationFileName = 'emfConfig.xml',

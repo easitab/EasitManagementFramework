@@ -149,7 +149,7 @@ Aliases: Home
 
 Required: False
 Position: Named
-Default value: $Home\EMF
+Default value: ${env:ALLUSERSPROFILE}\EMF
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

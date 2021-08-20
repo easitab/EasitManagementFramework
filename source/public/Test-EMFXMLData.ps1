@@ -3,7 +3,7 @@ function Test-EMFXMLData {
     param (
         [Parameter()]
         [Alias('Home')]
-        [string] $EMFHome = "$Home\EMF",
+        [string] $EMFHome = "${env:ALLUSERSPROFILE}\EMF",
 
         [Parameter()]
         [string] $Path = "$EMFHome\emfConfig.xml",

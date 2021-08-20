@@ -54,7 +54,7 @@ In this example the cmdlet will try to stop the application with a service name 
 PS C:\> Stop-EasitGOApplication -EmfHome 'C:\Users\localAdmin\EMF'
 ```
 
-In this example the cmdlet will try to stop the application with a service name specified in the in *emfConfig.xml* in *C:\Users\localAdmin\EMF*. This example can be used if you have your configuration files located in another place then *$Home/EMF*.
+In this example the cmdlet will try to stop the application with a service name specified in the in *emfConfig.xml* in *C:\Users\localAdmin\EMF*. This example can be used if you have your configuration files located in another place then *${env:ALLUSERSPROFILE}/EMF*.
 
 ## PARAMETERS
 
@@ -101,7 +101,7 @@ Aliases:
 
 Required: False
 Position: 0
-Default value: $Home\EMF
+Default value: ${env:ALLUSERSPROFILE}\EMF
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

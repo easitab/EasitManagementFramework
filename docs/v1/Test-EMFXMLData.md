@@ -38,7 +38,7 @@ By just running *Test-EMFXMLData* a validation of *$EMFHome\emfConfig.xml* will 
 PS C:\> Test-EMFXMLData -EMFHome 'D:\EMF'
 ```
 
-If your EMFHome location is another than $Home\EMF you can use this example instead of example 1.
+If your EMFHome location is another than ${env:ALLUSERSPROFILE}\EMF you can use this example instead of example 1.
 
 ### Example 3
 
@@ -61,7 +61,7 @@ Aliases: Home
 
 Required: False
 Position: 0
-Default value: $Home\EMF
+Default value: ${env:ALLUSERSPROFILE}\EMF
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

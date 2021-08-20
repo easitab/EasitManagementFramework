@@ -3,7 +3,7 @@ function Get-EMFConfig {
     param (
         [Parameter()]
         [Alias('Home')]
-        [string] $EMFHome = "$Home\EMF",
+        [string] $EMFHome = "${env:ALLUSERSPROFILE}\EMF",
         
         [Parameter()]
         [Alias('ConfigurationFileName','ConfigFile','ConfigFileName')]

@@ -3,7 +3,7 @@ function New-EMFConfig {
     param (
         [Parameter()]
         [Alias('Home')]
-        [string] $EMFHome = "$Home\EMF",
+        [string] $EMFHome = "${env:ALLUSERSPROFILE}\EMF",
         
         [Parameter()]
         [Alias('ConfigurationFileName','ConfigFile','ConfigFileName')]
@@ -43,8 +43,8 @@ function New-EMFConfig {
         } else {
             Write-Verbose "$emfConfigFilePath does not exist."
             if (!(Test-Path -Path $EMFHome)) {
-                New-Item -Path "$Home" -Name 'EMF' -ItemType Directory
-                Write-Verbose -Message "Created directory EMF in $Home"
+                New-Item -Path "${env:ALLUSERSPROFILE}" -Name 'EMF' -ItemType Directory
+                Write-Verbose -Message "Created directory EMF in ${env:ALLUSERSPROFILE}"
             } else {
                 Write-Verbose "Found $EMFHome"
             }
