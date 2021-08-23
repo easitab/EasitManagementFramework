@@ -38,26 +38,18 @@ In this example we will get all mailboxes configured for EmailRequest.
 ### Example 2
 
 ```powershell
-PS C:\> Get-EasitEmailRequestMailbox -MailboxName POP3Test
+PS C:\> Get-EasitEmailRequestMailbox -EmailRequestConfigurationFilename '*config*.xml' | Out-GridView
 ```
 
-In this example we will get all settings for a mailbox with *POP3Test* as its displayName.
+This example will return all mailboxes from all files with xml files that have a name containing config and display them in a grid view.
 
-### Example 3
+### Example 2
 
 ```powershell
-PS C:\> Get-EasitEmailRequestMailbox -MailboxName POP3Test -EmfConfigurationName Test
+PS C:\> Get-EasitEmailRequestMailbox -EmailRequestConfigurationFilename 'config_prod.xml' -MailboxName '*prod*' | Out-GridView
 ```
 
-In this example we will get all settings for a mailbox with *POP3Test* as its displayName in config.xml in the folder provided in EmailRequestRoot for EMF-configuration Test.
-
-### Example 4
-
-```powershell
-PS C:\> Get-EasitEmailRequestMailbox -MailboxName POP3Test -EmailRequestConfigurationFilename config_test.xml
-```
-
-In this example we will get all settings for a mailbox with *POP3Test* as its displayName in config_test.xml. Use this syntax if you have multiple configurationfiles for EmailRequest.
+This example will return all mailboxes with a displayName containing the word *prod* from the configuration file named *config_prod.xml* and display them in a grid view.
 
 ## PARAMETERS
 
