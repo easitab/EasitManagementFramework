@@ -741,6 +741,90 @@ PS C:\&gt; Backup-EasitFolder -FolderToBackup "$folder" -DestinationFolder $back
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
+      <command:name>Convert-EmailRequestConfigfile</command:name>
+      <command:verb>Convert</command:verb>
+      <command:noun>EmailRequestConfigfile</command:noun>
+      <maml:description>
+        <maml:para>Private function to convert mailboxes in EmailRequest configuration files into PS Objects.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>{{ Fill in the Description }}</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Convert-EmailRequestConfigfile</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Path</maml:name>
+          <maml:description>
+            <maml:para>Literal path to configuration file to convert.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>Path</maml:name>
+        <maml:description>
+          <maml:para>Literal path to configuration file to convert.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Convert-EmailRequestConfigfile -Path "D:\Easit\EmailRequest\config_prod.xml"</dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Convert-EmailRequestConfigfile.md</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
       <command:name>Convert-KeytoolResult</command:name>
       <command:verb>Convert</command:verb>
       <command:noun>KeytoolResult</command:noun>
@@ -1453,9 +1537,9 @@ serverUrl    port         instanceName nameOfDatabase</dev:code>
           <maml:description>
             <maml:para>Name of configuration file to find mailboxes in.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
           <dev:type>
-            <maml:name>String</maml:name>
+            <maml:name>String[]</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>config.xml</dev:defaultValue>
@@ -1465,9 +1549,9 @@ serverUrl    port         instanceName nameOfDatabase</dev:code>
           <maml:description>
             <maml:para>Name of mailbox to update setting for. Same as displayName in EmailRequest configuration file.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
           <dev:type>
-            <maml:name>String</maml:name>
+            <maml:name>String[]</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -1480,9 +1564,9 @@ serverUrl    port         instanceName nameOfDatabase</dev:code>
         <maml:description>
           <maml:para>Name of configuration file to find mailboxes in.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
         <dev:type>
-          <maml:name>String</maml:name>
+          <maml:name>String[]</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>config.xml</dev:defaultValue>
@@ -1528,9 +1612,9 @@ serverUrl    port         instanceName nameOfDatabase</dev:code>
         <maml:description>
           <maml:para>Name of mailbox to update setting for. Same as displayName in EmailRequest configuration file.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
         <dev:type>
-          <maml:name>String</maml:name>
+          <maml:name>String[]</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -1571,23 +1655,16 @@ serverUrl    port         instanceName nameOfDatabase</dev:code>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Get-EasitEmailRequestMailbox -MailboxName POP3Test</dev:code>
+        <dev:code>PS C:\&gt; Get-EasitEmailRequestMailbox -EmailRequestConfigurationFilename '*config*.xml' | Out-GridView</dev:code>
         <dev:remarks>
-          <maml:para>In this example we will get all settings for a mailbox with POP3Test as its displayName.</maml:para>
+          <maml:para>This example will return all mailboxes from all files with xml files that have a name containing config and display them in a grid view.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Get-EasitEmailRequestMailbox -MailboxName POP3Test -EmfConfigurationName Test</dev:code>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-EasitEmailRequestMailbox -EmailRequestConfigurationFilename 'config_prod.xml' -MailboxName '*prod*' | Out-GridView</dev:code>
         <dev:remarks>
-          <maml:para>In this example we will get all settings for a mailbox with POP3Test as its displayName in config.xml in the folder provided in EmailRequestRoot for EMF-configuration Test.</maml:para>
-        </dev:remarks>
-      </command:example>
-      <command:example>
-        <maml:title>-------------------------- Example 4 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Get-EasitEmailRequestMailbox -MailboxName POP3Test -EmailRequestConfigurationFilename config_test.xml</dev:code>
-        <dev:remarks>
-          <maml:para>In this example we will get all settings for a mailbox with POP3Test as its displayName in config_test.xml. Use this syntax if you have multiple configurationfiles for EmailRequest.</maml:para>
+          <maml:para>This example will return all mailboxes with a displayName containing the word prod from the configuration file named config_prod.xml and display them in a grid view.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>

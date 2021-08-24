@@ -15,8 +15,8 @@ Gets the configuration settings for one or all mailboxes configured for EmailReq
 
 ```
 Get-EasitEmailRequestMailbox [[-EmfHome] <String>] [[-EmfConfigurationFileName] <String>]
- [[-EmfConfigurationName] <String>] [[-EmailRequestConfigurationFilename] <String>] [[-MailboxName] <String>]
- [<CommonParameters>]
+ [[-EmfConfigurationName] <String>] [[-EmailRequestConfigurationFilename] <String[]>]
+ [[-MailboxName] <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +58,7 @@ This example will return all mailboxes with a displayName containing the word *p
 Name of configuration file to find mailboxes in.
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 Name of mailbox to update setting for. Same as displayName in EmailRequest configuration file.
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
 Aliases: Mailbox
 
