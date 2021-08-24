@@ -8,7 +8,7 @@ function Get-EasitLog {
         [Parameter(Mandatory,ParameterSetName='Path')]
         [string]$LogFilename,
         [Parameter(ParameterSetName = 'Configuration')]
-        [string] $EmfHome = "$Home\EMF",
+        [string] $EmfHome = "${env:ALLUSERSPROFILE}\EMF",
         [Parameter(ParameterSetName = 'Configuration')]
         [string] $EmfConfigurationFileName = 'emfConfig.xml',
         [Parameter(Mandatory,Position=0,ParameterSetName = 'Configuration')]
@@ -38,7 +38,7 @@ function Get-EasitLog {
                 Write-Verbose "Path = $Path"
             } else {
                 Write-Verbose "Path = $Path"
-                throw "Unable to find $Path. A valid path to logfiles need to be provided. This can be done with the following parameters 'LiteralPath' or 'Path'. If you would like to use your EMF-configurationfile place it in $Home\EMF and specify a value for SystemRoot (ex. D:\Easit\Systems\Prod) or use 'EmfHome', 'EmfConfigurationFileName' and 'EmfConfigurationName' parameters to take advantage from it."
+                throw "Unable to find $Path. A valid path to logfiles need to be provided. This can be done with the following parameters 'LiteralPath' or 'Path'. If you would like to use your EMF-configurationfile place it in ${env:ALLUSERSPROFILE}\EMF and specify a value for SystemRoot (ex. D:\Easit\Systems\Prod) or use 'EmfHome', 'EmfConfigurationFileName' and 'EmfConfigurationName' parameters to take advantage from it."
             }
             
         } elseif ($Path) {

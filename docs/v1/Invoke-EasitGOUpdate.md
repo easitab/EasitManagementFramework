@@ -23,6 +23,8 @@ Invoke-EasitGOUpdate [[-EmfHome] <String>] [[-EmfConfigurationFileName] <String>
 
 This cmdlet lets to update the patch level of Easit GO in a structured and automatic way. By default the cmdlet looks for a file with the name passed in as -UpdateFilename in a folder called Update located in EasitRoot.
 
+Manual steps for updating Easit GO, if this function failes for some reasing, can be found here: [HOW-TO-InvokeEasitGOUpdate_ManualSteps](https://github.com/easitab/EasitManagementFramework/blob/development/docs/HOW-TO-InvokeEasitGOUpdate_ManualSteps.md)
+
 ## EXAMPLES
 
 ### Example 1

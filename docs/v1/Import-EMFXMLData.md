@@ -26,7 +26,7 @@ Import XML file and return an XML object.
 ### Example 1
 
 ```powershell
-PS C:\> $EMFHome = "$Home\EMF"
+PS C:\> $EMFHome = "${env:ALLUSERSPROFILE}\EMF"
 PS C:\> $ConfigurationFileName = 'emfConfig.xml'
 PS C:\> Import-EMFXMLData -Path "$EMFHome\$ConfigurationFileName"
 ```

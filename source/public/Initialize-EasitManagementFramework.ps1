@@ -3,7 +3,7 @@ function Initialize-EasitManagementFramework {
     param (
         [Parameter()]
         [Alias('Home')]
-        [string] $EMFHome = "$Home\EMF",
+        [string] $EMFHome = "${env:ALLUSERSPROFILE}\EMF",
         [Parameter()]
         [string] $ConfigURL = 'https://raw.githubusercontent.com/easitab/EasitManagementFramework/development/configurations/emfConfig.xml',
         [Parameter()]
@@ -22,8 +22,8 @@ function Initialize-EasitManagementFramework {
     process {
         if (!(Test-Path -Path $EMFHome)) {
             try {
-                $null = New-Item -Path "$Home" -Name 'EMF' -ItemType Directory
-                Write-Information "Created directory EMF in $Home" -InformationAction Continue
+                $null = New-Item -Path "${env:ALLUSERSPROFILE}" -Name 'EMF' -ItemType Directory
+                Write-Information "Created directory EMF in ${env:ALLUSERSPROFILE}" -InformationAction Continue
             } catch {
                 throw $_
             }

@@ -15,8 +15,8 @@ Gets the configuration settings for one or all mailboxes configured for EmailReq
 
 ```
 Get-EasitEmailRequestMailbox [[-EmfHome] <String>] [[-EmfConfigurationFileName] <String>]
- [[-EmfConfigurationName] <String>] [[-EmailRequestConfigurationFilename] <String>] [[-MailboxName] <String>]
- [<CommonParameters>]
+ [[-EmfConfigurationName] <String>] [[-EmailRequestConfigurationFilename] <String[]>]
+ [[-MailboxName] <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,26 +38,18 @@ In this example we will get all mailboxes configured for EmailRequest.
 ### Example 2
 
 ```powershell
-PS C:\> Get-EasitEmailRequestMailbox -MailboxName POP3Test
+PS C:\> Get-EasitEmailRequestMailbox -EmailRequestConfigurationFilename '*config*.xml' | Out-GridView
 ```
 
-In this example we will get all settings for a mailbox with *POP3Test* as its displayName.
+This example will return all mailboxes from all files with xml files that have a name containing config and display them in a grid view.
 
-### Example 3
+### Example 2
 
 ```powershell
-PS C:\> Get-EasitEmailRequestMailbox -MailboxName POP3Test -EmfConfigurationName Test
+PS C:\> Get-EasitEmailRequestMailbox -EmailRequestConfigurationFilename 'config_prod.xml' -MailboxName '*prod*' | Out-GridView
 ```
 
-In this example we will get all settings for a mailbox with *POP3Test* as its displayName in config.xml in the folder provided in EmailRequestRoot for EMF-configuration Test.
-
-### Example 4
-
-```powershell
-PS C:\> Get-EasitEmailRequestMailbox -MailboxName POP3Test -EmailRequestConfigurationFilename config_test.xml
-```
-
-In this example we will get all settings for a mailbox with *POP3Test* as its displayName in config_test.xml. Use this syntax if you have multiple configurationfiles for EmailRequest.
+This example will return all mailboxes with a displayName containing the word *prod* from the configuration file named *config_prod.xml* and display them in a grid view.
 
 ## PARAMETERS
 
@@ -66,7 +58,7 @@ In this example we will get all settings for a mailbox with *POP3Test* as its di
 Name of configuration file to find mailboxes in.
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +112,7 @@ Aliases:
 
 Required: False
 Position: 0
-Default value: $Home\EMF
+Default value: ${env:ALLUSERSPROFILE}\EMF
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -130,7 +122,7 @@ Accept wildcard characters: False
 Name of mailbox to update setting for. Same as displayName in EmailRequest configuration file.
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
 Aliases: Mailbox
 

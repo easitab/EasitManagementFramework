@@ -18,7 +18,7 @@ Describe 'Parameters' {
         Get-Command "$commandName" | Should -HaveParameter EmfHome -Not -Mandatory
     }
     It 'EmfHome should not be mandatory' {
-        Get-Command "$commandName" | Should -HaveParameter EmfHome -DefaultValue '$Home\EMF'
+        Get-Command "$commandName" | Should -HaveParameter EmfHome -DefaultValue '${env:ALLUSERSPROFILE}\EMF'
     }
     It 'EmfConfigurationFileName should have a value' {
         Get-Command "$commandName" | Should -HaveParameter EmfConfigurationFileName -Not -Mandatory
