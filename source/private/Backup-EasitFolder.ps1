@@ -32,67 +32,49 @@ function Backup-EasitFolder {
                 throw $_
             }
         }
+        $tempDirectory = [System.IO.Path]::GetTempPath()
+        [string] $tempDirectoryName = [System.Guid]::NewGuid()
+        $tempWorkingDirectoryPath = Join-Path -Path $tempDirectory -ChildPath $tempDirectoryName
+        $tempWorkingDirectory = New-Item -ItemType Directory -Path $tempWorkingDirectoryPath
+        try {
+            Write-Verbose "Copying folder to temp location"
+            Copy-Item -Path $FolderToBackup -Destination $tempWorkingDirectory
+            $tempFolderToBackup = Join-Path -Path $tempWorkingDirectory -ChildPath "$leaf"
+        } catch {
+            throw $_
+        }
         Write-Verbose "Using $todayDestinationFolder as todayDestinationFolder"
         $zipFile = Join-Path -Path $todayDestinationFolder -ChildPath "$ArchiveName.zip"
         try {
-            $compress = @{
-                Path = "$FolderToBackup"
-                CompressionLevel = "Optimal"
-                DestinationPath = "$zipFile"
-            }
             Add-Type -Assembly System.IO.Compression.FileSystem
             $compressionLevel = [IO.Compression.CompressionLevel]::Optimal
-            $trySlowWay = $false
             if (Test-Path -Path $FolderToBackup -PathType Leaf) {
                 Write-Verbose "PathType is Leaf"
-                if (Test-ForFileLock -FilePath $FolderToBackup) {
-                    $trySlowWay = $true
-                }
-                if (!($trySlowWay)) {
-                    try {
-                        $zip = [System.IO.Compression.ZipFile]::Open($zipFile, 'create')
-                        $zip.Dispose()
-                        $zip = [System.IO.Compression.ZipFile]::Open($zipFile, 'update')
-                        [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip, $FolderToBackup, $leaf, $compressionLevel) | Out-Null
-                        $zip.Dispose()
-                    } catch {
-                        $zip.Dispose()
-                        Remove-Item $zipFile -Recurse -Force -Confirm:$false -InformationAction SilentlyContinue -ErrorAction SilentlyContinue
-                        Remove-Item $zip -Recurse -Force -Confirm:$false -InformationAction SilentlyContinue -ErrorAction SilentlyContinue
-                        $trySlowWay = $true
-                    }
+                try {
+                    $zip = [System.IO.Compression.ZipFile]::Open($zipFile, 'create')
+                    $zip.Dispose()
+                    $zip = [System.IO.Compression.ZipFile]::Open($zipFile, 'update')
+                    [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip, $tempFolderToBackup, $leaf, $compressionLevel) | Out-Null
+                    $zip.Dispose()
+                } catch {
+                    $zip.Dispose()
+                    Remove-Item $zipFile -Recurse -Force -Confirm:$false -InformationAction SilentlyContinue -ErrorAction SilentlyContinue
+                    Remove-Item $zip -Recurse -Force -Confirm:$false -InformationAction SilentlyContinue -ErrorAction SilentlyContinue
+                    Remove-Item $tempWorkingDirectoryPath -Recurse -Force -Confirm:$false -InformationAction SilentlyContinue -ErrorAction SilentlyContinue
+                    throw $_
                 }
             }
             if (Test-Path -Path $FolderToBackup -PathType Container) {
                 Write-Verbose "PathType is Container"
-                $filesToBackup = Get-ChildItem -Path $FolderToBackup -Recurse
-                if ($filesToBackup) {
-                    foreach ($fileToBackup in $filesToBackup) {
-                        if (Test-ForFileLock -FilePath $fileToBackup) {
-                            $trySlowWay = $true
-                        }
-                    }
-                }
-                if (!($trySlowWay)) {
-                    try {
-                        [IO.Compression.ZipFile]::CreateFromDirectory($FolderToBackup, $zipFile, $compressionLevel, $false)
-                    } catch {
-                        Remove-Item $zipFile -Recurse -Force -Confirm:$false -InformationAction SilentlyContinue -ErrorAction SilentlyContinue
-                        $trySlowWay = $true
-                    }
-                }
-                $filesToBackup = $null
-            }
-            if ($trySlowWay -or !(Test-Path -Path $zipFile)) {
                 try {
-                    Write-Verbose "Trying to zip ($FolderToBackup) the old way"
-                    Compress-Archive @compress -ErrorAction Stop
+                    [IO.Compression.ZipFile]::CreateFromDirectory($tempFolderToBackup, $zipFile, $compressionLevel, $false)
                 } catch {
-                    Write-Warning "Unable to perform backup of $FolderToBackup"
-                    throw "$($_.Exception.Message)"
+                    Remove-Item $zipFile -Recurse -Force -Confirm:$false -InformationAction SilentlyContinue -ErrorAction SilentlyContinue
+                    Remove-Item $tempWorkingDirectoryPath -Recurse -Force -Confirm:$false -InformationAction SilentlyContinue -ErrorAction SilentlyContinue
+                    throw $_
                 }
-                
             }
+            Remove-Item $tempWorkingDirectoryPath -Recurse -Force -Confirm:$false -InformationAction SilentlyContinue -ErrorAction SilentlyContinue
             Write-Verbose "Created zip archive for $FolderToBackup"
         } catch {
             throw $_

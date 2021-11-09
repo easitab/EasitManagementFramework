@@ -213,7 +213,7 @@ function Invoke-EasitGOUpdate {
                     $serverInstance = "$($dbConnectionDetails.dbServerName)"
                 }
                 try {
-                    Invoke-Sqlcmd -ServerInstance "$($dbConnectionDetails.dbServerName)" -Database "$($dbConnectionDetails.dbName)" -Query "EXEC $StoredProcedureName" -OutputSqlErrors $true
+                    Invoke-Sqlcmd -ServerInstance "$serverInstance" -Database "$($dbConnectionDetails.dbName)" -Query "EXEC $StoredProcedureName" -OutputSqlErrors $true
                 } catch {
                     throw $_
                 }
