@@ -42,7 +42,7 @@ function Invoke-EasitGOUpdate {
         }
 
         if ([string]::IsNullOrWhiteSpace($emfConfig.SystemRoot)) {
-            throw "No path provided as SystemRoot. Please update SystemRoot in $EmfHome\$EmfConfigurationFileName for Email2GO"
+            throw "No path provided as SystemRoot. Please update SystemRoot in $EmfHome\$EmfConfigurationFileName for GO"
         } else {
             if (!(Test-Path -Path "$($emfConfig.SystemRoot)")) {
                 throw "Unable to find $($emfConfig.SystemRoot)"
@@ -53,7 +53,7 @@ function Invoke-EasitGOUpdate {
         }
 
         if ([string]::IsNullOrWhiteSpace($emfConfig.BackupRoot)) {
-            throw "No path provided as BackupRoot. Please update BackupRoot in $EmfHome\$EmfConfigurationFileName for Email2GO"
+            throw "No path provided as BackupRoot. Please update BackupRoot in $EmfHome\$EmfConfigurationFileName for GO"
         } else {
             if (!(Test-Path -Path "$($emfConfig.BackupRoot)")) {
                 try {
@@ -69,24 +69,23 @@ function Invoke-EasitGOUpdate {
             }
         }
         Write-Verbose "Using backupRoot: $backupRoot"
-
-        try {
-            $configRoot = (Get-ChildItem -Path "$systemRoot" -Include 'config' -Directory -Recurse).Fullname
-        } catch {
-            throw $_
-        }
-        if (!($configRoot)) {
-            try {
-                $configRoot = (Get-ChildItem -Path "$($emfConfig.TomcatRoot)" -Include 'config' -Directory -Recurse).Fullname
-            } catch {
-                throw $_
+        $foldersToFind = @('config','logs','webapps')
+        foreach ($folderToFind in $foldersToFind) {
+            $varName = "${folderToFind}Root"
+            if (!(Get-Variable -Name "$varName" -ErrorAction SilentlyContinue)) {
+                New-Variable -Name "$varName"
             }
-            if (!($configRoot)) {
-                throw "Unable to find configRoot: $configRoot"
+            Set-Variable -Name "$varName" -Value (Get-ChildItem -Path "$systemRoot" -Include "$folderToFind" -Directory -Recurse).Fullname
+            if (!(Get-Variable -Name "$varName" -ValueOnly)) {
+                Set-Variable -Name "$varName" -Value (Get-ChildItem -Path "$systemRoot" -Include "$folderToFind" -Directory -Recurse).Fullname
+                if (!(Get-Variable -Name "$varName" -ValueOnly)) {
+                    throw "Unable to find ${varName}"
+                }
             }
+            $varValue = Get-Variable -Name "$varName" -ValueOnly
+            Write-Verbose "Using ${varName}: $varValue"
         }
-        Write-Verbose "Using configRoot: $configRoot"
-
+        
         try {
             $systemConfigFile = (Get-ChildItem -Path "$configRoot" -Include 'properties.xml' -File -Recurse).Fullname
         } catch {
@@ -102,47 +101,15 @@ function Invoke-EasitGOUpdate {
             throw $_
         }
         Write-Verbose "Got system properties"
-        try {
-            $logsRoot = (Get-ChildItem -Path "$systemRoot" -Include 'logs' -Directory -Recurse).Fullname
-        } catch {
-            throw $_
-        }
-        if (!($logsRoot)) {
-            try {
-                $logsRoot = (Get-ChildItem -Path "$($emfConfig.TomcatRoot)" -Include 'logs' -Directory -Recurse).Fullname
-            } catch {
-                throw $_
-            }
-            if (!($logsRoot)) {
-                throw "Unable to find logsRoot: $logsRoot"
-            }
-        }
-        Write-Verbose "Using logsRoot: $logsRoot"
-        try {
-            $webappsRoot = (Get-ChildItem -Path "$systemRoot" -Include 'webapps' -Directory -Recurse).Fullname
-        } catch {
-            throw $_
-        }
-        if (!($webappsRoot)) {
-            try {
-                $webappsRoot = (Get-ChildItem -Path "$($emfConfig.TomcatRoot)" -Include 'webapps' -Directory -Recurse).Fullname
-            } catch {
-                throw $_
-            }
-            if (!($webappsRoot)) {
-                throw "Unable to find webappsRoot: $webappsRoot"
-            }
-        }
-        Write-Verbose "Using webappsRoot: $webappsRoot"
 
         try {
-            $warFile = (Get-ChildItem -Path "$systemRoot" -Include "$($emfConfig.WarName).war" -Directory -Recurse).Fullname
+            $warFile = (Get-EasitWarFile -Path "$systemRoot" -Name "$($emfConfig.WarName).war").Fullname
         } catch {
             throw $_
         }
         if (!($warFile)) {
             try {
-                $warFile = (Get-ChildItem -Path "$($emfConfig.TomcatRoot)" -Include "$($emfConfig.WarName).war" -File -Recurse).Fullname
+                $warFile = (Get-EasitWarFile -Path "$($emfConfig.TomcatRoot)" -Name "$($emfConfig.WarName).war").Fullname
             } catch {
                 throw $_
             }
