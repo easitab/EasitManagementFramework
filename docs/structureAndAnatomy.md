@@ -1,6 +1,7 @@
 # Framework structure and anatomy
 
 ## Table of Contents
+
 1. [Anatomy](#anatomy)
 2. [Configuration file](#Configuration-file)
 3. [Schemas](#schemas)
@@ -26,12 +27,15 @@ The configuration file contains values for one or more systems. Each system has 
 <systems>
   <Prod> <!-- Configuration name -->
     <SystemRoot>D:\Easit\Systems\Prod</SystemRoot> <!-- SystemRoot = Configuration property -->
+    <WarName>ROOT</WarName>
     <ServiceName>EasitProd</ServiceName> <!-- EasitProd = Configuration property value -->
     <EasitRoot>D:\Easit</EasitRoot>
     <BackupRoot>D:\Easit\_Backup\Prod</BackupRoot>
-    <TomcatRoot>D:\Easit\Tomcat\Prod</TomcatRoot>
+    <TomcatRoot>D:\Easit\Systems\Prod</TomcatRoot>
     <EmailRequestRoot>D:\Easit\EmailRequest</EmailRequestRoot>
     <ImportClientRoot>D:\Easit\ImportClient</ImportClientRoot>
+    <UpdateResourceDirectory>D:\Easit\Update</UpdateResourceDirectory>
+    <StoredBackupProcedure>BackupProd</StoredBackupProcedure>
   </Prod>
 </systems>
 ```
@@ -42,22 +46,28 @@ Example of a configuration file with multiple systems:
 <?xml version="1.0" encoding="UTF-8"?>
 <systems>
   <Test>
-    <SystemRoot>D:\Easit\Systems2\Test</SystemRoot>
+    <WarName>ROOT</WarName>
+    <SystemRoot>D:\Easit\Systems\Test</SystemRoot>
     <ServiceName>EasitTest</ServiceName>
+    <EmailRequestRoot>D:\Easit\EmailRequest</EmailRequestRoot>
     <EasitRoot>D:\Easit</EasitRoot>
-    <BackupRoot>C:\Easit\_Backup2\Test</BackupRoot>
-    <TomcatRoot>D:\Easit\Tomcat\Test</TomcatRoot>
-    <EmailRequestRoot>D:\Easit\Tomcat\Test</EmailRequestRoot>
-    <ImportClientRoot>D:\Easit\Tomcat\Test</ImportClientRoot>
+    <BackupRoot>D:\Easit\_Backup\Test</BackupRoot>
+    <TomcatRoot>D:\Easit\Systems\Test</TomcatRoot>
+    <ImportClientRoot>D:\Easit\ImportClient</ImportClientRoot>
+    <UpdateResourceDirectory>D:\Easit\Update</UpdateResourceDirectory>
+    <StoredBackupProcedure>BackupTest</StoredBackupProcedure>
   </Test>
   <Dev>
     <SystemRoot>D:\Easit\Systems\Dev</SystemRoot>
     <ServiceName>EasitDev</ServiceName>
+    <WarName>ROOT</WarName>
     <EasitRoot>D:\Easit</EasitRoot>
-    <BackupRoot>C:\Easit\_Backup2\Dev</BackupRoot>
-    <TomcatRoot>D:\Easit\Tomcat\Dev</TomcatRoot>
-    <EmailRequestRoot>D:\Easit\Tomcat\Dev</EmailRequestRoot>
-    <ImportClientRoot>D:\Easit\Tomcat\Dev</ImportClientRoot>
+    <BackupRoot>D:\Easit\_Backup\Dev</BackupRoot>
+    <TomcatRoot>D:\Easit\Systems\Dev</TomcatRoot>
+    <EmailRequestRoot>D:\Easit\EmailRequest</EmailRequestRoot>
+    <ImportClientRoot>D:\Easit\ImportClient</ImportClientRoot>
+    <UpdateResourceDirectory>D:\Easit\Update</UpdateResourceDirectory>
+    <StoredBackupProcedure>BackupDev</StoredBackupProcedure>
   </Dev>
 </systems>
 ```

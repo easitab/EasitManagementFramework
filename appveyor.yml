@@ -1,9 +1,9 @@
-version: 0.2.{build}
+version: 1.0.{build}
 pull_requests:
   do_not_increment_build_number: true
 branches:
   only:
-  - /main/
+  - main
 skip_non_tags: true
 skip_branch_with_pr: true
 environment:
@@ -68,7 +68,7 @@ build_script:
         ProjectUri        = "$env:projectUri"
         Description       = 'Management Framework for Easit BPS and Easit GO'
         PowerShellVersion = '5.1'
-        Copyright         = "(c) 2020 $env:companyName. All rights reserved."
+        Copyright         = "(c) 2022 $env:companyName. All rights reserved."
     }
 
     New-ModuleManifest @manifest | Out-Null
@@ -88,6 +88,6 @@ on_finish:
 - ps: >-
     if (Test-ModuleManifest -Path "$manifestFilePath") {
         $moduleRootPath = Resolve-Path "$env:moduleRoot"
-        Publish-Module -Path "$moduleRootPath" -NuGetApiKey "$env:galleryPublishingKey"
+        Publish-Module -Path "$moduleRootPath" -NuGetApiKey "$env:galleryPublishingKey" -Tags 'easit','easitgo','emf'
         Write-Output "Module published!"
     }

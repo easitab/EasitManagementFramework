@@ -13,7 +13,7 @@ If you do not specify a path, Start-Transcript uses the path in the value of the
 
 ## Step 2 - Reproduce the issue
 
-Perform any necessary steps in order to reproduce the issue.
+Perform any necessary steps in order to reproduce the issue. Please add *-Verbose* at the end of each command / function from *EMF* that you run.
 
 ## Step 3  - Stop-Transcript
 

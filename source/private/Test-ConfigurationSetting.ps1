@@ -66,7 +66,7 @@ function Test-ConfigurationSetting {
                     if ($configSettingName -eq 'WarName') {
                         $systemRoot = $system.GetElementsByTagName('SystemRoot')
                         $systemRoot = $systemRoot.'#text'
-                        $validationResult = Get-ChildItem -Path "$systemRoot" -Recurse -Include "${configSettingValue}.war" -ErrorAction SilentlyContinue
+                        $validationResult = Get-EasitWarFile -Path "$systemRoot" -Name "${configSettingValue}.war"
                     }
                     if (!($validationResult)) {
                         Write-Warning "Configuration setting $configSettingName ($configSettingValue) failed validation"
