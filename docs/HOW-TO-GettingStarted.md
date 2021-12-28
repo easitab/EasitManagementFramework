@@ -90,4 +90,4 @@ PS C:\> Get-Command -Module EasitManagementFramework
 
 #### Documentation for each function
 
-[Docs](https://github.com/easitab/EasitManagementFramework/tree/main/docs/v1)
+[Docs](https://github.com/easitab/EasitManagementFramework/tree/development/docs/v1)

@@ -44,4 +44,4 @@ PS C:\> Import-Module -Name EasitManagementFramework
 
 ## Next step
 
-[Getting started](https://github.com/easitab/EasitManagementFramework/blob/main/docs/HOW-TO-Install.md)
+[Getting started](https://github.com/easitab/EasitManagementFramework/blob/development/docs/HOW-TO-Install.md)
