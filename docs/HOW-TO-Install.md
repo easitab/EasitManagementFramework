@@ -42,6 +42,10 @@ PS C:\> Install-Module -Name EasitManagementFramework -Scope CurrentUser
 PS C:\> Import-Module -Name EasitManagementFramework
 ```
 
-### Step 3
+## Next step
 
+<<<<<<< HEAD
 [Getting started](https://github.com/easitab/EasitManagementFramework/blob/development/docs/HOW-TO-Install.md)
+=======
+[Getting started](https://github.com/easitab/EasitManagementFramework/blob/development/docs/HOW-TO-GettingStarted.md)
+>>>>>>> d7af9df969f936dc5526b0a265c4b8ddcde82809
