@@ -44,9 +44,4 @@ PS C:\> Import-Module -Name EasitManagementFramework
 
 ### Step 3
 
-```powershell
-PS C:\> Initialize-EasitManagementFramework
-```
-
-This will create a folder called EMF in the environmental variable ALLUSERSPROFILE (most often C:\ProgramData) on the server and download some assets (emfConfig.xml and emfSchema.xsd) to that folder.
-These files is needed in order to use the framework. [More information here](https://github.com/easitab/EasitManagementFramework/blob/development/docs/v1/Initialize-EasitManagementFramework.md)
+[Getting started](https://github.com/easitab/EasitManagementFramework/blob/development/docs/HOW-TO-Install.md)
